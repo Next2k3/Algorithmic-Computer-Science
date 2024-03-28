@@ -1,0 +1,52 @@
+V "GNAT Lib v10"
+P ZX
+
+RN
+RV NO_DIRECT_BOOLEAN_OPERATORS
+RV NO_EXCEPTIONS
+RV NO_RECURSION
+RV NO_STANDARD_STORAGE_POOLS
+RV SPARK_05
+
+U zadanie_2_rec%b	zadanie_2_rec.adb	abeccfe4 NE OO PK
+Z ada.exceptions%s	a-except.adb		a-except.ali
+
+U zadanie_2_rec%s	zadanie_2_rec.ads	709451c5 EE NE OO PK
+
+D ada.ads		20230707070819 76789da1 ada%s
+D a-except.ads		20230707070819 a7106115 ada.exceptions%s
+D a-unccon.ads		20230707070819 0e9b276f ada.unchecked_conversion%s
+D system.ads		20230707070819 4635ec04 system%s
+D s-parame.ads		20230707070819 48ec542b system.parameters%s
+D s-stalib.ads		20230707070819 09bd3940 system.standard_library%s
+D s-traent.ads		20230707070819 005bf670 system.traceback_entries%s
+D zadanie_2_rec.ads	20240326171704 709451c5 zadanie_2_rec%s
+D zadanie_2_rec.adb	20240326173140 db789e21 zadanie_2_rec%b
+G a e
+G c Z s b [factorial zadanie_2_rec 7 18 none]
+G c Z s b [gcd zadanie_2_rec 8 18 none]
+G c Z s b [diophantine zadanie_2_rec 9 18 none]
+G c Z s s [diophantinesolutionIP zadanie_2_rec 2 14 none]
+X 8 zadanie_2_rec.ads
+1K9*Zadanie_2_rec 10l6 10e19 9|1b14 61l5 61t18
+2R14*DiophantineSolution 5e19 9r56 9|20r56 24r43
+3i17*X{integer} 9|48m26 51r38 52r83 53m34 53r48 53r75 56r57
+4i17*Y{integer} 9|49m26 54m34 54r48 54r75 56m34
+7V18*Factorial{integer} 7>28 9|2b18 7s36 9l13 9t22
+7i28 N{integer} 9|2b29 4r20 7r32 7r46
+8V18*GCD{integer} 8>22 8>25 9|11b18 16s32 18l13 18t16 30s27
+8i22 A{integer} 9|11b23 14r32 16r40
+8i25 B{integer} 9|11b26 13r20 16r37 16r46
+9V18*Diophantine{2R14} 9>30 9>33 9>36 9|20b18 52s42 60l13 60t24
+9i30 A{integer} 9|20b30 26r20 30r31 36r20 51r25 52r57 52r70 56r44
+9i33 B{integer} 9|20b33 26r30 30r34 41r20 51r45 52r54 52r63 56r62
+9i36 C{integer} 9|20b36 32r20 47r24 51r21 52r66 56r40
+X 9 zadanie_2_rec.adb
+21i17 GCD_AB{integer} 30m17 32r26 47r28
+22i17 Sign_A{integer} 37m25 39m25 48r31 53r52
+22i25 Sign_B{integer} 42m25 44m25 54r52
+23i17 Div{integer} 47m17 48r40
+24r17 Solution{8|2R14} 48m17 49m17 51r29 52r74 53m25 53r39 54m25 54r39 56m25
+. 56r48 59r24
+24r27 Next_Solution{8|2R14} 52m25 53r61 54r61
+

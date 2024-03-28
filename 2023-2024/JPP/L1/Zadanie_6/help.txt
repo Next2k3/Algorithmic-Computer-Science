@@ -1,0 +1,1 @@
+gcc -shared -o libZadanie_1_iter.so -fPIC Zadanie_1_iter.c

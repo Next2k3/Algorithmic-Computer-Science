@@ -1,0 +1,1 @@
+cc --shared -o zadanie_7.so -fPIC Zadanie_7.c -I/usr/include/python3.10 -lpython3.10

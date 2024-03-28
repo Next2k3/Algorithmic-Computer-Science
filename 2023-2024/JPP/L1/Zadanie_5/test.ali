@@ -1,0 +1,83 @@
+V "GNAT Lib v10"
+M P W=b
+P ZX
+
+RN
+RV NO_IO
+RV NO_DYNAMIC_SIZED_OBJECTS
+RV SPARK_05
+
+U test%b		test.adb		4f2e468b NE OO SU IL
+W ada%s			ada.ads			ada.ali
+W ada.text_io%s		a-textio.adb		a-textio.ali
+W interfaces%s		interfac.ads		interfac.ali
+W interfaces.c%s	i-c.adb			i-c.ali
+Z system.concat_2%s	s-conca2.adb		s-conca2.ali
+Z system.concat_4%s	s-conca4.adb		s-conca4.ali
+Z system.img_int%s	s-imgint.adb		s-imgint.ali
+Z system.img_llu%s	s-imgllu.adb		s-imgllu.ali
+Z system.unsigned_types%s  s-unstyp.ads		s-unstyp.ali
+W zadanie_5%s		zadanie_5.ads		zadanie_5.ali
+
+D ada.ads		20230707070819 76789da1 ada%s
+D a-except.ads		20230707070819 a7106115 ada.exceptions%s
+D a-ioexce.ads		20230707070819 e4a01f64 ada.io_exceptions%s
+D a-stream.ads		20230707070819 119b8fb3 ada.streams%s
+D a-tags.ads		20230707070819 491b781d ada.tags%s
+D a-textio.ads		20230707070819 aef4d56d ada.text_io%s
+D a-unccon.ads		20230707070819 0e9b276f ada.unchecked_conversion%s
+D interfac.ads		20230707070819 5ab55268 interfaces%s
+D i-c.ads		20230707070819 5421119b interfaces.c%s
+D i-cstrea.ads		20230707070819 e53d8b8e interfaces.c_streams%s
+D system.ads		20230707070819 4635ec04 system%s
+D s-conca2.ads		20230707070819 02a0d7d0 system.concat_2%s
+D s-conca4.ads		20230707070819 7e642b20 system.concat_4%s
+D s-crtl.ads		20230707070819 0ebbdb71 system.crtl%s
+D s-exctab.ads		20230707070819 54135002 system.exception_table%s
+D s-ficobl.ads		20230707070819 078245e4 system.file_control_block%s
+D s-imgint.ads		20230707070819 02dbe0c2 system.img_int%s
+D s-imgllu.ads		20230707070819 49c900c3 system.img_llu%s
+D s-parame.ads		20230707070819 48ec542b system.parameters%s
+D s-secsta.ads		20230707070819 20bbe636 system.secondary_stack%s
+D s-soflin.ads		20230707070819 a7318a92 system.soft_links%s
+D s-stache.ads		20230707070819 a37c21ec system.stack_checking%s
+D s-stalib.ads		20230707070819 09bd3940 system.standard_library%s
+D s-stoele.ads		20230707070819 2dc34a04 system.storage_elements%s
+D s-traent.ads		20230707070819 005bf670 system.traceback_entries%s
+D s-unstyp.ads		20230707070819 34867c83 system.unsigned_types%s
+D s-wchcon.ads		20230707070819 1b7d22d2 system.wch_con%s
+D test.adb		20240326204934 bd120d26 test%b
+D zadanie_5.ads		20240326204212 08e98f5b zadanie_5%s
+G a e
+G c Z b b [test standard 5 11 none]
+G r c none [test standard 5 11 none] [wrapped_factorial zadanie_5 9 18 none]
+G r c none [test standard 5 11 none] [wrapped_gcd zadanie_5 12 18 none]
+G r c none [test standard 5 11 none] [wrapped_diophantine zadanie_5 15 18 none]
+X 1 ada.ads
+16K9*Ada 20e8 28|1r6 6r13
+X 6 a-textio.ads
+57K13*Text_IO 727e16 28|1w10 6r17
+508U14*Put_Line 28|17s9 18s9 20s9
+X 8 interfac.ads
+38K9*Interfaces 184e15 28|2r6 9r13 10r13 11r13 12r13 17r38 18r40 20r48 20r95
+X 9 i-c.ads
+18K20*C 230e17 28|2w17 9r24 10r24 11r24 12r24 17r49 18r51 20r59 20r106
+35I9*int<integer> 28|10r26 11r26 12r26 18r53 20r61 20r108
+43M9*unsigned 28|9r26
+45M9*unsigned_long 28|17r51
+X 28 test.adb
+5U11*test 5b11 21l5 21t9
+9m9 N{9|43M9} 17r89
+10i9 A{9|35I9} 18r75 19r41
+11i9 B{9|35I9} 18r77 19r43
+12i9 C{9|35I9} 19r45
+14r9 Solution{29|4R14} 19m9 20r71 20r118
+X 29 zadanie_5.ads
+3K9*Zadanie_5 28|3w6 7r13 29|17e14
+4R14*Diophantine_Solution 28|14r20 29|7e19
+5i17*X{9|35I9} 28|20r80
+6i17*Y{9|35I9} 28|20r127
+9V18*wrapped_factorial{9|45M9} 28|17s71
+12V18*wrapped_GCD{9|35I9} 28|18s63
+15V18*wrapped_diophantine{4R14} 28|19s21
+

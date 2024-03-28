@@ -1,0 +1,4 @@
+gcc -c Zadanie_4 test.c
+gnatmake zadanie_2_iter.adb
+gnatbind -n zadanie_2_iter.ali
+gnatlink zadanie_2_iter.ali Zadanie_4.o test.o -o program

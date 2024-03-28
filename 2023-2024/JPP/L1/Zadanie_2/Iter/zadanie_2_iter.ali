@@ -1,0 +1,57 @@
+V "GNAT Lib v10"
+P ZX
+
+RN
+RV NO_DIRECT_BOOLEAN_OPERATORS
+RV NO_EXCEPTIONS
+RV NO_RECURSION
+RV NO_STANDARD_STORAGE_POOLS
+RV SPARK_05
+
+U zadanie_2_iter%b	zadanie_2_iter.adb	5adb3141 NE OO PK
+Z ada.exceptions%s	a-except.adb		a-except.ali
+
+U zadanie_2_iter%s	zadanie_2_iter.ads	e503a0a6 EE NE OO PK
+
+D ada.ads		20230707070819 76789da1 ada%s
+D a-except.ads		20230707070819 a7106115 ada.exceptions%s
+D a-unccon.ads		20230707070819 0e9b276f ada.unchecked_conversion%s
+D system.ads		20230707070819 4635ec04 system%s
+D s-parame.ads		20230707070819 48ec542b system.parameters%s
+D s-stalib.ads		20230707070819 09bd3940 system.standard_library%s
+D s-traent.ads		20230707070819 005bf670 system.traceback_entries%s
+D zadanie_2_iter.ads	20240326170646 e503a0a6 zadanie_2_iter%s
+D zadanie_2_iter.adb	20240326170957 bfd891e7 zadanie_2_iter%b
+G a e
+G c Z s b [factorial zadanie_2_iter 7 18 none]
+G c Z s b [gcd zadanie_2_iter 8 18 none]
+G c Z s b [diophantine zadanie_2_iter 9 18 none]
+G c Z s s [diophantinesolutionIP zadanie_2_iter 2 14 none]
+X 8 zadanie_2_iter.ads
+1K9*Zadanie_2_iter 10l6 10e20 9|1b14 65l5 65t19
+2R14*DiophantineSolution 5e19 9r56 9|24r57 28r43
+3i17*X{integer} 9|52m26 55r38 56r83 57m34 57r48 57r75 60r57
+4i17*Y{integer} 9|53m26 58m34 58r48 58r75 60m34
+7V18*Factorial{integer} 7>28 9|2b18 9l13 9t22
+7i28 N{integer} 9|2b29 5r31
+8V18*GCD{integer} 8>22 8>25 9|11b18 22l13 22t16 34s27
+8i22 A{integer} 9|11b23 12r38
+8i25 B{integer} 9|11b26 13r38
+9V18*Diophantine{2R14} 9>30 9>33 9>36 9|24b19 56s42 64l13 64t24
+9i30 A{integer} 9|24b31 30r20 34r31 40r20 55r25 56r57 56r70 60r44
+9i33 B{integer} 9|24b34 30r30 34r34 45r20 55r45 56r54 56r63 60r62
+9i36 C{integer} 9|24b37 36r20 51r24 55r21 56r66 60r40
+X 9 zadanie_2_iter.adb
+3i17 Result{integer} 6m25 6r35 8r24
+5i21 I{integer} 6r44
+12i17 Local_A{integer} 18r36 19m25 21r24
+13i17 Local_B{integer} 16r23 17r33 18m25 18r48
+14i17 Temp{integer} 17m25 19r36
+25i17 GCD_AB{integer} 34m17 36r26 51r28
+26i17 Sign_A{integer} 41m25 43m25 52r31 57r52
+26i25 Sign_B{integer} 46m25 48m25 58r52
+27i17 Div{integer} 51m17 52r40
+28r17 Solution{8|2R14} 52m17 53m17 55r29 56r74 57m25 57r39 58m25 58r39 60m25
+. 60r48 63r24
+28r27 Next_Solution{8|2R14} 56m25 57r61 58r61
+

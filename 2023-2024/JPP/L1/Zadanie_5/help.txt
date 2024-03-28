@@ -1,0 +1,1 @@
+ gnatmake test.adb -largs -L. -lZadanie_1_iter
