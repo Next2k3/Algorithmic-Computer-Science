@@ -1,0 +1,455 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> start
+Rule 1     start -> EXPRESSION
+Rule 2     start -> COM
+Rule 3     EXPRESSION -> NUM
+Rule 4     EXPRESSION -> MINUS NUM
+Rule 5     EXPRESSION -> BRACKET_OPEN EXPRESSION BRACKET_CLOSE
+Rule 6     EXPRESSION -> EXPRESSION PLUS EXPRESSION
+Rule 7     EXPRESSION -> EXPRESSION MINUS EXPRESSION
+Rule 8     EXPRESSION -> EXPRESSION MULT EXPRESSION
+Rule 9     EXPRESSION -> EXPRESSION DIV EXPRESSION
+Rule 10    EXPRESSION -> EXPRESSION MOD EXPRESSION
+Rule 11    EXPRESSION -> EXPRESSION POW EXPRESSION
+
+Terminals, with rules where they appear
+
+BRACKET_CLOSE        : 5
+BRACKET_OPEN         : 5
+COM                  : 2
+DIV                  : 9
+MINUS                : 4 7
+MOD                  : 10
+MULT                 : 8
+NUM                  : 3 4
+PLUS                 : 6
+POW                  : 11
+error                : 
+
+Nonterminals, with rules where they appear
+
+EXPRESSION           : 1 5 6 6 7 7 8 8 9 9 10 10 11 11
+start                : 0
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . start
+    (1) start -> . EXPRESSION
+    (2) start -> . COM
+    (3) EXPRESSION -> . NUM
+    (4) EXPRESSION -> . MINUS NUM
+    (5) EXPRESSION -> . BRACKET_OPEN EXPRESSION BRACKET_CLOSE
+    (6) EXPRESSION -> . EXPRESSION PLUS EXPRESSION
+    (7) EXPRESSION -> . EXPRESSION MINUS EXPRESSION
+    (8) EXPRESSION -> . EXPRESSION MULT EXPRESSION
+    (9) EXPRESSION -> . EXPRESSION DIV EXPRESSION
+    (10) EXPRESSION -> . EXPRESSION MOD EXPRESSION
+    (11) EXPRESSION -> . EXPRESSION POW EXPRESSION
+
+    COM             shift and go to state 3
+    NUM             shift and go to state 4
+    MINUS           shift and go to state 5
+    BRACKET_OPEN    shift and go to state 6
+
+    start                          shift and go to state 1
+    EXPRESSION                     shift and go to state 2
+
+state 1
+
+    (0) S' -> start .
+
+
+
+state 2
+
+    (1) start -> EXPRESSION .
+    (6) EXPRESSION -> EXPRESSION . PLUS EXPRESSION
+    (7) EXPRESSION -> EXPRESSION . MINUS EXPRESSION
+    (8) EXPRESSION -> EXPRESSION . MULT EXPRESSION
+    (9) EXPRESSION -> EXPRESSION . DIV EXPRESSION
+    (10) EXPRESSION -> EXPRESSION . MOD EXPRESSION
+    (11) EXPRESSION -> EXPRESSION . POW EXPRESSION
+
+    $end            reduce using rule 1 (start -> EXPRESSION .)
+    PLUS            shift and go to state 7
+    MINUS           shift and go to state 8
+    MULT            shift and go to state 9
+    DIV             shift and go to state 10
+    MOD             shift and go to state 11
+    POW             shift and go to state 12
+
+
+state 3
+
+    (2) start -> COM .
+
+    $end            reduce using rule 2 (start -> COM .)
+
+
+state 4
+
+    (3) EXPRESSION -> NUM .
+
+    PLUS            reduce using rule 3 (EXPRESSION -> NUM .)
+    MINUS           reduce using rule 3 (EXPRESSION -> NUM .)
+    MULT            reduce using rule 3 (EXPRESSION -> NUM .)
+    DIV             reduce using rule 3 (EXPRESSION -> NUM .)
+    MOD             reduce using rule 3 (EXPRESSION -> NUM .)
+    POW             reduce using rule 3 (EXPRESSION -> NUM .)
+    $end            reduce using rule 3 (EXPRESSION -> NUM .)
+    BRACKET_CLOSE   reduce using rule 3 (EXPRESSION -> NUM .)
+
+
+state 5
+
+    (4) EXPRESSION -> MINUS . NUM
+
+    NUM             shift and go to state 13
+
+
+state 6
+
+    (5) EXPRESSION -> BRACKET_OPEN . EXPRESSION BRACKET_CLOSE
+    (3) EXPRESSION -> . NUM
+    (4) EXPRESSION -> . MINUS NUM
+    (5) EXPRESSION -> . BRACKET_OPEN EXPRESSION BRACKET_CLOSE
+    (6) EXPRESSION -> . EXPRESSION PLUS EXPRESSION
+    (7) EXPRESSION -> . EXPRESSION MINUS EXPRESSION
+    (8) EXPRESSION -> . EXPRESSION MULT EXPRESSION
+    (9) EXPRESSION -> . EXPRESSION DIV EXPRESSION
+    (10) EXPRESSION -> . EXPRESSION MOD EXPRESSION
+    (11) EXPRESSION -> . EXPRESSION POW EXPRESSION
+
+    NUM             shift and go to state 4
+    MINUS           shift and go to state 5
+    BRACKET_OPEN    shift and go to state 6
+
+    EXPRESSION                     shift and go to state 14
+
+state 7
+
+    (6) EXPRESSION -> EXPRESSION PLUS . EXPRESSION
+    (3) EXPRESSION -> . NUM
+    (4) EXPRESSION -> . MINUS NUM
+    (5) EXPRESSION -> . BRACKET_OPEN EXPRESSION BRACKET_CLOSE
+    (6) EXPRESSION -> . EXPRESSION PLUS EXPRESSION
+    (7) EXPRESSION -> . EXPRESSION MINUS EXPRESSION
+    (8) EXPRESSION -> . EXPRESSION MULT EXPRESSION
+    (9) EXPRESSION -> . EXPRESSION DIV EXPRESSION
+    (10) EXPRESSION -> . EXPRESSION MOD EXPRESSION
+    (11) EXPRESSION -> . EXPRESSION POW EXPRESSION
+
+    NUM             shift and go to state 4
+    MINUS           shift and go to state 5
+    BRACKET_OPEN    shift and go to state 6
+
+    EXPRESSION                     shift and go to state 15
+
+state 8
+
+    (7) EXPRESSION -> EXPRESSION MINUS . EXPRESSION
+    (3) EXPRESSION -> . NUM
+    (4) EXPRESSION -> . MINUS NUM
+    (5) EXPRESSION -> . BRACKET_OPEN EXPRESSION BRACKET_CLOSE
+    (6) EXPRESSION -> . EXPRESSION PLUS EXPRESSION
+    (7) EXPRESSION -> . EXPRESSION MINUS EXPRESSION
+    (8) EXPRESSION -> . EXPRESSION MULT EXPRESSION
+    (9) EXPRESSION -> . EXPRESSION DIV EXPRESSION
+    (10) EXPRESSION -> . EXPRESSION MOD EXPRESSION
+    (11) EXPRESSION -> . EXPRESSION POW EXPRESSION
+
+    NUM             shift and go to state 4
+    MINUS           shift and go to state 5
+    BRACKET_OPEN    shift and go to state 6
+
+    EXPRESSION                     shift and go to state 16
+
+state 9
+
+    (8) EXPRESSION -> EXPRESSION MULT . EXPRESSION
+    (3) EXPRESSION -> . NUM
+    (4) EXPRESSION -> . MINUS NUM
+    (5) EXPRESSION -> . BRACKET_OPEN EXPRESSION BRACKET_CLOSE
+    (6) EXPRESSION -> . EXPRESSION PLUS EXPRESSION
+    (7) EXPRESSION -> . EXPRESSION MINUS EXPRESSION
+    (8) EXPRESSION -> . EXPRESSION MULT EXPRESSION
+    (9) EXPRESSION -> . EXPRESSION DIV EXPRESSION
+    (10) EXPRESSION -> . EXPRESSION MOD EXPRESSION
+    (11) EXPRESSION -> . EXPRESSION POW EXPRESSION
+
+    NUM             shift and go to state 4
+    MINUS           shift and go to state 5
+    BRACKET_OPEN    shift and go to state 6
+
+    EXPRESSION                     shift and go to state 17
+
+state 10
+
+    (9) EXPRESSION -> EXPRESSION DIV . EXPRESSION
+    (3) EXPRESSION -> . NUM
+    (4) EXPRESSION -> . MINUS NUM
+    (5) EXPRESSION -> . BRACKET_OPEN EXPRESSION BRACKET_CLOSE
+    (6) EXPRESSION -> . EXPRESSION PLUS EXPRESSION
+    (7) EXPRESSION -> . EXPRESSION MINUS EXPRESSION
+    (8) EXPRESSION -> . EXPRESSION MULT EXPRESSION
+    (9) EXPRESSION -> . EXPRESSION DIV EXPRESSION
+    (10) EXPRESSION -> . EXPRESSION MOD EXPRESSION
+    (11) EXPRESSION -> . EXPRESSION POW EXPRESSION
+
+    NUM             shift and go to state 4
+    MINUS           shift and go to state 5
+    BRACKET_OPEN    shift and go to state 6
+
+    EXPRESSION                     shift and go to state 18
+
+state 11
+
+    (10) EXPRESSION -> EXPRESSION MOD . EXPRESSION
+    (3) EXPRESSION -> . NUM
+    (4) EXPRESSION -> . MINUS NUM
+    (5) EXPRESSION -> . BRACKET_OPEN EXPRESSION BRACKET_CLOSE
+    (6) EXPRESSION -> . EXPRESSION PLUS EXPRESSION
+    (7) EXPRESSION -> . EXPRESSION MINUS EXPRESSION
+    (8) EXPRESSION -> . EXPRESSION MULT EXPRESSION
+    (9) EXPRESSION -> . EXPRESSION DIV EXPRESSION
+    (10) EXPRESSION -> . EXPRESSION MOD EXPRESSION
+    (11) EXPRESSION -> . EXPRESSION POW EXPRESSION
+
+    NUM             shift and go to state 4
+    MINUS           shift and go to state 5
+    BRACKET_OPEN    shift and go to state 6
+
+    EXPRESSION                     shift and go to state 19
+
+state 12
+
+    (11) EXPRESSION -> EXPRESSION POW . EXPRESSION
+    (3) EXPRESSION -> . NUM
+    (4) EXPRESSION -> . MINUS NUM
+    (5) EXPRESSION -> . BRACKET_OPEN EXPRESSION BRACKET_CLOSE
+    (6) EXPRESSION -> . EXPRESSION PLUS EXPRESSION
+    (7) EXPRESSION -> . EXPRESSION MINUS EXPRESSION
+    (8) EXPRESSION -> . EXPRESSION MULT EXPRESSION
+    (9) EXPRESSION -> . EXPRESSION DIV EXPRESSION
+    (10) EXPRESSION -> . EXPRESSION MOD EXPRESSION
+    (11) EXPRESSION -> . EXPRESSION POW EXPRESSION
+
+    NUM             shift and go to state 4
+    MINUS           shift and go to state 5
+    BRACKET_OPEN    shift and go to state 6
+
+    EXPRESSION                     shift and go to state 20
+
+state 13
+
+    (4) EXPRESSION -> MINUS NUM .
+
+    PLUS            reduce using rule 4 (EXPRESSION -> MINUS NUM .)
+    MINUS           reduce using rule 4 (EXPRESSION -> MINUS NUM .)
+    MULT            reduce using rule 4 (EXPRESSION -> MINUS NUM .)
+    DIV             reduce using rule 4 (EXPRESSION -> MINUS NUM .)
+    MOD             reduce using rule 4 (EXPRESSION -> MINUS NUM .)
+    POW             reduce using rule 4 (EXPRESSION -> MINUS NUM .)
+    $end            reduce using rule 4 (EXPRESSION -> MINUS NUM .)
+    BRACKET_CLOSE   reduce using rule 4 (EXPRESSION -> MINUS NUM .)
+
+
+state 14
+
+    (5) EXPRESSION -> BRACKET_OPEN EXPRESSION . BRACKET_CLOSE
+    (6) EXPRESSION -> EXPRESSION . PLUS EXPRESSION
+    (7) EXPRESSION -> EXPRESSION . MINUS EXPRESSION
+    (8) EXPRESSION -> EXPRESSION . MULT EXPRESSION
+    (9) EXPRESSION -> EXPRESSION . DIV EXPRESSION
+    (10) EXPRESSION -> EXPRESSION . MOD EXPRESSION
+    (11) EXPRESSION -> EXPRESSION . POW EXPRESSION
+
+    BRACKET_CLOSE   shift and go to state 21
+    PLUS            shift and go to state 7
+    MINUS           shift and go to state 8
+    MULT            shift and go to state 9
+    DIV             shift and go to state 10
+    MOD             shift and go to state 11
+    POW             shift and go to state 12
+
+
+state 15
+
+    (6) EXPRESSION -> EXPRESSION PLUS EXPRESSION .
+    (6) EXPRESSION -> EXPRESSION . PLUS EXPRESSION
+    (7) EXPRESSION -> EXPRESSION . MINUS EXPRESSION
+    (8) EXPRESSION -> EXPRESSION . MULT EXPRESSION
+    (9) EXPRESSION -> EXPRESSION . DIV EXPRESSION
+    (10) EXPRESSION -> EXPRESSION . MOD EXPRESSION
+    (11) EXPRESSION -> EXPRESSION . POW EXPRESSION
+
+    PLUS            reduce using rule 6 (EXPRESSION -> EXPRESSION PLUS EXPRESSION .)
+    MINUS           reduce using rule 6 (EXPRESSION -> EXPRESSION PLUS EXPRESSION .)
+    $end            reduce using rule 6 (EXPRESSION -> EXPRESSION PLUS EXPRESSION .)
+    BRACKET_CLOSE   reduce using rule 6 (EXPRESSION -> EXPRESSION PLUS EXPRESSION .)
+    MULT            shift and go to state 9
+    DIV             shift and go to state 10
+    MOD             shift and go to state 11
+    POW             shift and go to state 12
+
+  ! MULT            [ reduce using rule 6 (EXPRESSION -> EXPRESSION PLUS EXPRESSION .) ]
+  ! DIV             [ reduce using rule 6 (EXPRESSION -> EXPRESSION PLUS EXPRESSION .) ]
+  ! MOD             [ reduce using rule 6 (EXPRESSION -> EXPRESSION PLUS EXPRESSION .) ]
+  ! POW             [ reduce using rule 6 (EXPRESSION -> EXPRESSION PLUS EXPRESSION .) ]
+  ! PLUS            [ shift and go to state 7 ]
+  ! MINUS           [ shift and go to state 8 ]
+
+
+state 16
+
+    (7) EXPRESSION -> EXPRESSION MINUS EXPRESSION .
+    (6) EXPRESSION -> EXPRESSION . PLUS EXPRESSION
+    (7) EXPRESSION -> EXPRESSION . MINUS EXPRESSION
+    (8) EXPRESSION -> EXPRESSION . MULT EXPRESSION
+    (9) EXPRESSION -> EXPRESSION . DIV EXPRESSION
+    (10) EXPRESSION -> EXPRESSION . MOD EXPRESSION
+    (11) EXPRESSION -> EXPRESSION . POW EXPRESSION
+
+    PLUS            reduce using rule 7 (EXPRESSION -> EXPRESSION MINUS EXPRESSION .)
+    MINUS           reduce using rule 7 (EXPRESSION -> EXPRESSION MINUS EXPRESSION .)
+    $end            reduce using rule 7 (EXPRESSION -> EXPRESSION MINUS EXPRESSION .)
+    BRACKET_CLOSE   reduce using rule 7 (EXPRESSION -> EXPRESSION MINUS EXPRESSION .)
+    MULT            shift and go to state 9
+    DIV             shift and go to state 10
+    MOD             shift and go to state 11
+    POW             shift and go to state 12
+
+  ! MULT            [ reduce using rule 7 (EXPRESSION -> EXPRESSION MINUS EXPRESSION .) ]
+  ! DIV             [ reduce using rule 7 (EXPRESSION -> EXPRESSION MINUS EXPRESSION .) ]
+  ! MOD             [ reduce using rule 7 (EXPRESSION -> EXPRESSION MINUS EXPRESSION .) ]
+  ! POW             [ reduce using rule 7 (EXPRESSION -> EXPRESSION MINUS EXPRESSION .) ]
+  ! PLUS            [ shift and go to state 7 ]
+  ! MINUS           [ shift and go to state 8 ]
+
+
+state 17
+
+    (8) EXPRESSION -> EXPRESSION MULT EXPRESSION .
+    (6) EXPRESSION -> EXPRESSION . PLUS EXPRESSION
+    (7) EXPRESSION -> EXPRESSION . MINUS EXPRESSION
+    (8) EXPRESSION -> EXPRESSION . MULT EXPRESSION
+    (9) EXPRESSION -> EXPRESSION . DIV EXPRESSION
+    (10) EXPRESSION -> EXPRESSION . MOD EXPRESSION
+    (11) EXPRESSION -> EXPRESSION . POW EXPRESSION
+
+    PLUS            reduce using rule 8 (EXPRESSION -> EXPRESSION MULT EXPRESSION .)
+    MINUS           reduce using rule 8 (EXPRESSION -> EXPRESSION MULT EXPRESSION .)
+    MULT            reduce using rule 8 (EXPRESSION -> EXPRESSION MULT EXPRESSION .)
+    DIV             reduce using rule 8 (EXPRESSION -> EXPRESSION MULT EXPRESSION .)
+    MOD             reduce using rule 8 (EXPRESSION -> EXPRESSION MULT EXPRESSION .)
+    $end            reduce using rule 8 (EXPRESSION -> EXPRESSION MULT EXPRESSION .)
+    BRACKET_CLOSE   reduce using rule 8 (EXPRESSION -> EXPRESSION MULT EXPRESSION .)
+    POW             shift and go to state 12
+
+  ! POW             [ reduce using rule 8 (EXPRESSION -> EXPRESSION MULT EXPRESSION .) ]
+  ! PLUS            [ shift and go to state 7 ]
+  ! MINUS           [ shift and go to state 8 ]
+  ! MULT            [ shift and go to state 9 ]
+  ! DIV             [ shift and go to state 10 ]
+  ! MOD             [ shift and go to state 11 ]
+
+
+state 18
+
+    (9) EXPRESSION -> EXPRESSION DIV EXPRESSION .
+    (6) EXPRESSION -> EXPRESSION . PLUS EXPRESSION
+    (7) EXPRESSION -> EXPRESSION . MINUS EXPRESSION
+    (8) EXPRESSION -> EXPRESSION . MULT EXPRESSION
+    (9) EXPRESSION -> EXPRESSION . DIV EXPRESSION
+    (10) EXPRESSION -> EXPRESSION . MOD EXPRESSION
+    (11) EXPRESSION -> EXPRESSION . POW EXPRESSION
+
+    PLUS            reduce using rule 9 (EXPRESSION -> EXPRESSION DIV EXPRESSION .)
+    MINUS           reduce using rule 9 (EXPRESSION -> EXPRESSION DIV EXPRESSION .)
+    MULT            reduce using rule 9 (EXPRESSION -> EXPRESSION DIV EXPRESSION .)
+    DIV             reduce using rule 9 (EXPRESSION -> EXPRESSION DIV EXPRESSION .)
+    MOD             reduce using rule 9 (EXPRESSION -> EXPRESSION DIV EXPRESSION .)
+    $end            reduce using rule 9 (EXPRESSION -> EXPRESSION DIV EXPRESSION .)
+    BRACKET_CLOSE   reduce using rule 9 (EXPRESSION -> EXPRESSION DIV EXPRESSION .)
+    POW             shift and go to state 12
+
+  ! POW             [ reduce using rule 9 (EXPRESSION -> EXPRESSION DIV EXPRESSION .) ]
+  ! PLUS            [ shift and go to state 7 ]
+  ! MINUS           [ shift and go to state 8 ]
+  ! MULT            [ shift and go to state 9 ]
+  ! DIV             [ shift and go to state 10 ]
+  ! MOD             [ shift and go to state 11 ]
+
+
+state 19
+
+    (10) EXPRESSION -> EXPRESSION MOD EXPRESSION .
+    (6) EXPRESSION -> EXPRESSION . PLUS EXPRESSION
+    (7) EXPRESSION -> EXPRESSION . MINUS EXPRESSION
+    (8) EXPRESSION -> EXPRESSION . MULT EXPRESSION
+    (9) EXPRESSION -> EXPRESSION . DIV EXPRESSION
+    (10) EXPRESSION -> EXPRESSION . MOD EXPRESSION
+    (11) EXPRESSION -> EXPRESSION . POW EXPRESSION
+
+    PLUS            reduce using rule 10 (EXPRESSION -> EXPRESSION MOD EXPRESSION .)
+    MINUS           reduce using rule 10 (EXPRESSION -> EXPRESSION MOD EXPRESSION .)
+    MULT            reduce using rule 10 (EXPRESSION -> EXPRESSION MOD EXPRESSION .)
+    DIV             reduce using rule 10 (EXPRESSION -> EXPRESSION MOD EXPRESSION .)
+    MOD             reduce using rule 10 (EXPRESSION -> EXPRESSION MOD EXPRESSION .)
+    $end            reduce using rule 10 (EXPRESSION -> EXPRESSION MOD EXPRESSION .)
+    BRACKET_CLOSE   reduce using rule 10 (EXPRESSION -> EXPRESSION MOD EXPRESSION .)
+    POW             shift and go to state 12
+
+  ! POW             [ reduce using rule 10 (EXPRESSION -> EXPRESSION MOD EXPRESSION .) ]
+  ! PLUS            [ shift and go to state 7 ]
+  ! MINUS           [ shift and go to state 8 ]
+  ! MULT            [ shift and go to state 9 ]
+  ! DIV             [ shift and go to state 10 ]
+  ! MOD             [ shift and go to state 11 ]
+
+
+state 20
+
+    (11) EXPRESSION -> EXPRESSION POW EXPRESSION .
+    (6) EXPRESSION -> EXPRESSION . PLUS EXPRESSION
+    (7) EXPRESSION -> EXPRESSION . MINUS EXPRESSION
+    (8) EXPRESSION -> EXPRESSION . MULT EXPRESSION
+    (9) EXPRESSION -> EXPRESSION . DIV EXPRESSION
+    (10) EXPRESSION -> EXPRESSION . MOD EXPRESSION
+    (11) EXPRESSION -> EXPRESSION . POW EXPRESSION
+
+    PLUS            reduce using rule 11 (EXPRESSION -> EXPRESSION POW EXPRESSION .)
+    MINUS           reduce using rule 11 (EXPRESSION -> EXPRESSION POW EXPRESSION .)
+    MULT            reduce using rule 11 (EXPRESSION -> EXPRESSION POW EXPRESSION .)
+    DIV             reduce using rule 11 (EXPRESSION -> EXPRESSION POW EXPRESSION .)
+    MOD             reduce using rule 11 (EXPRESSION -> EXPRESSION POW EXPRESSION .)
+    $end            reduce using rule 11 (EXPRESSION -> EXPRESSION POW EXPRESSION .)
+    BRACKET_CLOSE   reduce using rule 11 (EXPRESSION -> EXPRESSION POW EXPRESSION .)
+    POW             shift and go to state 12
+
+  ! POW             [ reduce using rule 11 (EXPRESSION -> EXPRESSION POW EXPRESSION .) ]
+  ! PLUS            [ shift and go to state 7 ]
+  ! MINUS           [ shift and go to state 8 ]
+  ! MULT            [ shift and go to state 9 ]
+  ! DIV             [ shift and go to state 10 ]
+  ! MOD             [ shift and go to state 11 ]
+
+
+state 21
+
+    (5) EXPRESSION -> BRACKET_OPEN EXPRESSION BRACKET_CLOSE .
+
+    PLUS            reduce using rule 5 (EXPRESSION -> BRACKET_OPEN EXPRESSION BRACKET_CLOSE .)
+    MINUS           reduce using rule 5 (EXPRESSION -> BRACKET_OPEN EXPRESSION BRACKET_CLOSE .)
+    MULT            reduce using rule 5 (EXPRESSION -> BRACKET_OPEN EXPRESSION BRACKET_CLOSE .)
+    DIV             reduce using rule 5 (EXPRESSION -> BRACKET_OPEN EXPRESSION BRACKET_CLOSE .)
+    MOD             reduce using rule 5 (EXPRESSION -> BRACKET_OPEN EXPRESSION BRACKET_CLOSE .)
+    POW             reduce using rule 5 (EXPRESSION -> BRACKET_OPEN EXPRESSION BRACKET_CLOSE .)
+    $end            reduce using rule 5 (EXPRESSION -> BRACKET_OPEN EXPRESSION BRACKET_CLOSE .)
+    BRACKET_CLOSE   reduce using rule 5 (EXPRESSION -> BRACKET_OPEN EXPRESSION BRACKET_CLOSE .)
+
