@@ -1,0 +1,503 @@
+pawe@P2-l:~/Pulpit/Algorithmic-Computer-Science/2024-2025/SP/L4$ # Paweł Krzyszczak 272379
+pawe@P2-l:~/Pulpit/Algorithmic-Computer-Science/2024-2025/SP/L4$ cat zad2.sh
+#!/bin/bash
+
+rev1="$1"
+rev2="$2"
+
+svn_dir="$3"
+
+# Extract the name of the directory from the given SVN path
+dir=${svn_dir%/}
+dir="${dir##*/}"
+
+# Initialize a new empty Git repository with the extracted directory name
+git init "$dir"
+
+cd "$dir"
+
+# Iterate through all the revisions from $rev1 to $rev2
+for r in $(seq $rev1 $rev2); do
+
+    # Check if the given SVN revision exists
+    svn log -q -r "$r" "$svn_dir"
+    if [ $? == "1" ]; then
+        # If the revision doesn't exist, skip to the next one
+        continue
+    fi
+
+    # Export the content of the SVN directory at the specific revision
+    rm -rf *  # Clear the current directory to avoid residual files
+    svn export --force -q "$svn_dir" -r "$r" "./"
+
+    # Extract the commit message for the given revision from SVN
+    msg="$(svn log -r $r $svn_dir | tail -n +4 | head -n -2)"
+
+    # Add all the exported files to the Git staging area and commit them
+    git add "./**/*"
+    git commit -m "$msg"
+
+done
+
+pawe@P2-l:~/Pulpit/Algorithmic-Computer-Science/2024-2025/SP/L4$ ./zad2.sh 15 21 https://repo.cs.pwr.edu.pl/info/SP/l3/
+Przeinicjowano istniejące repozytorium Gita w /home/pawe/Pulpit/Algorithmic-Computer-Science/2024-2025/SP/L4/l3/.git/
+------------------------------------------------------------------------
+r15 | admin | 2020-11-08 14:57:38 +0100 (nie)
+------------------------------------------------------------------------
+[master 4673509] Dane do listy 3.
+ 5 files changed, 8 insertions(+), 4 deletions(-)
+ create mode 100644 a/b/ab
+ create mode 100644 a/b/b/abb
+ delete mode 100644 a/baa/dc
+ create mode 100644 a/bb/b/abbb
+------------------------------------------------------------------------
+r16 | admin | 2020-11-08 15:09:08 +0100 (nie)
+------------------------------------------------------------------------
+[master b6a1a5e] nowa rewizja
+ 1 file changed, 1 insertion(+)
+------------------------------------------------------------------------
+r17 | admin | 2020-11-08 15:11:08 +0100 (nie)
+------------------------------------------------------------------------
+[master 186b1f6] nowa rewizja
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+------------------------------------------------------------------------
+r18 | admin | 2020-11-08 16:36:23 +0100 (nie)
+------------------------------------------------------------------------
+[master 000a9f9] nowa rewizja
+ 1 file changed, 2 insertions(+)
+ create mode 100644 a/baa/dc
+------------------------------------------------------------------------
+Na gałęzi master
+nic do złożenia, drzewo robocze czyste
+------------------------------------------------------------------------
+r20 | admin | 2020-11-28 20:03:03 +0100 (sob)
+------------------------------------------------------------------------
+[master a7bb967] usunięcie katalogu
+ 2 files changed, 5 deletions(-)
+ delete mode 100644 a/b/ab
+ delete mode 100644 a/b/b/abb
+------------------------------------------------------------------------
+r21 | admin | 2020-11-28 20:34:42 +0100 (sob)
+------------------------------------------------------------------------
+[master 78ab1ed] usunięcie katalogu
+ 1 file changed, 3 deletions(-)
+ delete mode 100644 a/bb/b/abbb
+pawe@P2-l:~/Pulpit/Algorithmic-Computer-Science/2024-2025/SP/L4$ cd l3
+pawe@P2-l:~/Pulpit/Algorithmic-Computer-Science/2024-2025/SP/L4/l3$ git log --stat
+commit 78ab1ed1b6a89e1f973af1002760837bef0fd8a9 (HEAD -> master)
+Author: Next2k3 <pkrzyszczak2k3@gmail.com>
+Date:   Wed Dec 4 01:25:59 2024 +0100
+
+    usunięcie katalogu
+
+    Usunięcie kolejnego podkatalogu:
+    a/bb
+
+ a/bb/b/abbb | 3 ---
+ 1 file changed, 3 deletions(-)
+
+commit a7bb967d1629f4bf95ad874801ba10c009072228
+Author: Next2k3 <pkrzyszczak2k3@gmail.com>
+Date:   Wed Dec 4 01:25:59 2024 +0100
+
+    usunięcie katalogu
+
+ a/b/ab    | 2 --
+ a/b/b/abb | 3 ---
+ 2 files changed, 5 deletions(-)
+
+commit 000a9f96e7eda3a04ae65b40bce0bbadd64c3204
+Author: Next2k3 <pkrzyszczak2k3@gmail.com>
+Date:   Wed Dec 4 01:25:58 2024 +0100
+
+    nowa rewizja
+
+ a/baa/dc | 2 ++
+ 1 file changed, 2 insertions(+)
+
+commit 186b1f6d78b25ea2b69d85dc8cd919f7ae2c92ca
+Author: Next2k3 <pkrzyszczak2k3@gmail.com>
+Date:   Wed Dec 4 01:25:58 2024 +0100
+
+    nowa rewizja
+
+ a/ba/b/abab | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+commit b6a1a5ef6e36dbc0be38f4ce0ac2c2c3ec84310f
+Author: Next2k3 <pkrzyszczak2k3@gmail.com>
+Date:   Wed Dec 4 01:25:58 2024 +0100
+
+    nowa rewizja
+
+ a/b/ab | 1 +
+ 1 file changed, 1 insertion(+)
+
+commit 4673509f38f0b2843a74238731eaf604c106529f
+Author: Next2k3 <pkrzyszczak2k3@gmail.com>
+Date:   Wed Dec 4 01:25:58 2024 +0100
+
+    Dane do listy 3.
+
+ a/b/ab      | 1 +
+ a/b/b/abb   | 3 +++
+ a/ba/b/abab | 3 +--
+ a/baa/dc    | 2 --
+ a/bb/b/abbb | 3 +++
+ 5 files changed, 8 insertions(+), 4 deletions(-)
+
+commit 5859cd81aa4a4cbae59e6ff0ed186ca2b11a902e
+Author: Next2k3 <pkrzyszczak2k3@gmail.com>
+Date:   Wed Dec 4 01:25:05 2024 +0100
+
+    usunięcie katalogu
+
+    Usunięcie kolejnego podkatalogu:
+    a/bb
+
+ a/bb/b/abbb | 3 ---
+ 1 file changed, 3 deletions(-)
+set mark: ...skipping...
+commit 78ab1ed1b6a89e1f973af1002760837bef0fd8a9 (HEAD -> master)
+Author: Next2k3 <pkrzyszczak2k3@gmail.com>
+Date:   Wed Dec 4 01:25:59 2024 +0100
+
+    usunięcie katalogu
+
+    Usunięcie kolejnego podkatalogu:
+    a/bb
+
+ a/bb/b/abbb | 3 ---
+ 1 file changed, 3 deletions(-)
+
+commit a7bb967d1629f4bf95ad874801ba10c009072228
+Author: Next2k3 <pkrzyszczak2k3@gmail.com>
+Date:   Wed Dec 4 01:25:59 2024 +0100
+
+    usunięcie katalogu
+
+ a/b/ab    | 2 --
+ a/b/b/abb | 3 ---
+ 2 files changed, 5 deletions(-)
+
+commit 000a9f96e7eda3a04ae65b40bce0bbadd64c3204
+Author: Next2k3 <pkrzyszczak2k3@gmail.com>
+Date:   Wed Dec 4 01:25:58 2024 +0100
+
+    nowa rewizja
+
+ a/baa/dc | 2 ++
+ 1 file changed, 2 insertions(+)
+
+commit 186b1f6d78b25ea2b69d85dc8cd919f7ae2c92ca
+Author: Next2k3 <pkrzyszczak2k3@gmail.com>
+Date:   Wed Dec 4 01:25:58 2024 +0100
+
+    nowa rewizja
+
+ a/ba/b/abab | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+commit b6a1a5ef6e36dbc0be38f4ce0ac2c2c3ec84310f
+Author: Next2k3 <pkrzyszczak2k3@gmail.com>
+Date:   Wed Dec 4 01:25:58 2024 +0100
+
+    nowa rewizja
+
+ a/b/ab | 1 +
+ 1 file changed, 1 insertion(+)
+
+commit 4673509f38f0b2843a74238731eaf604c106529f
+Author: Next2k3 <pkrzyszczak2k3@gmail.com>
+Date:   Wed Dec 4 01:25:58 2024 +0100
+
+    Dane do listy 3.
+
+ a/b/ab      | 1 +
+ a/b/b/abb   | 3 +++
+ a/ba/b/abab | 3 +--
+ a/baa/dc    | 2 --
+ a/bb/b/abbb | 3 +++
+commit 78ab1ed1b6a89e1f973af1002760837bef0fd8a9 (HEAD -> master)
+Author: Next2k3 <pkrzyszczak2k3@gmail.com>
+Date:   Wed Dec 4 01:25:59 2024 +0100
+
+    usunięcie katalogu
+
+    Usunięcie kolejnego podkatalogu:
+    a/bb
+
+ a/bb/b/abbb | 3 ---
+ 1 file changed, 3 deletions(-)
+
+commit a7bb967d1629f4bf95ad874801ba10c009072228
+Author: Next2k3 <pkrzyszczak2k3@gmail.com>
+Date:   Wed Dec 4 01:25:59 2024 +0100
+
+    usunięcie katalogu
+
+ a/b/ab    | 2 --
+ a/b/b/abb | 3 ---
+ 2 files changed, 5 deletions(-)
+
+commit 000a9f96e7eda3a04ae65b40bce0bbadd64c3204
+Author: Next2k3 <pkrzyszczak2k3@gmail.com>
+Date:   Wed Dec 4 01:25:58 2024 +0100
+
+    nowa rewizja
+
+ a/baa/dc | 2 ++
+ 1 file changed, 2 insertions(+)
+
+commit 186b1f6d78b25ea2b69d85dc8cd919f7ae2c92ca
+Author: Next2k3 <pkrzyszczak2k3@gmail.com>
+Date:   Wed Dec 4 01:25:58 2024 +0100
+
+    nowa rewizja
+
+ a/ba/b/abab | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+commit b6a1a5ef6e36dbc0be38f4ce0ac2c2c3ec84310f
+Author: Next2k3 <pkrzyszczak2k3@gmail.com>
+Date:   Wed Dec 4 01:25:58 2024 +0100
+
+    nowa rewizja
+
+ a/b/ab | 1 +
+ 1 file changed, 1 insertion(+)
+
+commit 4673509f38f0b2843a74238731eaf604c106529f
+Author: Next2k3 <pkrzyszczak2k3@gmail.com>
+Date:   Wed Dec 4 01:25:58 2024 +0100
+
+    Dane do listy 3.
+
+ a/b/ab      | 1 +
+ a/b/b/abb   | 3 +++
+ a/ba/b/abab | 3 +--
+ a/baa/dc    | 2 --
+ a/bb/b/abbb | 3 +++
+ 5 files changed, 8 insertions(+), 4 deletions(-)
+
+commit 5859cd81aa4a4cbae59e6ff0ed186ca2b11a902e
+Author: Next2k3 <pkrzyszczak2k3@gmail.com>
+Date:   Wed Dec 4 01:25:05 2024 +0100
+
+    usunięcie katalogu
+
+    Usunięcie kolejnego podkatalogu:
+    a/bb
+
+ a/bb/b/abbb | 3 ---
+ 1 file changed, 3 deletions(-)
+...skipping...
+commit 78ab1ed1b6a89e1f973af1002760837bef0fd8a9 (HEAD -> master)
+Author: Next2k3 <pkrzyszczak2k3@gmail.com>
+Date:   Wed Dec 4 01:25:59 2024 +0100
+
+    usunięcie katalogu
+
+    Usunięcie kolejnego podkatalogu:
+    a/bb
+
+ a/bb/b/abbb | 3 ---
+ 1 file changed, 3 deletions(-)
+
+commit a7bb967d1629f4bf95ad874801ba10c009072228
+Author: Next2k3 <pkrzyszczak2k3@gmail.com>
+Date:   Wed Dec 4 01:25:59 2024 +0100
+
+    usunięcie katalogu
+
+ a/b/ab    | 2 --
+ a/b/b/abb | 3 ---
+ 2 files changed, 5 deletions(-)
+
+commit 000a9f96e7eda3a04ae65b40bce0bbadd64c3204
+Author: Next2k3 <pkrzyszczak2k3@gmail.com>
+Date:   Wed Dec 4 01:25:58 2024 +0100
+
+    nowa rewizja
+
+ a/baa/dc | 2 ++
+ 1 file changed, 2 insertions(+)
+
+commit 186b1f6d78b25ea2b69d85dc8cd919f7ae2c92ca
+Author: Next2k3 <pkrzyszczak2k3@gmail.com>
+Date:   Wed Dec 4 01:25:58 2024 +0100
+
+    nowa rewizja
+
+ a/ba/b/abab | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+commit b6a1a5ef6e36dbc0be38f4ce0ac2c2c3ec84310f
+Author: Next2k3 <pkrzyszczak2k3@gmail.com>
+Date:   Wed Dec 4 01:25:58 2024 +0100
+
+    nowa rewizja
+
+ a/b/ab | 1 +
+ 1 file changed, 1 insertion(+)
+
+commit 4673509f38f0b2843a74238731eaf604c106529f
+Author: Next2k3 <pkrzyszczak2k3@gmail.com>
+Date:   Wed Dec 4 01:25:58 2024 +0100
+
+    Dane do listy 3.
+
+ a/b/ab      | 1 +
+ a/b/b/abb   | 3 +++
+ a/ba/b/abab | 3 +--
+ a/baa/dc    | 2 --
+ a/bb/b/abbb | 3 +++
+ 5 files changed, 8 insertions(+), 4 deletions(-)
+
+commit 5859cd81aa4a4cbae59e6ff0ed186ca2b11a902e
+Author: Next2k3 <pkrzyszczak2k3@gmail.com>
+Date:   Wed Dec 4 01:25:05 2024 +0100
+
+    usunięcie katalogu
+
+    Usunięcie kolejnego podkatalogu:
+    a/bb
+
+ a/bb/b/abbb | 3 ---
+ 1 file changed, 3 deletions(-)
+
+commit c9d00151bacdee90c81344f33054409755e0022d
+Author: Next2k3 <pkrzyszczak2k3@gmail.com>
+Date:   Wed Dec 4 01:25:05 2024 +0100
+
+    usunięcie katalogu
+
+ a/b/ab    | 2 --
+ a/b/b/abb | 3 ---
+ 2 files changed, 5 deletions(-)
+
+commit c3121a62ed4fcaf48801096f000ebb95299b21a8
+Author: Next2k3 <pkrzyszczak2k3@gmail.com>
+Date:   Wed Dec 4 01:25:05 2024 +0100
+
+    nowa rewizja
+
+ a/baa/dc | 2 ++
+ 1 file changed, 2 insertions(+)
+
+commit 2cf8e2aca49e335c6bf51c4e96c24ecaa0c93cfb
+Author: Next2k3 <pkrzyszczak2k3@gmail.com>
+Date:   Wed Dec 4 01:25:04 2024 +0100
+
+    nowa rewizja
+
+ a/ba/b/abab | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+commit d52e1c6cdb68e4c39dcd994c48c09ad7041ee417
+Author: Next2k3 <pkrzyszczak2k3@gmail.com>
+Date:   Wed Dec 4 01:25:04 2024 +0100
+
+    nowa rewizja
+
+ a/b/ab | 1 +
+ 1 file changed, 1 insertion(+)
+
+commit e02ee9109d3f13b328ea6504dc632d679c6f1987
+Author: Next2k3 <pkrzyszczak2k3@gmail.com>
+Date:   Wed Dec 4 01:25:04 2024 +0100
+
+    Dane do listy 3.
+
+ a/a/b/aab     | 3 +++
+ a/aa/b/aaab   | 3 +++
+ a/aaa/b/aaaab | 1 +
+ a/aab/b/aaabb | 1 +
+ a/ab/b/aabb   | 3 +++
+ a/aba/b/aabab | 1 +
+ a/abb/b/aabbb | 1 +
+ a/b/ab        | 1 +
+ a/b/b/abb     | 3 +++
+ a/ba/b/abab   | 3 +++
+ a/baa/b/abaab | 1 +
+ a/bab/b/ababb | 1 +
+ a/bb/b/abbb   | 3 +++
+ a/bba/b/abbab | 1 +
+ a/bbb/b/abbbb | 1 +
+ 15 files changed, 27 insertions(+)
+...skipping...
+ 5 files changed, 8 insertions(+), 4 deletions(-)
+
+commit 5859cd81aa4a4cbae59e6ff0ed186ca2b11a902e
+Author: Next2k3 <pkrzyszczak2k3@gmail.com>
+Date:   Wed Dec 4 01:25:05 2024 +0100
+
+    usunięcie katalogu
+
+    Usunięcie kolejnego podkatalogu:
+    a/bb
+
+ a/bb/b/abbb | 3 ---
+ 1 file changed, 3 deletions(-)
+
+commit c9d00151bacdee90c81344f33054409755e0022d
+Author: Next2k3 <pkrzyszczak2k3@gmail.com>
+Date:   Wed Dec 4 01:25:05 2024 +0100
+
+    usunięcie katalogu
+
+ a/b/ab    | 2 --
+ a/b/b/abb | 3 ---
+ 2 files changed, 5 deletions(-)
+
+commit c3121a62ed4fcaf48801096f000ebb95299b21a8
+Author: Next2k3 <pkrzyszczak2k3@gmail.com>
+Date:   Wed Dec 4 01:25:05 2024 +0100
+
+    nowa rewizja
+
+ a/baa/dc | 2 ++
+ 1 file changed, 2 insertions(+)
+
+commit 2cf8e2aca49e335c6bf51c4e96c24ecaa0c93cfb
+Author: Next2k3 <pkrzyszczak2k3@gmail.com>
+Date:   Wed Dec 4 01:25:04 2024 +0100
+
+    nowa rewizja
+
+ a/ba/b/abab | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+commit d52e1c6cdb68e4c39dcd994c48c09ad7041ee417
+Author: Next2k3 <pkrzyszczak2k3@gmail.com>
+Date:   Wed Dec 4 01:25:04 2024 +0100
+
+    nowa rewizja
+
+ a/b/ab | 1 +
+ 1 file changed, 1 insertion(+)
+
+commit e02ee9109d3f13b328ea6504dc632d679c6f1987
+Author: Next2k3 <pkrzyszczak2k3@gmail.com>
+Date:   Wed Dec 4 01:25:04 2024 +0100
+
+    Dane do listy 3.
+
+ a/a/b/aab     | 3 +++
+ a/aa/b/aaab   | 3 +++
+ a/aaa/b/aaaab | 1 +
+ a/aab/b/aaabb | 1 +
+ a/ab/b/aabb   | 3 +++
+ a/aba/b/aabab | 1 +
+ a/abb/b/aabbb | 1 +
+ a/b/ab        | 1 +
+ a/b/b/abb     | 3 +++
+ a/ba/b/abab   | 3 +++
+ a/baa/b/abaab | 1 +
+ a/bab/b/ababb | 1 +
+ a/bb/b/abbb   | 3 +++
+ a/bba/b/abbab | 1 +
+ a/bbb/b/abbbb | 1 +
+ 15 files changed, 27 insertions(+)
+pawe@P2-l:~/Pulpit/Algorithmic-Computer-Science/2024-2025/SP/L4/l3$ tmux capture-pane -p -S'-' -E'-' >> zad2.txt
+

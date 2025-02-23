@@ -1,0 +1,25 @@
+git clone ssh://git@156.17.7.16:59004/24-25-1-p-2
+cd 24-25-1-p-2
+git status
+git branch 272379
+git checkout 272379
+ll
+git status
+git add s272379_podprogram.c
+cat s272379_podprogram.c
+nano main.c
+cat main.c
+...
+make
+./program 272379
+make clean
+git add -A
+git commit -m "dodano rozwiązanie studenta 272379"
+git push origin 272379
+git checkout master
+git merge 272379 -m "merged branch 272379"
+git tag -a v_272379 -m "added a tag for student 272379"
+git push --tags
+git branch -d 272379
+git show v_272379
+git log --all --graph --decorate

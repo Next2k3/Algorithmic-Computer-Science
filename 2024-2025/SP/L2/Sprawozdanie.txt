@@ -1,0 +1,286 @@
+# Paweł Krzyszczak 272379
+
+# Zadanie 1
+
+cd SP/L2
+
+# Należy stworzyć katalog Zadanie1 w mk1-272379/SP/L2 i w nim pusty plik test.txt
+mkdir zad1
+cd zad1
+touch test.txt
+
+svn status
+svn add
+svn commit -m "Zadanie 1"
+
+# Należy stworzyć katalogi dla dwóch kopii
+mkdir copy1 copy2
+
+# Należy stworzyć kopie własnego repo w obu katalogach
+cd copy1
+svn checkout https://repo.cs.pwr.edu.pl/272379-dir/mk1/
+cd ../copy2
+svn checkout https://repo.cs.pwr.edu.pl/272379-dir/mk1/
+
+# Należy dodać tekst do test.txt w jednej z kopii i zrobić commit
+cd ../copy1/mk1/SP/L2/zad1
+echo test > test.txt
+svn commit -m "copy1"
+ 
+# Należy powtórzyć to dla drugiej kopii
+cd ../../../../../copy2/mk1/SP/L2/zad1
+echo test2 > test.txt
+
+svn update
+# Powinien pojawić się konflikt
+# Wtedy wpisujemy "p"- używamy postpone (odłożenie rozwiązania konfliktu)
+
+svn status 
+# Terminal: istnieje konflikt
+
+ls -la
+cat test.txt
+nano test.txt 
+
+# Należy dokonać zmian w pliku, aby usunąć konflikt
+
+# Należy ustawić konflikt jako rozwiązany
+svn resolved test.txt
+svn commit -m "Rozwiązanie konfliktu"
+ls -la
+cat test.txt
+
+svn status
+svn log -v
+
+
+# Zadanie 2
+
+# Do zadania użyte są dane z Listy 1- katalog "a".
+
+mkdir zad2
+cd zad2
+
+svn status
+svn add
+svn commit -m "Zadanie 2"
+
+# svn checkout --depth: Komenda svn checkout służy do pobierania plików z repozytorium SVN. Opcja --depth pozwala określić, jak głęboko mają być pobierane elementy w strukturze katalogów. Możliwe wartości to:
+#    -infinity: pobiera wszystkie pliki i podkatalogi;
+#    -empty: tylko pusta struktura katalogów;
+#    -files: pobiera tylko pliki w katalogu, bez podkatalogów;
+#    -immediates: pobiera pliki oraz katalogi bez ich zawartości.
+# tree: wyświetla strukturę katalogów w formie drzewa.
+# rm -rf: usuwa rekurencyjnie bez pytania o pozwolenie (-f force) katalog (podkatalogi i pliki też).
+
+# Domyślny checkout (cały katalog z podkatalogami i ich plikami)- rekursja
+svn checkout https://repo.cs.pwr.edu.pl/272379-dir/mk1/SP/L1/a --depth infinity
+tree a
+rm -rf a
+
+# Pusty katalog
+svn checkout https://repo.cs.pwr.edu.pl/272379-dir/mk1/SP/L1/a --depth empty
+tree a
+rm -rf a
+
+# Katalog + bezpośrednie pliki (nic nie ma, bo katalog a ma tylko podkatalogi, nie ma plików)
+svn checkout https://repo.cs.pwr.edu.pl/272379-dir/mk1/SP/L1/a --depth files
+tree a
+rm -rf a
+
+# Inny katalog (a/aaa/b) + bezpośrednie pliki (plik aaaab)
+svn checkout https://repo.cs.pwr.edu.pl/272379-dir/mk1/SP/L1/a/aaa/b --depth files
+tree b
+rm -rf b
+
+# Katalog + bezpośrednie podkatalogi bez plików
+svn checkout https://repo.cs.pwr.edu.pl/272379-dir/mk1/SP/L1/a --depth immediates
+tree a
+rm -rf a
+
+svn log -v
+
+
+# Zadanie 3
+
+# Pobieranie kopii roboczej repo i zapisanie jej lokalnie.
+svn checkout https://repo.cs.pwr.edu.pl/272379-dir/mk1/
+
+# Przejście do katalogu mk1-272379/SP/L1, gdzie znajdują się pliki projektu.
+cd mk1/SP/L1
+
+# Wyświetlenie listy wszystkich plików w katalogu, w tym ukrytych, z detalami (w tym prawa dostępu).
+ls -al
+
+# Ustawienie właściwości svn:executable na pliku zad2.sh (plik staje się wykonywalny).
+svn propset svn:executable on zad2.sh
+
+# Uruchomienie skryptu zad2.sh z argumentem "a".
+./zad2.sh a
+
+# Usunięcie właściwości svn:executable z pliku zad2.sh (plik przestaje być wykonywalny).
+svn propdel svn:executable zad2.sh
+
+# Ponowne uruchomienie skryptu zad2.sh z argumentem "a".
+# Tym razem, bez uprawnienia wykonywalności, komenda ./zad2.sh nie zadziała,
+./zad2.sh a
+
+svn log -v
+
+# Zadanie 4
+
+# Pobieranie kopii roboczej repo i zapisanie jej lokalnie.
+svn checkout https://repo.cs.pwr.edu.pl/272379-dir/mk1/
+
+cd mk1/SP/L2/zad4
+svn mkdir externals
+
+# Ustawiamy właściwość 'svn:externals' dla katalogu 'externals', aby pobierał zawartość z zewnętrznego repozytorium
+svn propset svn:externals 'externals https://repo.cs.pwr.edu.pl/info/' externals
+svn commit -m "Set externals"
+
+# Usuwamy lokalną kopię poprzedniego repo (jeśli istnieje) i tworzymy nową
+cd ../../../..
+rm -rf mk1 
+
+# svn co
+svn checkout https://repo.cs.pwr.edu.pl/272379-dir/mk1/
+cd mk1/SP/L2/zad4/externals
+ls
+# Pojawia się zewnętrzne repo externals
+
+cd ../../../..
+rm -rf mk1 
+
+# Ignorujemy externals
+svn checkout https://repo.cs.pwr.edu.pl/272379-dir/mk1/ --ignore-externals
+cd mk1/SP/L2/zad4/externals
+ls
+# Nie pojawia się zewnętrzne repo externals
+
+# svn up
+
+# Robimy update repo
+cd mk1
+svn update --ignore-externals
+cd SP/L2/zad4/externals
+ls
+# Dalej nie pojawia się zewnętrzne repo externals
+
+cd ../../..
+svn update
+cd SP/L2/zad4/externals
+ls
+# Pojawia się zewnętrzne repo externals
+
+svn log -v
+
+
+zad 5
+# Tworzymy folder, w którym będziemy działać
+mkdir copy1
+cd copy1
+svn checkout https://repo.cs.pwr.edu.pl/272379-dir/mk1/
+
+cd mk1/SP/L2
+
+# Należy stworzyć plik testowy
+touch exaple.sh
+svn status
+svn add example.sh
+svn commit -m "Dodanie pliku example.sh"
+
+# Tworzenie locka
+svn lock example.sh
+# Terminal: 'example.sh' zablokowane przez użytkownika '272379'.
+
+# Możemy złamać locka, ale do dalszych testów jest nam potrzebny
+# svn unlock --force example.sh
+# Terminal: 'example.sh' odblokowane.
+
+# Drugi podkatalog testowy
+cd ../../..
+mkdir copy2
+cd copy2
+svn checkout https://repo.cs.pwr.edu.pl/272379-dir/mk1/
+cd mk1/SP/L2
+
+# Próba edycji w innym repozytorium
+echo "echo tekst" > example.sh 
+
+svn commit -m ""
+
+svn status -u
+# Terminal:
+#	M    O          55   example.sh
+#	Status against revision:     55
+# O - czyiś lock
+
+# Kradnięcie locka
+svn lock --force example.sh 
+svn status -u
+# K -nasz lock
+
+svn commit -m ""
+svn status -u
+# Commit usunął lock
+
+# Ponowne założenie i usunięcie
+svn lock example.sh 
+svn unlock example.sh 
+
+svn log -v
+
+#Zadanie 6
+
+svn checkout https://repo.cs.pwr.edu.pl/272379-dir/mk1/
+cd mk1/SP/L2/Zadanie6
+
+# 1. Dodanie katalogów i plików a/a.txt oraz b/b.txt
+svn mkdir a b
+echo "Zawartość pliku a.txt" > a/a.txt
+echo "Zawartość pliku b.txt" > b/b.txt
+svn add a b a/a.txt b/b.txt
+svn commit -m "Dodano katalogi a i b z plikami a.txt i b.txt"
+
+# 2. Przeniesienie b.txt do katalogu a oraz a.txt do katalogu b
+svn move b/b.txt a/b.txt
+svn move a/a.txt b/a.txt
+echo "Dopisano tekst do przeniesionego b.txt" >> a/b.txt
+echo "Dopisano tekst do przeniesionego a.txt" >> b/a.txt
+svn commit -m "Przeniesiono pliki: b.txt do a, a.txt do b, oraz dodano tekst"
+
+# 3. Dopisanie tekstu do a.txt i zmiana jego nazwy na c.txt
+echo "Dodatkowy tekst w a.txt" >> b/a.txt
+svn move b/a.txt b/c.txt
+svn commit -m "Dodano tekst do a.txt i zmieniono nazwę na c.txt"
+
+# 4. Dopisanie tekstu do b.txt i zmiana jego nazwy na a.txt
+echo "Dodatkowy tekst w b.txt" >> a/b.txt
+svn move a/b.txt a/a.txt
+svn commit -m "Dodano tekst do b.txt i zmieniono nazwę na a.txt"
+
+# 5. Dodanie nowego pliku b.txt w katalogu b
+echo "Nowy plik b.txt w katalogu b" > b/b.txt
+svn add b/b.txt
+svn commit -m "Dodano nowy plik b.txt w katalogu b"
+
+# Wyświetlenie pełnej historii zmian
+svn log -v
+
+# Wyświetlenie historii dla plików c.txt i b.txt
+svn log -v b/c.txt
+svn log -v b/b.txt
+
+# Demonstracja różnicy między peg revision i operative revision
+
+# Peg Revision: wyświetlenie zawartości c.txt w rewizji 101 (plik wtedy nie istniał)
+svn cat b/c.txt@101
+# Istniał pod nazwą a.txt
+svn cat b/a.txt@101
+
+# Operative Revision: wyświetlenie zawartości c.txt z rewizji 101 na podstawie obecnej lokalizacji
+svn cat -r 101 b/c.txt
+
+# Porównanie zmian między rewizjami dla pliku c.txt przy użyciu peg revision
+svn diff -r 101:102 b/c.txt@95

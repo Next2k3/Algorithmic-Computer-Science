@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+    <title>repo.cs.pwr.edu.pl</title>
+    <style type="text/css">
+      body {background-color:white;}
+      p {color:black;}
+    </style>
+
+  </head>
+  <body>
+    <h1>
+      Repozytoria dydaktyczne
+    </h1>
+    <ul>
+      <li>
+	<a href="https://repo.cs.pwr.edu.pl/info/repozytorium-svn.txt">
+	  Zasady dotyczące repozytoriów SVN
+	</a>
+      </li>
+    </ul>    
+  </body>
+</html>

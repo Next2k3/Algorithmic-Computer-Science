@@ -1,0 +1,2036 @@
+pawe@P2-l:~$ # Paweł Krzyszczak 272379
+pawe@P2-l:~$ cd mk1
+pawe@P2-l:~/mk1$ cd SP/lista3
+pawe@P2-l:~/mk1/SP/lista3$ svn status
+?       .
+pawe@P2-l:~/mk1/SP/lista3$ svn checkout https://repo.cs.pwr.edu.pl/p-2/
+A    p-2/app_1
+A    p-2/app_1/tags
+A    p-2/app_1/tags/v_272397
+A    p-2/app_1/tags/v_999
+A    p-2/app_1/branches
+A    p-2/app_1/branches/999
+A    p-2/app_1/trunk
+A    p-2/app_1/trunk/program.h
+A    p-2/app_1/trunk/program_usage.c
+A    p-2/app_1/trunk/s999_podprogram.c
+A    p-2/app_1/tags/v_272397/README
+A    p-2/app_1/tags/v_272397/main.c
+A    p-2/app_1/tags/v_272397/makefile
+A    p-2/app_1/tags/v_272397/program.h
+A    p-2/app_1/tags/v_272397/s272397_podprogram.c
+A    p-2/app_1/tags/v_272397/program_usage.c
+A    p-2/app_1/tags/v_272397/s0_podprogram.c
+A    p-2/app_1/tags/v_272397/s999_podprogram.c
+A    p-2/app_1/tags/v_999/README
+A    p-2/app_1/tags/v_999/main.c
+A    p-2/app_1/tags/v_999/makefile
+A    p-2/app_1/tags/v_999/program.h
+A    p-2/app_1/tags/v_999/program_usage.c
+A    p-2/app_1/tags/v_999/s0_podprogram.c
+A    p-2/app_1/tags/v_999/s999_podprogram.c
+A    p-2/app_1/branches/999/README
+A    p-2/app_1/branches/999/main.c
+A    p-2/app_1/branches/999/makefile
+A    p-2/app_1/branches/999/program.h
+A    p-2/app_1/branches/999/program_usage.c
+A    p-2/app_1/branches/999/s0_podprogram.c
+A    p-2/app_1/branches/999/s999_podprogram.c
+A    p-2/app_1/trunk/README
+A    p-2/app_1/trunk/main.c
+A    p-2/app_1/trunk/makefile
+A    p-2/app_1/trunk/s272397_podprogram.c
+A    p-2/app_1/trunk/s0_podprogram.c
+ U   p-2
+Pobrano wersję 19.
+pawe@P2-l:~/mk1/SP/lista3$ cd p-2
+pawe@P2-l:~/mk1/SP/lista3/p-2$ cd app_1
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1$ cd trunk
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/trunk$ cat README
+Ten plik README utworzony, żeby studenci mogli umieszczać
+tu opisy działania swoich podprogramów.
+
+
+Wywołanie programu:
+
+   program ARG
+
+Dla poszczególnych wartości ARG program działa następująco:
+
+         0 - wyświetla ogólny opis działania podprogramów;
+       999 - wczytuje liczbę i drukuje jej kwadrat.
+    272397 - wczytuje liczbę i drukuje jej wartość pomnożoną przez 6.
+
+
+Dodatkowo, po zreintegrowaniu swojej gałęzi do trunk-a student ma utworzyć
+w katalogu:
+
+^/app_1/tags
+
+własnego taga tej wersji o nazwie: v_<nr_indeksu>
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/trunk$ cd ..
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1$ svn copy https://repo.cs.pwr.edu.pl/p-2/app_1/trunk/ h
+ttps://repo.cs.pwr.edu.pl/p-2/app_1/branches/272379 -m "stworzono branch 272379"
+
+Committing transaction...
+Zatwierdzona wersja 20.
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1$ svn checkout https://repo.cs.pwr.edu.pl/p-2/app_1/bran
+ches/272379
+A    272379/README
+A    272379/main.c
+A    272379/makefile
+A    272379/program.h
+A    272379/s272397_podprogram.c
+A    272379/program_usage.c
+A    272379/s0_podprogram.c
+A    272379/s999_podprogram.c
+ U   272379
+Pobrano wersję 20.
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1$ cd 272379
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/272379$ ls
+main.c    program.h        README           s272397_podprogram.c
+makefile  program_usage.c  s0_podprogram.c  s999_podprogram.c
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/272379$ svn add s272379_podprogram.c
+A         s272379_podprogram.c
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/272379$ cat s272379_podprogram.c
+#include "program.h"
+
+void s272379_podprogram()
+{
+  printf("Student nr indeksu: 272379\n");
+  printf("Program wczytuje liczbę całkowitą i drukuje ją pomnożoną przez 12\n");
+
+  int x;
+  printf("Podaj liczbę x: ");
+  scanf("%d", &x);
+
+  printf("Liczba x pomnożona przez 12 wynosi: %d\n", x * 12);
+}
+
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/272379$ nano README
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/272379$ cat README
+Ten plik README utworzony, żeby studenci mogli umieszczać 
+tu opisy działania swoich podprogramów.
+
+
+Wywołanie programu:
+
+   program ARG
+
+Dla poszczególnych wartości ARG program działa następująco:
+
+         0 - wyświetla ogólny opis działania podprogramów;
+       999 - wczytuje liczbę i drukuje jej kwadrat.
+    272397 - wczytuje liczbę i drukuje jej wartość pomnożoną przez 6.
+    272354 - wczytuje liczbę i drukuje jej wartość pomnożoną przez 7.
+    272385 - wczytuje liczbę i drukuje jej wartość pomnożoną przez 8.
+    272369 - wczytuje liczbę i drukuje jej wartość pomnożoną przez 9.
+    272388 - wczytuje liczbę i drukuje jej wartość pomnożoną przez 10.
+    272355 - wczytuje liczbę i drukuje jej wartość pomnożoną przez 11.
+    272379 - wczytuje liczbę i drukuje jej wartość pomnożoną przez 12.
+
+Dodatkowo, po zreintegrowaniu swojej gałęzi do trunk-a student ma utworzyć 
+w katalogu: 
+
+^/app_1/tags
+
+własnego taga tej wersji o nazwie: v_<nr_indeksu>
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/272379$ nano main.c
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/272379$ cat main.c
+#include "program.h"
+
+
+int main(int argc, char *argv[])
+{
+
+  if(argc!=2)
+    {
+      program_usage();
+      exit(EXIT_FAILURE);
+    }
+
+  {
+    int idx=atoi(argv[1]);
+    switch( idx )
+      {
+      case 0:
+        s0_podprogram() ; // podprogram studenta o numerze indeksu 0
+        break;
+      case 999:
+		s999_podprogram() ; // podprogram studenta o numerze indeksu 999
+		break;
+      case 272397:
+		s272397_podprogram() ; // podprogram studenta o numerze indeksu 272397 
+		break;
+      case 272354:
+        s272354_podprogram() ; // podprogram studenta o numerze indeksu 272354
+        break;
+      case 272385:
+		s272385_podprogram() ; // podprogram studenta o numerze indeksu 272385
+		break;
+      case 272369:
+        s272369_podprogram() ; // podprogram studenta o numerze indeksu 272369
+        break;
+      case 272388:
+        s272388_podprogram() ; // podprogram studenta o numerze indeksu 272388
+        break;
+      case 272355:
+		s272355_podprogram() ; // podprogram studenta o numerze indeksu 272355 
+		break;
+      case 272379:
+		s272379_podprogram() ; //podprogram studenta o numerze indeksu 272379
+		break;
+       default:
+	printf("\nStudent o numerze indeksu %d nie wykonał jeszcze zadania\n\n",idx); 
+      break;
+
+      }
+  }
+  exit(EXIT_SUCCESS);
+}
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/272379$ nano makefile
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/272379$ cat makefile
+objects = main.o program_usage.o \
+          s0_podprogram.o \
+          s999_podprogram.o \
+	  	  s272397_podprogram.o \
+          s272354_podprogram.o \
+	  	  s272385_podprogram.o \
+	      s272369_podprogram.o \
+	      s272355_podprogram.o \
+	      s272388_podprogram.o \
+	      s272379_podprogram.o
+
+program : $(objects)
+	cc -o program $(objects)
+main.o : program.h
+
+program_usage.o : program.h
+
+s0_podprogram.o : program.h
+
+s999_podprogram.o : program.h
+
+s272397_podprogram.o : program.h
+
+s272354_podprogram.o : program.h
+
+s272385_podprogram.o : program.h
+
+s272369_podprogram.o : program.h
+
+s272388_podprogram.o : program.h
+
+s272355_podprogram.o : program.h
+
+s272379_podprogram.o : program.h
+
+.PHONY : clean
+
+clean : 
+	-rm *.o program
+
+
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/272379$ nano program.h
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/272379$ cat program.h
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+
+
+/* deklaracje funkcji używanych w programie */
+void program_usage( );
+
+
+/* tu studenci mogą deklarować własne funkcje.
+   Wszystkie nazwy funkcji studenta o numerze indeksu NNNNNN
+   powinny rozpoczynać się od przedrostka sNNNNNN_
+   aby nie kolidowały z nazwami funkcji innych studentów */
+
+void s0_podprogram(); /* funkcja studenta 0 */
+void s999_podprogram(); /* funkcja studenta 999 */
+void s272397_podprogram(); /* funkcja studenta 272397 */
+void s272354_podprogram(); /* funkcja studenta 272354 */
+void s272385_podprogram(); /*funkcja studenta 272385 */
+void s272369_podprogram(); /*funkcja studenta 272369 */
+void s272388_podprogram(); /*funkcja studenta 272388 */
+void s272355_podprogram(); /*funkcja studenta 272355 */
+void s272379_podprogram(); /*funkcja studenta 272379 */ 
+
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/272379$ svn status
+M       README
+M       main.c
+M       makefile
+M       program.h
+A       s272379_podprogram.c
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/272379$ svn commit -m "dodano podprogram studenta 272379"
+Wysyłanie       README
+Wysyłanie       main.c
+Wysyłanie       makefile
+Wysyłanie       program.h
+Dodawanie       s272379_podprogram.c
+Przesyłanie treści pliku.....done
+Committing transaction...
+Zatwierdzona wersja 62.
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/272379$ svn status
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/272379$ svn update
+Updating '.':
+W wersji 21.
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/272379$ svn merge https://repo.cs.pwr.edu.pl/p-2/app_1/
+trunk
+--- Recording mergeinfo for merge of r62 through r63 into '.':
+ U   .
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/272379$ svn status
+ M      .
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/272379$ svn commit -m "synchronizacja gałęzi 272379 z t
+runk"
+Wysyłanie       .
+Committing transaction...
+Zatwierdzona wersja 63.
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/272379$ svn mergeinfo --show-revs=merged https://repo.c
+s.pwr.edu.pl/p-2/app_1/trunk
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/272379$ cd ..
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1$ cd trunk
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/trunk$ svn merge --reintegrate https://repo.cs.pwr.edu.
+pl/p-2/app_1/branches/272379
+--- Łączenie zmian nastąpiłych pomiędzy URL-ami repozytorium do '.':
+U    README
+U    main.c
+U    makefile
+U    program.h
+A    s272379_podprogram.c
+ U   .
+--- Recording mergeinfo for merge between repository URLs into '.':
+ U   .
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/trunk$ make
+cc    -c -o main.o main.c
+cc    -c -o program_usage.o program_usage.c
+cc    -c -o s0_podprogram.o s0_podprogram.c
+cc    -c -o s999_podprogram.o s999_podprogram.c
+cc    -c -o s272397_podprogram.o s272397_podprogram.c
+cc -o program main.o program_usage.o s0_podprogram.o s999_podprogram.o s272397_podprogram.o
+/usr/bin/ld: main.o: in function `main':
+main.c:(.text+0xa2): undefined reference to `s272379_podprogram'
+collect2: error: ld returned 1 exit status
+make: *** [makefile:7: program] Błąd 1
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/trunk$ cd ..
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1$ cd 272379
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/272379$ svn status
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/272379$ svn update
+Updating '.':
+W wersji 63.
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/272379$ svn merge https://repo.cs.pwr.edu.pl/p-2/app_1/
+trunk
+--- Recording mergeinfo for merge of r63 into '.':
+ U   .
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/272379$ svn commit -m "synchronizacja 272379 z trunk"
+Wysyłanie       .
+Committing transaction...
+Zatwierdzona wersja 23.
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/272379$ cd ..
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1$ ls
+272379  branches  tags  trunk
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1$ cd trunk
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/trunk$ svn merge https://repo.cs.pwr.edu.pl/p-2/app_1/b
+ranches/272379
+--- Łączenie zmian nastąpiłych w r64 do '.':
+ G   .
+--- Recording mergeinfo for merge of r64 into '.':
+ G   .
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/trunk$ make
+cc -o program main.o program_usage.o s0_podprogram.o s999_podprogram.o s272397_podprogram.o
+/usr/bin/ld: main.o: in function `main':
+main.c:(.text+0xa2): undefined reference to `s272379_podprogram'
+collect2: error: ld returned 1 exit status
+make: *** [makefile:7: program] Błąd 1
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/trunk$ cd ..
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1$ cd 272379
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/272379$ ls
+main.c    program.h        README           s272379_podprogram.c  s999_podprogram.c
+makefile  program_usage.c  s0_podprogram.c  s272397_podprogram.c
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/272379$ svn status
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/272379$ svn update
+Updating '.':
+W wersji 23.
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/272379$ svn merge https://repo.cs.pwr.edu.pl/p-2/app_1/
+trunk
+--- Recording mergeinfo for merge of r64 into '.':
+ U   .
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/272379$ svn commit -m "synchronizacja 272379 z trunk"
+Wysyłanie       .
+Committing transaction...
+Zatwierdzona wersja 65.
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/272379$ svn mergeinfo --show-revs=merged https://repo.c
+s.pwr.edu.pl/p-2/app_1/trunk
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/272379$ cd ..
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1$ cd trunk
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/trunk$ svn merge --reintegrate https://repo.cs.pwr.edu.
+pl/p-2/app_1/branches/272379
+svn: E195016: Cannot merge into a working copy that has local modifications
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/trunk$ svn merge --reintegrate https://repo.cs.pwr.edu.
+pl/p-2/app_1/branches/272379
+svn: E195016: Cannot merge into a working copy that has local modifications
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/trunk$ cd
+pawe@P2-l:~$ cd mk1/SP/lista3/p-2/app_1
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1$ ls
+272379  branches  tags  trunk
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1$ cd branches
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/branches$ ls
+999
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/branches$ cd ..
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1$ cd 272379
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/272379$ svn status
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/272379$ svn merge --reintegrate https://repo.cs.pwr.edu
+.pl/p-2/app_1/272379
+svn: E195020: Cannot merge into mixed-revision working copy [23:24]; try updating first
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/272379$ cd ..
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1$ cd trunk
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/trunk$ svn merge --reintegrate https://repo.cs.pwr.edu.
+pl/p-2/app_1/272379
+svn: E195016: Cannot merge into a working copy that has local modifications
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/trunk$ svn merge https://repo.cs.pwr.edu.pl/p-2/app_1/2
+72354
+svn: E160013: Nie znaleziono ścieżki '/p-2/!svn/rvr/24/app_1/272379'
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/trunk$ svn merge https://repo.cs.pwr.edu.pl/p-2/app_1/b
+ranches/272379
+--- Łączenie zmian nastąpiłych w r65 do '.':
+ G   .
+--- Recording mergeinfo for merge of r65 into '.':
+ G   .
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/trunk$ make
+cc -o program main.o program_usage.o s0_podprogram.o s999_podprogram.o s272397_podprogram.o
+/usr/bin/ld: main.o: in function `main':
+main.c:(.text+0xa2): undefined reference to `s272379_podprogram'
+collect2: error: ld returned 1 exit status
+make: *** [makefile:7: program] Błąd 1
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/trunk$ svn update
+Updating '.':
+W wersji 24.
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/trunk$ svn merge https://repo.cs.pwr.edu.pl/p-2/app_1/b
+ranches/272379
+--- Recording mergeinfo for merge of r61 through r65 into '.':
+ G   .
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/trunk$ make
+cc -o program main.o program_usage.o s0_podprogram.o s999_podprogram.o s272397_podprogram.o
+/usr/bin/ld: main.o: in function `main':
+main.c:(.text+0xa2): undefined reference to `s272379_podprogram'
+collect2: error: ld returned 1 exit status
+make: *** [makefile:7: program] Błąd 1
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/trunk$ cd ..
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1$ cd 272379
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/272379$ svn revert -R
+svn: E205001: Try 'svn help revert' for more information
+svn: E205001: Zbyt mało parametrów
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/272379$ svn revert -R .
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/272379$ svn status --no-ignore | grep '^I' | awk '{prin
+t $2}' | xargs rm -rf
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/272379$ svn update
+Updating '.':
+W wersji 24.
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/272379$ svn ls
+README
+main.c
+makefile
+program
+program.h
+program_usage.c
+program_usage.o
+s0_podprogram.c
+s0_podprogram.o
+s272354_podprogram.c
+s272355_podprogram.c
+s272369_podprogram.c
+s272385_podprogram.c
+s272388_podprogram.c
+s272397_podprogram.c
+s999_podprogram.c
+
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/272379$ svn status
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/272379$ cat s272379_podprogram.c
+#include "program.h"
+
+void s272379_podprogram()
+{
+  printf("Student nr indeksu: 272379\n");
+  printf("Program wczytuje liczbę całkowitą i drukuje ją pomnożoną przez 12\n");
+
+  int x;
+  printf("Podaj liczbę x: ");
+  scanf("%d", &x);
+
+  printf("Liczba x pomnożona przez 12 wynosi: %d\n", x * 12);
+}
+
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/272379$ nano README
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/272379$ svn status
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/272379$ nano main.c
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/272379$ cat README
+Ten plik README utworzony, żeby studenci mogli umieszczać 
+tu opisy działania swoich podprogramów.
+
+
+Wywołanie programu:
+
+   program ARG
+
+Dla poszczególnych wartości ARG program działa następująco:
+
+         0 - wyświetla ogólny opis działania podprogramów;
+       999 - wczytuje liczbę i drukuje jej kwadrat.
+    272397 - wczytuje liczbę i drukuje jej wartość pomnożoną przez 6.
+    272354 - wczytuje liczbę i drukuje jej wartość pomnożoną przez 7.
+    272385 - wczytuje liczbę i drukuje jej wartość pomnożoną przez 8.
+    272369 - wczytuje liczbę i drukuje jej wartość pomnożoną przez 9.
+    272388 - wczytuje liczbę i drukuje jej wartość pomnożoną przez 10.
+    272355 - wczytuje liczbę i drukuje jej wartość pomnożoną przez 11.
+    272379 - wczytuje liczbę i drukuje jej wartość pomnożoną przez 12.
+
+Dodatkowo, po zreintegrowaniu swojej gałęzi do trunk-a student ma utworzyć 
+w katalogu: 
+
+^/app_1/tags
+
+własnego taga tej wersji o nazwie: v_<nr_indeksu>
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/272379$ cat main.c
+#include "program.h"
+
+
+int main(int argc, char *argv[])
+{
+
+  if(argc!=2)
+    {
+      program_usage();
+      exit(EXIT_FAILURE);
+    }
+
+  {
+    int idx=atoi(argv[1]);
+    switch( idx )
+      {
+      case 0:
+        s0_podprogram() ; // podprogram studenta o numerze indeksu 0
+        break;
+      case 999:
+		s999_podprogram() ; // podprogram studenta o numerze indeksu 999
+		break;
+      case 272397:
+		s272397_podprogram() ; // podprogram studenta o numerze indeksu 272397 
+		break;
+      case 272354:
+        s272354_podprogram() ; // podprogram studenta o numerze indeksu 272354
+        break;
+      case 272385:
+		s272385_podprogram() ; // podprogram studenta o numerze indeksu 272385
+		break;
+      case 272369:
+        s272369_podprogram() ; // podprogram studenta o numerze indeksu 272369
+        break;
+      case 272388:
+        s272388_podprogram() ; // podprogram studenta o numerze indeksu 272388
+        break;
+      case 272355:
+		s272355_podprogram() ; // podprogram studenta o numerze indeksu 272355 
+		break;
+      case 272379:
+		s272379_podprogram() ; //podprogram studenta o numerze indeksu 272379
+		break;
+       default:
+	printf("\nStudent o numerze indeksu %d nie wykonał jeszcze zadania\n\n",idx); 
+      break;
+
+      }
+  }
+  exit(EXIT_SUCCESS);
+}
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/272379$ nano makefile
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/272379$ cat makefile
+objects = main.o program_usage.o \
+          s0_podprogram.o \
+          s999_podprogram.o \
+	  s272397_podprogram.o \
+          s272354_podprogram.o \
+	  s272385_podprogram.o \
+	  s272369_podprogram.o \
+	  s272355_podprogram.o \
+	  s272388_podprogram.o \
+	  s272379_podprogram.o
+
+program : $(objects)
+	cc -o program $(objects)
+main.o : program.h
+
+program_usage.o : program.h
+
+s0_podprogram.o : program.h
+
+s999_podprogram.o : program.h
+
+s272397_podprogram.o : program.h
+
+s272354_podprogram.o : program.h
+
+s272385_podprogram.o : program.h
+
+s272369_podprogram.o : program.h
+
+s272388_podprogram.o : program.h
+
+s272355_podprogram.o : program.h
+
+s272379_podprogram.o : program.h
+
+.PHONY : clean
+
+clean : 
+	-rm *.o program
+
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/272379$ nano program.h
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/272379$ cat program.h
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+
+
+/* deklaracje funkcji używanych w programie */
+void program_usage( );
+
+
+/* tu studenci mogą deklarować własne funkcje.
+   Wszystkie nazwy funkcji studenta o numerze indeksu NNNNNN
+   powinny rozpoczynać się od przedrostka sNNNNNN_
+   aby nie kolidowały z nazwami funkcji innych studentów */
+
+void s0_podprogram(); /* funkcja studenta 0 */
+void s999_podprogram(); /* funkcja studenta 999 */
+void s272397_podprogram(); /* funkcja studenta 272397 */
+void s272354_podprogram(); /* funkcja studenta 272354 */
+void s272385_podprogram(); /*funkcja studenta 272385 */
+void s272369_podprogram(); /*funkcja studenta 272369 */
+void s272388_podprogram(); /*funkcja studenta 272388 */
+void s272355_podprogram(); /*funkcja studenta 272355 */
+void s272379_podprogram(); /*funkcja studenta 272379 */ 
+
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/272379$ svn status
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/272379$ svn update
+Updating '.':
+W wersji 65.
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/272379$ svn merge https://repo.cs.pwr.edu.pl/p-2/app_1/
+trunk
+--- Recording mergeinfo for merge of r65 into '.':
+ U   .
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/272379$ svn status
+ M      .
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/272379$ svn commit -m "synchronizacja 272379 z trunk"
+Wysyłanie       .
+Committing transaction...
+Zatwierdzona wersja 66.
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/272379$ cd ..
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1$ ls
+272379  branches  tags  trunk
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1$ cd trunk
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/trunk$ svn merge https://repo.cs.pwr.edu.pl/p-2/app_1/b
+ranches/272379
+--- Łączenie zmian nastąpiłych w r66 do '.':
+ G   .
+--- Recording mergeinfo for merge of r66 into '.':
+ G   .
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/trunk$ svn status
+ M      .
+M       README
+M       main.c
+M       makefile
+M       program.h
+A  +    s272379_podprogram.c
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/trunk$ svn commit -m "reintegracja 272379 z trunk"
+Wysyłanie       .
+Wysyłanie       README
+Wysyłanie       main.c
+Wysyłanie       makefile
+Wysyłanie       program.h
+Dodawanie       s272379_podprogram.c
+Przesyłanie treści pliku....done
+Committing transaction...
+Zatwierdzona wersja 67.
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/trunk$ svn status
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/trunk$ make
+cc -o program main.o program_usage.o s0_podprogram.o s999_podprogram.o s272397_podprogram.o
+/usr/bin/ld: main.o: in function `main':
+main.c:(.text+0xa2): undefined reference to `s272379_podprogram'
+collect2: error: ld returned 1 exit status
+make: *** [makefile:7: program] Błąd 1
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/trunk$ cd ..
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1$ cd 272379
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/272379$ nano makefile
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/272379$ svn status
+M       makefile
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/272379$ cat makefile
+oobjects = main.o program_usage.o \
+          s0_podprogram.o \
+          s999_podprogram.o \
+	  s272397_podprogram.o \
+          s272354_podprogram.o \
+	  s272385_podprogram.o \
+	  s272369_podprogram.o \
+	  s272355_podprogram.o \
+	  s272388_podprogram.o \
+	  s272379_podprogram.o
+
+program : $(objects)
+	cc -o program $(objects)
+main.o : program.h
+
+program_usage.o : program.h
+
+s0_podprogram.o : program.h
+
+s999_podprogram.o : program.h
+
+s272397_podprogram.o : program.h
+
+s272354_podprogram.o : program.h
+
+s272385_podprogram.o : program.h
+
+s272369_podprogram.o : program.h
+
+s272388_podprogram.o : program.h
+
+s272355_podprogram.o : program.h
+
+s272379_podprogram.o : program.h
+
+.PHONY : clean
+
+clean : 
+	-rm *.o program
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/272379$ svn commit -m "poprawiono makefile do 272379"
+Wysyłanie       makefile
+Przesyłanie treści pliku.done
+Committing transaction...
+Zatwierdzona wersja 68.
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/272379$ svn status
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/272379$ svn merge https://repo.cs.pwr.edu.pl/p-2/app_1/
+trunk
+svn: E195020: Cannot merge into mixed-revision working copy [65:68]; try updating first
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/272379$ svn update
+Updating '.':
+W wersji 68.
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/272379$ svn merge https://repo.cs.pwr.edu.pl/p-2/app_1/
+trunk
+--- Łączenie zmian nastąpiłych pomiędzy URL-ami repozytorium do '.':
+ U   .
+--- Recording mergeinfo for merge between repository URLs into '.':
+ G   .
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/272379$ svn status
+ M      .
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/272379$ svn commit "synchronizacja 272379 z trunk"
+svn: E200009: Zatwierdzenie nie powiodło się (szczegóły poniżej):
+svn: E200009: '/home/kinga/mk1/SP/lista3/p-2/app_1/272379/synchronizacja 272379 z trunk' nie
+podlega zarządzaniu wersjami
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/272379$ svn commit -m "synchronizacja 272379 z trunk"
+Wysyłanie       .
+Committing transaction...
+Zatwierdzona wersja 69.
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/272379$ svn mergeinfo --show-revs=merged https://repo.c
+s.pwr.edu.pl/p-2/app_1/trunk
+r67
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/272379$ cd ..
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1$ cd trunk
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/trunk$ svn merge https://repo.cs.pwredu.pl/p-2/app_1/br
+anches/272379
+svn: E195020: Cannot merge into mixed-revision working copy [65:67]; try updating first
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/trunk$ svn update
+Updating '.':
+W wersji 69.
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/trunk$ svn merge https://repo.cs.pwr.edu.pl/p-2/app_1/b
+ranches/272379
+--- Łączenie zmian nastąpiłych pomiędzy URL-ami repozytorium do '.':
+U    makefile
+ U   .
+--- Recording mergeinfo for merge between repository URLs into '.':
+ G   .
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/trunk$ svn status
+ M      .
+M       makefile
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/trunk$ make
+cc    -c -o s272379_podprogram.o s272379_podprogram.c
+cc -o program main.o program_usage.o s0_podprogram.o s999_podprogram.o s272397_podprogram.o s
+272379_podprogram.o
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/trunk$ ./program 272379
+Student nr indeksu: 272379
+Program wczytuje liczbę całkowitą i drukuje ją pomnożoną przez 12
+Podaj liczbę x: 10
+Liczba x pomnożona przez 12 wynosi: 120
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/trunk$ make clean
+rm *.o program
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/trunk$ svn status
+ M      .
+M       makefile
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/trunk$ svn commit -m "merged 272379 z trunk"
+Wysyłanie       .
+Wysyłanie       makefile
+Przesyłanie treści pliku.done
+Committing transaction...
+Zatwierdzona wersja 70.
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/trunk$ svn delete https://repo.cs.pwr.edu.pl/p-2/app_1/
+branches/272379 -m "usunieto branch 272379"
+Committing transaction...
+Zatwierdzona wersja 71.
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/trunk$ cd ../../..
+pawe@P2-l:~/mk1/SP/lista3$ svn copy https://repo.cs.pwr.edu.pl/p-2/app_1/trunk/ svn copy ht
+tps://repo.cs.pwr.edu.pl/p-2/app_1/tags/v_272379 -m "tag projektu po wykonaniu zadania przez
+272379"
+svn: E200007: Nie można mieszać źródeł repozytorium i kopii roboczej
+pawe@P2-l:~/mk1/SP/lista3$ cd ..
+pawe@P2-l:~/mk1/SP$ svn copy https://repo.cs.pwr.edu.pl/p-2/app_1/trunk/ svn copy https://r
+epo.cs.pwr.edu.pl/p-2/app_1/tags/v_272379 -m "tag projektu po wykonaniu zadania przez 272379"
+svn: E200007: Nie można mieszać źródeł repozytorium i kopii roboczej
+pawe@P2-l:~/mk1/SP$ svn copy https://repo.cs.pwr.edu.pl/p-2/app_1/trunk https://repo.cs.pwr
+.edu.pl/p-2/app_1/tags/v_272379 -m "Tag projektu po wykonaniu zadania przez 272379"
+Committing transaction...
+Zatwierdzona wersja 72.
+pawe@P2-l:~/mk1/SP$ cd p-2
+-bash: cd: p-2: Nie ma takiego pliku ani katalogu
+pawe@P2-l:~/mk1/SP$ cd lista3
+pawe@P2-l:~/mk1/SP/lista3$ cd p-2
+pawe@P2-l:~/mk1/SP/lista3/p-2$ svn update
+Updating '.':
+A    app_1/tags/v_272379
+A    app_1/tags/v_272379/makefile
+A    app_1/tags/v_272379/README
+A    app_1/tags/v_272379/main.c
+A    app_1/tags/v_272379/program.h
+A    app_1/tags/v_272379/s272379_podprogram.c
+A    app_1/tags/v_272379/s272397_podprogram.c
+A    app_1/tags/v_272379/s272354_podprogram.c
+A    app_1/tags/v_272379/s272355_podprogram.c
+A    app_1/tags/v_272379/s272369_podprogram.c
+A    app_1/tags/v_272379/s272369_podprogram.c
+A    app_1/tags/v_272379/s272388_podprogram.c
+A    app_1/tags/v_272379/program_usage.c
+A    app_1/tags/v_272379/s0_podprogram.c
+A    app_1/tags/v_272379/s999_podprogram.c
+Uaktualniono do wersji 72.
+pawe@P2-l:~/mk1/SP/lista3/p-2$ cd app_1/tags
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/tags$ ls
+v_272379  v_272397  v_999
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/tags$ cd v_272379
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/tags/v_272379$ ls
+main.c    program.h        README           s272379_podprogram.c  s999_podprogram.c
+makefile  program_usage.c  s0_podprogram.c  s272397_podprogram.c
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/tags/v_272379$ make
+cc    -c -o main.o main.c
+cc    -c -o program_usage.o program_usage.c
+cc    -c -o s0_podprogram.o s0_podprogram.c
+cc    -c -o s999_podprogram.o s999_podprogram.c
+cc    -c -o s272397_podprogram.o s272397_podprogram.c
+cc    -c -o s272379_podprogram.o s272379_podprogram.c
+cc -o program main.o program_usage.o s0_podprogram.o s999_podprogram.o s272397_podprogram.o s
+272379_podprogram.o
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/tags/v_272379$ ./program 272379
+Student nr indeksu: 272379
+Program wczytuje liczbę całkowitą i drukuje ją pomnożoną przez 12
+Podaj liczbę x: 10
+Liczba x pomnożona przez 12 wynosi: 120
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/tags/v_272379$ svn diff https://repo.cs.pwr.edu.pl/p-2/
+app_1/branches/272379/ https://repo.cs.pwr.edu.pl/p-2/app_1/tags/v_272379
+svn: E160013: Diff target 'https://repo.cs.pwr.edu.pl/p-2/app_1/branches/272379' was not foun
+d in the repository at revision '31'
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/tags/v_272379$ svn diff https://repo.cs.pwr.edu.pl/p-2/
+app_1/trunk/ https://repo.cs.pwr.edu.pl/p-2/app_1/tags/v_272379
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/tags/v_272379$ make clean
+rm *.o program
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/tags/v_272379$ svn log -v
+------------------------------------------------------------------------
+r89 | 272379 | 2024-11-11 23:26:13 +0100 (pon) | 1 linia
+
+tag projektu po wykonaniu zadania przez 272379
+------------------------------------------------------------------------
+r88 | 272379 | 2024-11-11 23:22:54 +0100 (pon) | 1 linia
+
+usunieto branch 272379
+------------------------------------------------------------------------
+r87 | 272379 | 2024-11-11 23:21:00 +0100 (pon) | 1 linia
+
+merged 272379 z trunk
+------------------------------------------------------------------------
+r86 | 272379 | 2024-11-11 23:12:59 +0100 (pon) | 1 linia
+
+
+------------------------------------------------------------------------
+r85 | 272379 | 2024-11-11 23:12:02 +0100 (pon) | 1 linia
+
+
+------------------------------------------------------------------------
+r84 | 272379 | 2024-11-11 23:08:24 +0100 (pon) | 1 linia
+
+
+------------------------------------------------------------------------
+r83 | 272379 | 2024-11-11 23:06:13 +0100 (pon) | 1 linia
+
+Rozwiązanie konfliktu tekstowego w pliku s272379_podprogram.c
+------------------------------------------------------------------------
+r82 | 272379 | 2024-11-11 23:05:03 +0100 (pon) | 1 linia
+
+Rozwiązanie konfliktu tekstowego w pliku s272379_podprogram.c
+------------------------------------------------------------------------
+r81 | 272379 | 2024-11-11 23:04:07 +0100 (pon) | 1 linia
+
+
+------------------------------------------------------------------------
+r80 | 272379 | 2024-11-11 23:01:36 +0100 (pon) | 1 linia
+
+
+------------------------------------------------------------------------
+r79 | 272379 | 2024-11-11 23:01:15 +0100 (pon) | 1 linia
+
+
+------------------------------------------------------------------------
+r78 | 272379 | 2024-11-11 22:57:51 +0100 (pon) | 1 linia
+
+
+------------------------------------------------------------------------
+r77 | 272379 | 2024-11-11 22:56:32 +0100 (pon) | 1 linia
+
+
+------------------------------------------------------------------------
+r76 | 272379 | 2024-11-11 22:50:53 +0100 (pon) | 1 linia
+
+
+------------------------------------------------------------------------
+r75 | 272379 | 2024-11-11 22:50:04 +0100 (pon) | 1 linia
+
+
+------------------------------------------------------------------------
+r74 | 272379 | 2024-11-11 22:45:48 +0100 (pon) | 1 linia
+
+ 
+------------------------------------------------------------------------
+r73 | 272379 | 2024-11-11 22:43:52 +0100 (pon) | 1 linia
+
+ 
+------------------------------------------------------------------------
+r72 | 272379 | 2024-11-11 22:42:36 +0100 (pon) | 1 linia
+
+
+------------------------------------------------------------------------
+r71 | 272379 | 2024-11-11 22:41:43 +0100 (pon) | 1 linia
+
+
+------------------------------------------------------------------------
+r70 | 272379 | 2024-11-11 22:40:41 +0100 (pon) | 1 linia
+
+
+------------------------------------------------------------------------
+r69 | 272379 | 2024-11-11 22:38:23 +0100 (pon) | 1 linia
+
+synchronizacja 272379 z trunk
+------------------------------------------------------------------------
+r68 | 272379 | 2024-11-11 22:37:10 +0100 (pon) | 1 linia
+
+
+------------------------------------------------------------------------
+r67 | 272379 | 2024-11-11 22:34:18 +0100 (pon) | 1 linia
+
+
+------------------------------------------------------------------------
+r66 | 272379 | 2024-11-11 22:31:21 +0100 (pon) | 1 linia
+
+
+------------------------------------------------------------------------
+r65 | 272379 | 2024-11-11 22:29:34 +0100 (pon) | 1 linia
+
+
+------------------------------------------------------------------------
+r64 | 272379 | 2024-11-11 22:19:30 +0100 (pon) | 1 linia
+
+
+------------------------------------------------------------------------
+r63 | 272379 | 2024-11-11 22:13:59 +0100 (pon) | 1 linia
+
+synchronizacja gałęzi 272379 z trunk
+------------------------------------------------------------------------
+r62 | 272379 | 2024-11-11 22:12:48 +0100 (pon) | 1 linia
+
+dodano podprogram studenta 272379
+------------------------------------------------------------------------
+r61 | 272379 | 2024-11-11 22:00:12 +0100 (pon) | 1 linia
+
+stworzono branch 272379
+------------------------------------------------------------------------
+r60 | 272355 | 2024-11-08 23:04:57 +0100 (pią) | 1 linia
+
+
+------------------------------------------------------------------------
+r59 | 272355 | 2024-11-08 23:04:26 +0100 (pią) | 1 linia
+
+Usunięcie gałęzi po zakończeniu integracji z trunk
+------------------------------------------------------------------------
+r58 | 272355 | 2024-11-08 23:03:11 +0100 (pią) | 1 linia
+
+272355 integruje swoją gałąź z trunk
+------------------------------------------------------------------------
+r57 | 272355 | 2024-11-08 22:59:58 +0100 (pią) | 1 linia
+
+272355 zaimplementowała swoją procedurę
+------------------------------------------------------------------------
+r56 | 272355 | 2024-11-08 22:54:02 +0100 (pią) | 1 linia
+
+272355 synchronizuje swoją gałąź z trunk
+------------------------------------------------------------------------
+r55 | 272355 | 2024-11-08 22:50:56 +0100 (pią) | 1 linia
+
+
+------------------------------------------------------------------------
+r54 | 272388 | 2024-11-08 18:10:47 +0100 (pią) | 1 linia
+
+branch delete
+------------------------------------------------------------------------
+r53 | 272388 | 2024-11-08 18:07:28 +0100 (pią) | 1 linia
+
+tag
+------------------------------------------------------------------------
+r52 | 272388 | 2024-11-08 17:55:50 +0100 (pią) | 1 linia
+
+merge, tag 272388
+------------------------------------------------------------------------
+r51 | 272388 | 2024-11-08 17:34:05 +0100 (pią) | 1 linia
+
+my changes
+------------------------------------------------------------------------
+r50 | 272388 | 2024-11-08 16:30:44 +0100 (pią) | 1 linia
+
+272388 branch
+------------------------------------------------------------------------
+r49 | 272369 | 2024-11-07 18:20:37 +0100 (czw) | 1 linia
+
+Changed propset.
+------------------------------------------------------------------------
+r48 | 272369 | 2024-11-07 18:11:26 +0100 (czw) | 1 linia
+
+Tagowanie wersji studenta 272369.
+------------------------------------------------------------------------
+r47 | 272369 | 2024-11-07 18:10:13 +0100 (czw) | 1 linia
+
+Usunięto gałąź 272369 po reintegracji.
+------------------------------------------------------------------------
+r46 | 272369 | 2024-11-07 18:09:29 +0100 (czw) | 1 linia
+
+Zmergowano prace studenta 272369 do trunk.
+------------------------------------------------------------------------
+r45 | 272369 | 2024-11-07 18:04:10 +0100 (czw) | 1 linia
+
+Zmergowano do trunk.
+------------------------------------------------------------------------
+r44 | 272369 | 2024-11-07 18:01:27 +0100 (czw) | 1 linia
+
+Student 272369 dodal mnozenie liczby przez 9.
+------------------------------------------------------------------------
+r43 | 272369 | 2024-11-07 17:40:44 +0100 (czw) | 1 linia
+
+Tworzenie gałęzi dla studenta 272369
+------------------------------------------------------------------------
+r42 | 272354 | 2024-11-05 22:40:50 +0100 (wto) | 1 linia
+
+encoding added
+------------------------------------------------------------------------
+r41 | 272354 | 2024-11-05 22:39:48 +0100 (wto) | 1 linia
+
+encoding added
+------------------------------------------------------------------------
+r40 | 272385 | 2024-11-05 22:38:32 +0100 (wto) | 1 linia
+
+Tag projektu po wykonaniu zadania 272385.
+------------------------------------------------------------------------
+r39 | 272385 | 2024-11-05 22:24:30 +0100 (wto) | 1 linia
+
+Usunięcie 272385 branch.
+------------------------------------------------------------------------
+r38 | 272385 | 2024-11-05 22:16:57 +0100 (wto) | 1 linia
+
+Merge 272385 do trunk.
+------------------------------------------------------------------------
+r37 | 272385 | 2024-11-05 22:12:16 +0100 (wto) | 1 linia
+
+Synchronizacja brancha 272385 z trunk.
+------------------------------------------------------------------------
+r36 | 272385 | 2024-11-05 22:10:28 +0100 (wto) | 1 linia
+
+Dodano podprogram 272385 do aplikacji.
+------------------------------------------------------------------------
+r35 | 272385 | 2024-11-05 21:54:22 +0100 (wto) | 1 linia
+
+branch 272385
+------------------------------------------------------------------------
+r34 | 272354 | 2024-11-05 21:46:58 +0100 (wto) | 1 linia
+
+encoding set
+------------------------------------------------------------------------
+r33 | 272354 | 2024-11-05 21:41:29 +0100 (wto) | 1 linia
+
+encoding set
+------------------------------------------------------------------------
+r32 | 272354 | 2024-11-05 21:40:21 +0100 (wto) | 1 linia
+
+encoding set
+------------------------------------------------------------------------
+r31 | 272379 | 2024-11-05 21:14:35 +0100 (wto) | 1 linia
+Zmodyfikowane ścieżki:
+   A /app_1/tags/v_272379 (z /app_1/trunk:30)
+
+Tag projektu po wykonaniu zadania przez 272379
+------------------------------------------------------------------------
+r29 | 272379 | 2024-11-05 21:06:45 +0100 (wto) | 1 linia
+Zmodyfikowane ścieżki:
+   M /app_1/trunk
+   M /app_1/trunk/makefile
+
+merged 272379 z trunk
+------------------------------------------------------------------------
+r26 | 272379 | 2024-11-05 20:58:36 +0100 (wto) | 1 linia
+Zmodyfikowane ścieżki:
+   M /app_1/trunk
+   M /app_1/trunk/README
+   M /app_1/trunk/main.c
+   M /app_1/trunk/makefile
+   M /app_1/trunk/program.h
+   A /app_1/trunk/s272379_podprogram.c (z /app_1/branches/272379/s272379_podprogram.c:22)
+
+reintegracja 272379 z trunk
+------------------------------------------------------------------------
+r17 | 272397 | 2024-11-04 23:38:26 +0100 (pon) | 1 linia
+Zmodyfikowane ścieżki:
+   M /app_1/trunk
+   M /app_1/trunk/README
+   M /app_1/trunk/main.c
+   M /app_1/trunk/makefile
+   M /app_1/trunk/program.h
+   A /app_1/trunk/s272397_podprogram.c (z /app_1/branches/272397/s272397_podprogram.c:16)
+
+merge 272397 into trunk
+------------------------------------------------------------------------
+r13 | mk1 | 2024-10-29 13:45:35 +0100 (wto) | 2 linie
+Zmodyfikowane ścieżki:
+   M /app_1/branches/999/README
+   M /app_1/branches/999/main.c
+   M /app_1/branches/999/makefile
+   M /app_1/branches/999/program.h
+   M /app_1/branches/999/program_usage.c
+   M /app_1/branches/999/s0_podprogram.c
+   M /app_1/branches/999/s999_podprogram.c
+   M /app_1/tags/v_999/README
+   M /app_1/tags/v_999/main.c
+   M /app_1/tags/v_999/makefile
+   M /app_1/tags/v_999/program.h
+   M /app_1/tags/v_999/program_usage.c
+   M /app_1/tags/v_999/s0_podprogram.c
+   M /app_1/tags/v_999/s999_podprogram.c
+   M /app_1/trunk/README
+   M /app_1/trunk/main.c
+   M /app_1/trunk/makefile
+   M /app_1/trunk/program.h
+   M /app_1/trunk/program_usage.c
+   M /app_1/trunk/s0_podprogram.c
+   M /app_1/trunk/s999_podprogram.c
+
+wykonano: `svn propset svn:mime-type 'text/plain;charset=utf-8' $(find app_1/ -type f )`
+
+------------------------------------------------------------------------
+r12 | admin | 2020-11-12 10:52:01 +0100 (czw) | 2 linie
+Zmodyfikowane ścieżki:
+   M /app_1/trunk/README
+
+Poprawione kodowanie README i względny adres katalogu z tagami.
+
+------------------------------------------------------------------------
+r10 | 999 | 2016-10-24 13:55:29 +0200 (pon) | 3 linie
+Zmodyfikowane ścieżki:
+   M /app_1/trunk
+   M /app_1/trunk/README
+   M /app_1/trunk/main.c
+   M /app_1/trunk/makefile
+   M /app_1/trunk/program.h
+   A /app_1/trunk/s999_podprogram.c (z /app_1/branches/999/s999_podprogram.c:9)
+
+999 zreintegrował swoją gałąź z trunk-iem
+
+
+------------------------------------------------------------------------
+r7 | admin | 2016-10-24 13:44:15 +0200 (pon) | 3 linie
+Zmodyfikowane ścieżki:
+   M /app_1/trunk/README
+
+Dodatkowe wyjaśnienia w pliku README o tworzeniu tag-ów
+
+
+------------------------------------------------------------------------
+r3 | 999 | 2016-10-24 13:04:10 +0200 (pon) | 2 linie
+Zmodyfikowane ścieżki:
+   A /app_1/trunk/README
+
+dodano plik README w trunk
+
+------------------------------------------------------------------------
+r1 | admin | 2016-10-17 14:28:36 +0200 (pon) | 3 linie
+Zmodyfikowane ścieżki:
+   M /
+   A /app_1
+   A /app_1/branches
+   A /app_1/trunk
+   A /app_1/trunk/main.c
+   A /app_1/trunk/makefile
+   A /app_1/trunk/program.h
+   A /app_1/trunk/program_usage.c
+   A /app_1/trunk/s0_podprogram.c
+
+początkowa wersja projektu.
+
+
+------------------------------------------------------------------------
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/tags/v_272379$ svn log -v https://repo.cs.pwr.edu.pl/p-
+2/app_1/tags/v_272379
+------------------------------------------------------------------------
+r31 | 272379 | 2024-11-05 21:14:35 +0100 (wto) | 1 linia
+Zmodyfikowane ścieżki:
+   A /app_1/tags/v_272379 (z /app_1/trunk:30)
+
+Tag projektu po wykonaniu zadania przez 272379
+------------------------------------------------------------------------
+r29 | 272379 | 2024-11-05 21:06:45 +0100 (wto) | 1 linia
+Zmodyfikowane ścieżki:
+   M /app_1/trunk
+   M /app_1/trunk/makefile
+
+merged 272379 z trunk
+------------------------------------------------------------------------
+r26 | 272379 | 2024-11-05 20:58:36 +0100 (wto) | 1 linia
+Zmodyfikowane ścieżki:
+   M /app_1/trunk
+   M /app_1/trunk/README
+   M /app_1/trunk/main.c
+   M /app_1/trunk/makefile
+   M /app_1/trunk/program.h
+   A /app_1/trunk/s272379_podprogram.c (z /app_1/branches/272379/s272379_podprogram.c:22)
+
+reintegracja 272379 z trunk
+------------------------------------------------------------------------
+r17 | 272397 | 2024-11-04 23:38:26 +0100 (pon) | 1 linia
+Zmodyfikowane ścieżki:
+   M /app_1/trunk
+   M /app_1/trunk/README
+   M /app_1/trunk/main.c
+   M /app_1/trunk/makefile
+   M /app_1/trunk/program.h
+   A /app_1/trunk/s272397_podprogram.c (z /app_1/branches/272397/s272397_podprogram.c:16)
+
+merge 272397 into trunk
+------------------------------------------------------------------------
+r13 | mk1 | 2024-10-29 13:45:35 +0100 (wto) | 2 linie
+Zmodyfikowane ścieżki:
+   M /app_1/branches/999/README
+   M /app_1/branches/999/main.c
+   M /app_1/branches/999/makefile
+   M /app_1/branches/999/program.h
+   M /app_1/branches/999/program_usage.c
+   M /app_1/branches/999/s0_podprogram.c
+   M /app_1/branches/999/s999_podprogram.c
+   M /app_1/tags/v_999/README
+   M /app_1/tags/v_999/main.c
+   M /app_1/tags/v_999/makefile
+   M /app_1/tags/v_999/program.h
+   M /app_1/tags/v_999/program_usage.c
+   M /app_1/tags/v_999/s0_podprogram.c
+   M /app_1/tags/v_999/s999_podprogram.c
+   M /app_1/trunk/README
+   M /app_1/trunk/main.c
+   M /app_1/trunk/makefile
+   M /app_1/trunk/program.h
+   M /app_1/trunk/program_usage.c
+   M /app_1/trunk/s0_podprogram.c
+   M /app_1/trunk/s999_podprogram.c
+
+wykonano: `svn propset svn:mime-type 'text/plain;charset=utf-8' $(find app_1/ -type f )`
+
+------------------------------------------------------------------------
+r12 | admin | 2020-11-12 10:52:01 +0100 (czw) | 2 linie
+Zmodyfikowane ścieżki:
+   M /app_1/trunk/README
+
+Poprawione kodowanie README i względny adres katalogu z tagami.
+
+------------------------------------------------------------------------
+r10 | 999 | 2016-10-24 13:55:29 +0200 (pon) | 3 linie
+Zmodyfikowane ścieżki:
+   M /app_1/trunk
+   M /app_1/trunk/README
+   M /app_1/trunk/main.c
+   M /app_1/trunk/makefile
+   M /app_1/trunk/program.h
+   A /app_1/trunk/s999_podprogram.c (z /app_1/branches/999/s999_podprogram.c:9)
+
+999 zreintegrował swoją gałąź z trunk-iem
+
+
+------------------------------------------------------------------------
+r7 | admin | 2016-10-24 13:44:15 +0200 (pon) | 3 linie
+Zmodyfikowane ścieżki:
+   M /app_1/trunk/README
+
+Dodatkowe wyjaśnienia w pliku README o tworzeniu tag-ów
+
+
+------------------------------------------------------------------------
+r3 | 999 | 2016-10-24 13:04:10 +0200 (pon) | 2 linie
+Zmodyfikowane ścieżki:
+   A /app_1/trunk/README
+
+dodano plik README w trunk
+
+------------------------------------------------------------------------
+r1 | admin | 2016-10-17 14:28:36 +0200 (pon) | 3 linie
+Zmodyfikowane ścieżki:
+   M /
+   A /app_1
+   A /app_1/branches
+   A /app_1/trunk
+   A /app_1/trunk/main.c
+   A /app_1/trunk/makefile
+   A /app_1/trunk/program.h
+   A /app_1/trunk/program_usage.c
+   A /app_1/trunk/s0_podprogram.c
+
+początkowa wersja projektu.
+
+
+------------------------------------------------------------------------
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/tags/v_272379$ svn log -v https://repo.cs.pwr.edu.pl/p-
+2/app_1/trunk
+------------------------------------------------------------------------
+r89 | 272379 | 2024-11-11 23:26:13 +0100 (pon) | 1 linia
+
+tag projektu po wykonaniu zadania przez 272379
+------------------------------------------------------------------------
+r88 | 272379 | 2024-11-11 23:22:54 +0100 (pon) | 1 linia
+
+usunieto branch 272379
+------------------------------------------------------------------------
+r87 | 272379 | 2024-11-11 23:21:00 +0100 (pon) | 1 linia
+
+merged 272379 z trunk
+------------------------------------------------------------------------
+r86 | 272379 | 2024-11-11 23:12:59 +0100 (pon) | 1 linia
+
+
+------------------------------------------------------------------------
+r85 | 272379 | 2024-11-11 23:12:02 +0100 (pon) | 1 linia
+
+
+------------------------------------------------------------------------
+r84 | 272379 | 2024-11-11 23:08:24 +0100 (pon) | 1 linia
+
+
+------------------------------------------------------------------------
+r83 | 272379 | 2024-11-11 23:06:13 +0100 (pon) | 1 linia
+
+Rozwiązanie konfliktu tekstowego w pliku s272379_podprogram.c
+------------------------------------------------------------------------
+r82 | 272379 | 2024-11-11 23:05:03 +0100 (pon) | 1 linia
+
+Rozwiązanie konfliktu tekstowego w pliku s272379_podprogram.c
+------------------------------------------------------------------------
+r81 | 272379 | 2024-11-11 23:04:07 +0100 (pon) | 1 linia
+
+
+------------------------------------------------------------------------
+r80 | 272379 | 2024-11-11 23:01:36 +0100 (pon) | 1 linia
+
+
+------------------------------------------------------------------------
+r79 | 272379 | 2024-11-11 23:01:15 +0100 (pon) | 1 linia
+
+
+------------------------------------------------------------------------
+r78 | 272379 | 2024-11-11 22:57:51 +0100 (pon) | 1 linia
+
+
+------------------------------------------------------------------------
+r77 | 272379 | 2024-11-11 22:56:32 +0100 (pon) | 1 linia
+
+
+------------------------------------------------------------------------
+r76 | 272379 | 2024-11-11 22:50:53 +0100 (pon) | 1 linia
+
+
+------------------------------------------------------------------------
+r75 | 272379 | 2024-11-11 22:50:04 +0100 (pon) | 1 linia
+
+
+------------------------------------------------------------------------
+r74 | 272379 | 2024-11-11 22:45:48 +0100 (pon) | 1 linia
+
+ 
+------------------------------------------------------------------------
+r73 | 272379 | 2024-11-11 22:43:52 +0100 (pon) | 1 linia
+
+ 
+------------------------------------------------------------------------
+r72 | 272379 | 2024-11-11 22:42:36 +0100 (pon) | 1 linia
+
+
+------------------------------------------------------------------------
+r71 | 272379 | 2024-11-11 22:41:43 +0100 (pon) | 1 linia
+
+
+------------------------------------------------------------------------
+r70 | 272379 | 2024-11-11 22:40:41 +0100 (pon) | 1 linia
+
+
+------------------------------------------------------------------------
+r69 | 272379 | 2024-11-11 22:38:23 +0100 (pon) | 1 linia
+
+synchronizacja 272379 z trunk
+------------------------------------------------------------------------
+r68 | 272379 | 2024-11-11 22:37:10 +0100 (pon) | 1 linia
+
+
+------------------------------------------------------------------------
+r67 | 272379 | 2024-11-11 22:34:18 +0100 (pon) | 1 linia
+
+
+------------------------------------------------------------------------
+r66 | 272379 | 2024-11-11 22:31:21 +0100 (pon) | 1 linia
+
+
+------------------------------------------------------------------------
+r65 | 272379 | 2024-11-11 22:29:34 +0100 (pon) | 1 linia
+
+
+------------------------------------------------------------------------
+r64 | 272379 | 2024-11-11 22:19:30 +0100 (pon) | 1 linia
+
+
+------------------------------------------------------------------------
+r63 | 272379 | 2024-11-11 22:13:59 +0100 (pon) | 1 linia
+
+synchronizacja gałęzi 272379 z trunk
+------------------------------------------------------------------------
+r62 | 272379 | 2024-11-11 22:12:48 +0100 (pon) | 1 linia
+
+dodano podprogram studenta 272379
+------------------------------------------------------------------------
+r61 | 272379 | 2024-11-11 22:00:12 +0100 (pon) | 1 linia
+
+stworzono branch 272379
+------------------------------------------------------------------------
+r60 | 272355 | 2024-11-08 23:04:57 +0100 (pią) | 1 linia
+
+
+------------------------------------------------------------------------
+r59 | 272355 | 2024-11-08 23:04:26 +0100 (pią) | 1 linia
+
+Usunięcie gałęzi po zakończeniu integracji z trunk
+------------------------------------------------------------------------
+r58 | 272355 | 2024-11-08 23:03:11 +0100 (pią) | 1 linia
+
+272355 integruje swoją gałąź z trunk
+------------------------------------------------------------------------
+r57 | 272355 | 2024-11-08 22:59:58 +0100 (pią) | 1 linia
+
+272355 zaimplementowała swoją procedurę
+------------------------------------------------------------------------
+r56 | 272355 | 2024-11-08 22:54:02 +0100 (pią) | 1 linia
+
+272355 synchronizuje swoją gałąź z trunk
+------------------------------------------------------------------------
+r55 | 272355 | 2024-11-08 22:50:56 +0100 (pią) | 1 linia
+
+
+------------------------------------------------------------------------
+r54 | 272388 | 2024-11-08 18:10:47 +0100 (pią) | 1 linia
+
+branch delete
+------------------------------------------------------------------------
+r53 | 272388 | 2024-11-08 18:07:28 +0100 (pią) | 1 linia
+
+tag
+------------------------------------------------------------------------
+r52 | 272388 | 2024-11-08 17:55:50 +0100 (pią) | 1 linia
+
+merge, tag 272388
+------------------------------------------------------------------------
+r51 | 272388 | 2024-11-08 17:34:05 +0100 (pią) | 1 linia
+
+my changes
+------------------------------------------------------------------------
+r50 | 272388 | 2024-11-08 16:30:44 +0100 (pią) | 1 linia
+
+272388 branch
+------------------------------------------------------------------------
+r49 | 272369 | 2024-11-07 18:20:37 +0100 (czw) | 1 linia
+
+Changed propset.
+------------------------------------------------------------------------
+r48 | 272369 | 2024-11-07 18:11:26 +0100 (czw) | 1 linia
+
+Tagowanie wersji studenta 272369.
+------------------------------------------------------------------------
+r47 | 272369 | 2024-11-07 18:10:13 +0100 (czw) | 1 linia
+
+Usunięto gałąź 272369 po reintegracji.
+------------------------------------------------------------------------
+r46 | 272369 | 2024-11-07 18:09:29 +0100 (czw) | 1 linia
+
+Zmergowano prace studenta 272369 do trunk.
+------------------------------------------------------------------------
+r45 | 272369 | 2024-11-07 18:04:10 +0100 (czw) | 1 linia
+
+Zmergowano do trunk.
+------------------------------------------------------------------------
+r44 | 272369 | 2024-11-07 18:01:27 +0100 (czw) | 1 linia
+
+Student 272369 dodal mnozenie liczby przez 9.
+------------------------------------------------------------------------
+r43 | 272369 | 2024-11-07 17:40:44 +0100 (czw) | 1 linia
+
+Tworzenie gałęzi dla studenta 272369
+------------------------------------------------------------------------
+r42 | 272354 | 2024-11-05 22:40:50 +0100 (wto) | 1 linia
+
+encoding added
+------------------------------------------------------------------------
+r41 | 272354 | 2024-11-05 22:39:48 +0100 (wto) | 1 linia
+
+encoding added
+------------------------------------------------------------------------
+r40 | 272385 | 2024-11-05 22:38:32 +0100 (wto) | 1 linia
+
+Tag projektu po wykonaniu zadania 272385.
+------------------------------------------------------------------------
+r39 | 272385 | 2024-11-05 22:24:30 +0100 (wto) | 1 linia
+
+Usunięcie 272385 branch.
+------------------------------------------------------------------------
+r38 | 272385 | 2024-11-05 22:16:57 +0100 (wto) | 1 linia
+
+Merge 272385 do trunk.
+------------------------------------------------------------------------
+r37 | 272385 | 2024-11-05 22:12:16 +0100 (wto) | 1 linia
+
+Synchronizacja brancha 272385 z trunk.
+------------------------------------------------------------------------
+r36 | 272385 | 2024-11-05 22:10:28 +0100 (wto) | 1 linia
+
+Dodano podprogram 272385 do aplikacji.
+------------------------------------------------------------------------
+r35 | 272385 | 2024-11-05 21:54:22 +0100 (wto) | 1 linia
+
+branch 272385
+------------------------------------------------------------------------
+r34 | 272354 | 2024-11-05 21:46:58 +0100 (wto) | 1 linia
+
+encoding set
+------------------------------------------------------------------------
+r33 | 272354 | 2024-11-05 21:41:29 +0100 (wto) | 1 linia
+
+encoding set
+------------------------------------------------------------------------
+r32 | 272354 | 2024-11-05 21:40:21 +0100 (wto) | 1 linia
+
+encoding set
+------------------------------------------------------------------------
+r31 | 272354 | 2024-11-05 21:14:35 +0100 (wto) | 1 linia
+
+Tag projektu po wykonaniu zadania przez 272354
+------------------------------------------------------------------------
+r30 | 272354 | 2024-11-05 21:07:26 +0100 (wto) | 1 linia
+
+usunieto branch 272354
+------------------------------------------------------------------------
+r29 | 272354 | 2024-11-05 21:06:45 +0100 (wto) | 1 linia
+
+merged 272354 z trunk
+------------------------------------------------------------------------
+r28 | 272354 | 2024-11-05 21:03:36 +0100 (wto) | 1 linia
+
+synchronizacja 272354 z trunk
+------------------------------------------------------------------------
+r27 | 272354 | 2024-11-05 21:02:29 +0100 (wto) | 1 linia
+
+poprawiono makefile do 272354
+------------------------------------------------------------------------
+r26 | 272354 | 2024-11-05 20:58:36 +0100 (wto) | 1 linia
+
+reintegracja 272354 z trunk
+------------------------------------------------------------------------
+r25 | 272354 | 2024-11-05 20:55:58 +0100 (wto) | 1 linia
+
+synchronizacja 272354 z trunk
+------------------------------------------------------------------------
+r24 | 272354 | 2024-11-05 20:20:46 +0100 (wto) | 1 linia
+
+synchronizacja 272354 z trunk
+------------------------------------------------------------------------
+r23 | 272354 | 2024-11-05 20:15:56 +0100 (wto) | 1 linia
+
+synchronizacja 272354 z trunk
+------------------------------------------------------------------------
+r22 | 272354 | 2024-11-05 20:03:19 +0100 (wto) | 1 linia
+
+synchronizacja gałęzi 272354 z trunk
+------------------------------------------------------------------------
+r21 | 272354 | 2024-11-05 20:01:09 +0100 (wto) | 1 linia
+
+dodano podprogram studenta 272354
+------------------------------------------------------------------------
+r20 | 272354 | 2024-11-05 19:28:14 +0100 (wto) | 1 linia
+
+stworzono branch 272354
+------------------------------------------------------------------------
+r19 | 272397 | 2024-11-04 23:42:21 +0100 (pon) | 1 linia
+
+Tagging project after 272397 update
+------------------------------------------------------------------------
+r18 | 272397 | 2024-11-04 23:39:20 +0100 (pon) | 1 linia
+
+Remove 272397 branch
+------------------------------------------------------------------------
+r17 | 272397 | 2024-11-04 23:38:26 +0100 (pon) | 1 linia
+
+merge 272397 into trunk
+------------------------------------------------------------------------
+r16 | 272397 | 2024-11-04 23:29:54 +0100 (pon) | 1 linia
+
+Synchronizacja gałęzi 272397 z trunk
+------------------------------------------------------------------------
+r15 | 272397 | 2024-11-04 23:25:17 +0100 (pon) | 1 linia
+
+Dodano podprogram 272397 do aplikacji
+------------------------------------------------------------------------
+r14 | 272397 | 2024-11-04 23:11:26 +0100 (pon) | 2 linie
+
+dodanie branch 272397
+
+------------------------------------------------------------------------
+r13 | mk1 | 2024-10-29 13:45:35 +0100 (wto) | 2 linie
+
+wykonano: `svn propset svn:mime-type 'text/plain;charset=utf-8' $(find app_1/ -type f )`
+
+------------------------------------------------------------------------
+r12 | admin | 2020-11-12 10:52:01 +0100 (czw) | 2 linie
+
+Poprawione kodowanie README i względny adres katalogu z tagami.
+
+------------------------------------------------------------------------
+r11 | 999 | 2016-10-24 13:57:42 +0200 (pon) | 3 linie
+
+999 tworzy własnego tag-a
+
+
+------------------------------------------------------------------------
+r10 | 999 | 2016-10-24 13:55:29 +0200 (pon) | 3 linie
+
+999 zreintegrował swoją gałąź z trunk-iem 
+
+
+------------------------------------------------------------------------
+r9 | 999 | 2016-10-24 13:50:09 +0200 (pon) | 2 linie
+
+999 wprowadza opis swojego podprogramu do README - ostateczna wersja jego gałęzi 
+
+------------------------------------------------------------------------
+r8 | 999 | 2016-10-24 13:46:37 +0200 (pon) | 2 linie
+
+999 ponownie synchronizuje swoją gałąź z trunk 
+
+------------------------------------------------------------------------
+r7 | admin | 2016-10-24 13:44:15 +0200 (pon) | 3 linie
+
+Dodatkowe wyjaśnienia w pliku README o tworzeniu tag-ów
+
+
+------------------------------------------------------------------------
+r6 | admin | 2016-10-24 13:39:20 +0200 (pon) | 3 linie
+
+utworzenie katalogu na tagi aplikacji app_1
+
+
+------------------------------------------------------------------------
+r5 | 999 | 2016-10-24 13:37:15 +0200 (pon) | 3 linie
+
+999 zaimplementował swoją procedurę
+
+
+------------------------------------------------------------------------
+r4 | 999 | 2016-10-24 13:21:53 +0200 (pon) | 3 linie
+
+999 synchronizuje swoją gałąź z trunk
+
+
+------------------------------------------------------------------------
+r3 | 999 | 2016-10-24 13:04:10 +0200 (pon) | 2 linie
+
+dodano plik README w trunk
+
+------------------------------------------------------------------------
+r2 | 999 | 2016-10-17 16:01:19 +0200 (pon) | 1 linia
+
+student 999 tworzy własną gałąź https://156.17.7.16/svn/lab/piaskownica/app_1/branches/999
+------------------------------------------------------------------------
+r1 | admin | 2016-10-17 14:28:36 +0200 (pon) | 3 linie
+
+początkowa wersja projektu.
+
+
+------------------------------------------------------------------------
+pawe@P2-l:~/Pulpit/mk1/SP/L3/p-2$ ^C
+pawe@P2-l:~/Pulpit/mk1/SP/L3/p-2$ svn log -v https://repo.cs.pwr.edu.pl/p-2/app_1/trunk
+------------------------------------------------------------------------
+r87 | 272379 | 2024-11-11 23:21:00 +0100 (pon) | 1 linia
+Zmodyfikowane ścieżki:
+   M /app_1/trunk
+   M /app_1/trunk/main.o
+   M /app_1/trunk/program
+
+merged 272379 z trunk
+------------------------------------------------------------------------
+r86 | 272379 | 2024-11-11 23:12:59 +0100 (pon) | 1 linia
+Zmodyfikowane ścieżki:
+   M /app_1/trunk
+   R /app_1/trunk/s272379_podprogram.c (z /app_1/branches/272379/s272379_podprogram.c:85)
+
+
+------------------------------------------------------------------------
+r85 | 272379 | 2024-11-11 23:12:02 +0100 (pon) | 1 linia
+Zmodyfikowane ścieżki:
+   M /app_1/trunk
+
+
+------------------------------------------------------------------------
+r83 | 272379 | 2024-11-11 23:06:13 +0100 (pon) | 1 linia
+Zmodyfikowane ścieżki:
+   M /app_1/trunk
+   R /app_1/trunk/s272379_podprogram.c (z /app_1/branches/272379/s272379_podprogram.c:82)
+
+Rozwiązanie konfliktu tekstowego w pliku s272379_podprogram.c
+------------------------------------------------------------------------
+r82 | 272379 | 2024-11-11 23:05:03 +0100 (pon) | 1 linia
+Zmodyfikowane ścieżki:
+   M /app_1/trunk
+   R /app_1/trunk/s272379_podprogram.c (z /app_1/branches/272379/s272379_podprogram.c:81)
+
+Rozwiązanie konfliktu tekstowego w pliku s272379_podprogram.c
+------------------------------------------------------------------------
+r81 | 272379 | 2024-11-11 23:04:07 +0100 (pon) | 1 linia
+Zmodyfikowane ścieżki:
+   M /app_1/trunk
+   R /app_1/trunk/s272379_podprogram.c (z /app_1/branches/272379/s272379_podprogram.c:80)
+
+
+------------------------------------------------------------------------
+r80 | 272379 | 2024-11-11 23:01:36 +0100 (pon) | 1 linia
+Zmodyfikowane ścieżki:
+   M /app_1/trunk
+
+
+------------------------------------------------------------------------
+r79 | 272379 | 2024-11-11 23:01:15 +0100 (pon) | 1 linia
+Zmodyfikowane ścieżki:
+   M /app_1/trunk
+
+
+------------------------------------------------------------------------
+r78 | 272379 | 2024-11-11 22:57:51 +0100 (pon) | 1 linia
+Zmodyfikowane ścieżki:
+   M /app_1/trunk
+
+
+------------------------------------------------------------------------
+r77 | 272379 | 2024-11-11 22:56:32 +0100 (pon) | 1 linia
+Zmodyfikowane ścieżki:
+   M /app_1/trunk
+
+
+------------------------------------------------------------------------
+r76 | 272379 | 2024-11-11 22:50:53 +0100 (pon) | 1 linia
+Zmodyfikowane ścieżki:
+   M /app_1/trunk
+   M /app_1/trunk/main.c
+
+
+------------------------------------------------------------------------
+r74 | 272379 | 2024-11-11 22:45:48 +0100 (pon) | 1 linia
+Zmodyfikowane ścieżki:
+   M /app_1/trunk
+
+ 
+------------------------------------------------------------------------
+r73 | 272379 | 2024-11-11 22:43:52 +0100 (pon) | 1 linia
+Zmodyfikowane ścieżki:
+   M /app_1/trunk
+
+ 
+------------------------------------------------------------------------
+r72 | 272379 | 2024-11-11 22:42:36 +0100 (pon) | 1 linia
+Zmodyfikowane ścieżki:
+   M /app_1/trunk
+
+
+------------------------------------------------------------------------
+r71 | 272379 | 2024-11-11 22:41:43 +0100 (pon) | 1 linia
+Zmodyfikowane ścieżki:
+   M /app_1/trunk
+
+
+------------------------------------------------------------------------
+r70 | 272379 | 2024-11-11 22:40:41 +0100 (pon) | 1 linia
+Zmodyfikowane ścieżki:
+   M /app_1/trunk
+
+
+------------------------------------------------------------------------
+r69 | 272379 | 2024-11-11 22:38:23 +0100 (pon) | 1 linia
+Zmodyfikowane ścieżki:
+   M /app_1/trunk
+
+synchronizacja 272379 z trunk
+------------------------------------------------------------------------
+r68 | 272379 | 2024-11-11 22:37:10 +0100 (pon) | 1 linia
+Zmodyfikowane ścieżki:
+   M /app_1/trunk
+
+
+------------------------------------------------------------------------
+r67 | 272379 | 2024-11-11 22:34:18 +0100 (pon) | 1 linia
+Zmodyfikowane ścieżki:
+   M /app_1/trunk
+   A /app_1/trunk/main.o
+   A /app_1/trunk/program
+   A /app_1/trunk/program_usage.o
+   A /app_1/trunk/s0_podprogram.o
+   A /app_1/trunk/s272354_podprogram.o
+   A /app_1/trunk/s272355_podprogram.o
+   A /app_1/trunk/s272369_podprogram.o
+   A /app_1/trunk/s272379_podprogram.o
+   A /app_1/trunk/s272385_podprogram.o
+   A /app_1/trunk/s272388_podprogram.o
+   A /app_1/trunk/s272397_podprogram.o
+   A /app_1/trunk/s999_podprogram.o
+
+
+------------------------------------------------------------------------
+r66 | 272379 | 2024-11-11 22:31:21 +0100 (pon) | 1 linia
+Zmodyfikowane ścieżki:
+   M /app_1/trunk
+
+
+------------------------------------------------------------------------
+r65 | 272379 | 2024-11-11 22:29:34 +0100 (pon) | 1 linia
+Zmodyfikowane ścieżki:
+   M /app_1/trunk
+
+
+------------------------------------------------------------------------
+r64 | 272379 | 2024-11-11 22:19:30 +0100 (pon) | 1 linia
+Zmodyfikowane ścieżki:
+   M /app_1/trunk
+   M /app_1/trunk/README
+   M /app_1/trunk/main.c
+   M /app_1/trunk/makefile
+   M /app_1/trunk/program.h
+   A /app_1/trunk/s272379_podprogram.c (z /app_1/branches/272379/s272379_podprogram.c:63)
+
+
+------------------------------------------------------------------------
+r58 | 272355 | 2024-11-08 23:03:11 +0100 (pią) | 1 linia
+Zmodyfikowane ścieżki:
+   M /app_1/trunk
+   M /app_1/trunk/README
+   M /app_1/trunk/main.c
+   M /app_1/trunk/makefile
+   M /app_1/trunk/program.h
+   A /app_1/trunk/s272355_podprogram.c (z /app_1/branches/272355/s272355_podprogram.c:57)
+
+272355 integruje swoją gałąź z trunk
+------------------------------------------------------------------------
+r52 | 272388 | 2024-11-08 17:55:50 +0100 (pią) | 1 linia
+Zmodyfikowane ścieżki:
+   M /app_1/trunk
+   M /app_1/trunk/README
+   M /app_1/trunk/main.c
+   M /app_1/trunk/makefile
+   M /app_1/trunk/program.h
+   A /app_1/trunk/s272388_podprogram.c (z /app_1/branches/272388/s272388_podprogram.c:51)
+
+merge, tag 272388
+------------------------------------------------------------------------
+r49 | 272369 | 2024-11-07 18:20:37 +0100 (czw) | 1 linia
+Zmodyfikowane ścieżki:
+   M /app_1/tags/v_272354/s272354_podprogram.c
+   M /app_1/tags/v_272354/s272397_podprogram.c
+   M /app_1/tags/v_272369/s272354_podprogram.c
+   M /app_1/tags/v_272369/s272369_podprogram.c
+   M /app_1/tags/v_272369/s272385_podprogram.c
+   M /app_1/tags/v_272369/s272397_podprogram.c
+   M /app_1/tags/v_272385/s272354_podprogram.c
+   M /app_1/tags/v_272385/s272385_podprogram.c
+   M /app_1/tags/v_272385/s272397_podprogram.c
+   M /app_1/tags/v_272397/s272397_podprogram.c
+   M /app_1/trunk/s272354_podprogram.c
+   M /app_1/trunk/s272369_podprogram.c
+   M /app_1/trunk/s272385_podprogram.c
+   M /app_1/trunk/s272397_podprogram.c
+
+Changed propset.
+------------------------------------------------------------------------
+r46 | 272369 | 2024-11-07 18:09:29 +0100 (czw) | 1 linia
+Zmodyfikowane ścieżki:
+   M /app_1/trunk
+   M /app_1/trunk/README
+   M /app_1/trunk/main.c
+   M /app_1/trunk/makefile
+   M /app_1/trunk/program.h
+   A /app_1/trunk/s272369_podprogram.c (z /app_1/branches/272369/s272369_podprogram.c:45)
+
+Zmergowano prace studenta 272369 do trunk.
+------------------------------------------------------------------------
+r42 | 272354 | 2024-11-05 22:40:50 +0100 (wto) | 1 linia
+Zmodyfikowane ścieżki:
+   M /app_1/trunk/s272385_podprogram.c
+
+encoding added
+------------------------------------------------------------------------
+r38 | 272385 | 2024-11-05 22:16:57 +0100 (wto) | 1 linia
+Zmodyfikowane ścieżki:
+   M /app_1/trunk
+   M /app_1/trunk/README
+   M /app_1/trunk/main.c
+   M /app_1/trunk/makefile
+   M /app_1/trunk/program.h
+   A /app_1/trunk/s272385_podprogram.c (z /app_1/branches/272385/s272385_podprogram.c:37)
+
+Merge 272385 do trunk.
+------------------------------------------------------------------------
+r33 | 272354 | 2024-11-05 21:41:29 +0100 (wto) | 1 linia
+Zmodyfikowane ścieżki:
+   M /app_1/trunk/s272397_podprogram.c
+
+encoding set
+------------------------------------------------------------------------
+r32 | 272354 | 2024-11-05 21:40:21 +0100 (wto) | 1 linia
+Zmodyfikowane ścieżki:
+   M /app_1/trunk/s272354_podprogram.c
+
+encoding set
+------------------------------------------------------------------------
+r29 | 272354 | 2024-11-05 21:06:45 +0100 (wto) | 1 linia
+Zmodyfikowane ścieżki:
+   M /app_1/trunk
+   M /app_1/trunk/makefile
+
+merged 272354 z trunk
+------------------------------------------------------------------------
+r26 | 272354 | 2024-11-05 20:58:36 +0100 (wto) | 1 linia
+Zmodyfikowane ścieżki:
+   M /app_1/trunk
+   M /app_1/trunk/README
+   M /app_1/trunk/main.c
+   M /app_1/trunk/makefile
+   M /app_1/trunk/program.h
+   A /app_1/trunk/s272354_podprogram.c (z /app_1/branches/272354/s272354_podprogram.c:22)
+
+reintegracja 272354 z trunk
+------------------------------------------------------------------------
+r17 | 272397 | 2024-11-04 23:38:26 +0100 (pon) | 1 linia
+Zmodyfikowane ścieżki:
+   M /app_1/trunk
+   M /app_1/trunk/README
+   M /app_1/trunk/main.c
+   M /app_1/trunk/makefile
+   M /app_1/trunk/program.h
+   A /app_1/trunk/s272397_podprogram.c (z /app_1/branches/272397/s272397_podprogram.c:16)
+
+merge 272397 into trunk
+------------------------------------------------------------------------
+r13 | mk1 | 2024-10-29 13:45:35 +0100 (wto) | 2 linie
+Zmodyfikowane ścieżki:
+   M /app_1/branches/999/README
+   M /app_1/branches/999/main.c
+   M /app_1/branches/999/makefile
+   M /app_1/branches/999/program.h
+   M /app_1/branches/999/program_usage.c
+   M /app_1/branches/999/s0_podprogram.c
+   M /app_1/branches/999/s999_podprogram.c
+   M /app_1/tags/v_999/README
+   M /app_1/tags/v_999/main.c
+   M /app_1/tags/v_999/makefile
+   M /app_1/tags/v_999/program.h
+   M /app_1/tags/v_999/program_usage.c
+   M /app_1/tags/v_999/s0_podprogram.c
+   M /app_1/tags/v_999/s999_podprogram.c
+   M /app_1/trunk/README
+   M /app_1/trunk/main.c
+   M /app_1/trunk/makefile
+   M /app_1/trunk/program.h
+   M /app_1/trunk/program_usage.c
+   M /app_1/trunk/s0_podprogram.c
+   M /app_1/trunk/s999_podprogram.c
+
+wykonano: `svn propset svn:mime-type 'text/plain;charset=utf-8' $(find app_1/ -type f )`
+
+------------------------------------------------------------------------
+r12 | admin | 2020-11-12 10:52:01 +0100 (czw) | 2 linie
+Zmodyfikowane ścieżki:
+   M /app_1/trunk/README
+
+Poprawione kodowanie README i względny adres katalogu z tagami.
+
+------------------------------------------------------------------------
+r10 | 999 | 2016-10-24 13:55:29 +0200 (pon) | 3 linie
+Zmodyfikowane ścieżki:
+   M /app_1/trunk
+   M /app_1/trunk/README
+   M /app_1/trunk/main.c
+   M /app_1/trunk/makefile
+   M /app_1/trunk/program.h
+   A /app_1/trunk/s999_podprogram.c (z /app_1/branches/999/s999_podprogram.c:9)
+
+999 zreintegrował swoją gałąź z trunk-iem 
+
+
+------------------------------------------------------------------------
+r7 | admin | 2016-10-24 13:44:15 +0200 (pon) | 3 linie
+Zmodyfikowane ścieżki:
+   M /app_1/trunk/README
+
+Dodatkowe wyjaśnienia w pliku README o tworzeniu tag-ów
+
+
+------------------------------------------------------------------------
+r3 | 999 | 2016-10-24 13:04:10 +0200 (pon) | 2 linie
+Zmodyfikowane ścieżki:
+   A /app_1/trunk/README
+
+dodano plik README w trunk
+
+------------------------------------------------------------------------
+r1 | admin | 2016-10-17 14:28:36 +0200 (pon) | 3 linie
+Zmodyfikowane ścieżki:
+   M /
+   A /app_1
+   A /app_1/branches
+   A /app_1/trunk
+   A /app_1/trunk/main.c
+   A /app_1/trunk/makefile
+   A /app_1/trunk/program.h
+   A /app_1/trunk/program_usage.c
+   A /app_1/trunk/s0_podprogram.c
+
+początkowa wersja projektu.
+
+
+------------------------------------------------------------------------
+
+pawe@P2-l:~/mk1/SP/lista3/p-2/app_1/tags/v_272379$ cd
+pawe@P2-l:~$ tmux capture-pane -p -S'-' -E'-' >> zad1.txt
+

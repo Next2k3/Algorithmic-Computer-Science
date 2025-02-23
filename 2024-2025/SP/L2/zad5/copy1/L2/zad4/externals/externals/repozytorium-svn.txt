@@ -1,0 +1,74 @@
+INFORMACJE DLA STUDENTA
+-----------------------
+
+Repozytoria służą do przekazywania prowadzącym kodów źródłowych programów i 
+innych ręcznie utworzonych plików (jak n.p. sprawozdania), stanowiących
+rozwiązania zadań.
+
+Każdy student otrzyma repozytorium pod adresem https://repo.cs.pwr.edu.pl/<nr-indeksu>
+oraz wiadomość email z hasłem dostępu do swojego repozytorium.
+
+UWAGA: Ze względów bezpieczeństwa ważne jest 
+aby przy dostępie używać protokołu "https://" a nie "http://"
+
+Do repozytorium studenta ma dostęp dany student oraz wszyscy prowadzący.
+
+Nie wolno ujawniać swojego hasła innym osobom.
+
+Należy sobie zdawać sprawę, że użytkownik nie może usunąć niczego, co już wysłał do repozytorium.
+(Polecenie: svn delete ...  usuwa element tylko z kolejnej zatwierdzonej wersji, ale pamiętane są 
+wszystkie wcześniejsze wersje.)
+
+Co pewien czas (między semestrami lub w wyniku przepełnienia lub awarii serwera) repozytoria mogą
+być usuwane. Użytkownik powinien sobie zapewnić własne kopie zapasowe plików, które chce zachować.
+(Jedną z takich kopii jest kopia robocza, ale nie ma w niej poprzednich wersji i usuniętych
+plików.)
+
+
+Krótka instrukcja dla początkujących:
+-------------------------------------
+
+0. Zainstalować sobie pakiet o nazwie subversion, który zawiera polecenie svn (klient svn-a)
+
+1. Po otrzymaniu hasła <hasło> student powinien utworzyć sobie kopię roboczą
+   swojego (początkowo pustego repozytorium) jako użytkownik o nazwie <nr-indeksu> poleceniem:
+
+   $ svn checkout https://repo.cs.pwr.edu.pl/<nr-indeksu> --username <nr-indeksu> --password <hasło>
+
+   Polecenie to utworzy w bieżącym katalogu katalog o nazwie <nr-indeksu>, zawierający kopię roboczą repozytorium.
+   (Kopie robocze można rozpoznać po tym, że zawierają ukryty podkatalog .svn )
+
+2. W kopii roboczej można tworzyć podkatalogi i umieszczać własne pliki z kodami źródłowymi programów.
+   Pliki, które mają być przesyłane do repozytorium 
+   należy najpierw dodać lokalnie w kopii roboczej poleceniem:
+
+   $ svn add <nazwa_pliku> 
+   (UWAGA: TYLKO KODY ŹRÓDŁOWE I NIEAUTOMATYCZNIE UTWORZONE - NIE DODAWAĆ SKOMPILOWANYCH BINARNYCH PLIKÓW WYKONYWALNYCH)
+
+   Polecenie: 
+   
+   $ svn status 
+
+   wyświetla stan kopii roboczej względem repozytorium 
+   (na przykład nowo dodane pliki są wyświetlane i oznaczone symbolem 'A', 
+    a pliki które nie podlegają wersjonowaniu są oznaczone symbolem '?').
+
+3. Nowo dodane pliki (oraz zmodyfikowane pliki, które już podlegają wersjonowaniu)
+   przesyłane są do repozytorium po wykonaniu polecenia:
+
+   $ svn commit -m "<krótki_lub_pusty_komentarz_dotyczący_przesyłanej_wersji>"
+
+4. Należy sobie przyswoić następujący cykl pracy w katalogu, który jest kopią roboczą:
+   
+   $ svn update              # aktualizacja lokalnej kopii roboczej do najnowszej wersji z serwera
+   $ ...                     # praca nad projektem, modyfikacja kodów źródłowych (nowe pliki źródłowe dodajemy przez: svn add ...)
+   $ svn commit -m "..."     # wysyłanie wprowadzonych zmian do repozytorium
+
+
+  
+
+Kompletny podręcznik SVN jest dostępny pod adresem: http://svnbook.red-bean.com/
+
+
+
+
