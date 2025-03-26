@@ -1,0 +1,15 @@
+1)
+> (p2 . p3) 2
+4096
+jest tak bo (p2 . p3) 2 oznacza kompozycje p2 i p3 a wiec p2 (p3 2) a wiec najpierw wywołujemy p3 2 co daje 8 a następnie p2 od wyniku czyli p2 8
+
+2)
+>:t p2
+p2 :: Int -> Int
+>:t p3 
+p3 :: Int -> Int
+>:t (p2 . p3)
+(p2 . p3) :: Int -> Int
+
+3) 
+?

@@ -1,0 +1,8 @@
+1)
+>:t h
+h :: Int -> Int -> Int
+
+2)f . g nie  jest mozliwe poniewaz g przyjmuje dwa argumenty 
+
+3)nie mozna powniewaz gx zwraca funkcje a f oczekuje Int
+

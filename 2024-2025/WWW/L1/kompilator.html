@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kompilator - Paweł Krzyszczak</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <span>Paweł Krzyszczak</span>
+        </div>
+
+        <input type="checkbox" id="menu-toggle" class="menu-checkbox">
+        <label for="menu-toggle" class="menu-icon">☰</label>
+
+        <ul class="nav-menu">
+            <li class="nav-list">
+                <a href="index.html" class="nav-link">O mnie</a>
+            </li>
+            <li class="nav-list">
+                <a href="projekty.html" class="nav-link">Projekty</a>
+            </li>
+            <li class="nav-list">
+                <a href="zainteresowania.html" class="nav-link">Zainteresowania</a>
+            </li>
+            <li class="nav-list">
+                <a href="kontakt.html" class="nav-link">Kontakt</a>
+            </li>
+        </ul>
+        <div class="nav_button">
+            <a class="btn hire-me-btn" href="mailto:pkrzyszczak2k3@gmail.com?subject=Zatrudnię cię ">Hire me</a>
+        </div>
+    </header>
+    
+    <section class="project-section">
+        <h1 class="project-compiler">Kompilator</h1>
+        
+        <p class="compiler-description">
+            Kompilator ten tłumaczy kod źródłowy napisany w prostym języku imperatywnym na instrukcje asemblera, które są następnie wykonywane przez maszynę wirtualną.
+        Został on opracowany w ramach przedmiotu „Języki formalne i techniki translacji”, prowadzonego przez doktora Macieja Gębalę na Politechnice Wrocławskiej w roku akademickim 2024/2025.
+        Implementacja odbywa się w języku C++, z wykorzystaniem Flex do analizy leksykalnej i Bison do parsowania.
+        </p>
+        <div class="code-wrapper">
+            <div class="code-container">
+                <div class="code-header">
+                    <div class="buttons">
+                        <div class="button close"></div>
+                        <div class="button minimize"></div>
+                        <div class="button maximize"></div>
+                    </div>
+                </div>
+                <div class="code-content">
+                    <div class="code-line">
+                        <span class="line-number">1</span>
+                        <span class="line-content"><span class="keyword">class</span> <span class="class-name">ASTNode</span> {</span>
+                    </div>
+                    <div class="code-line">
+                        <span class="line-number">2</span>
+                        <span class="line-content"><span class="keyword">public</span>:</span>
+                    </div>
+                    <div class="code-line">
+                        <span class="line-number">3</span>
+                        <span class="line-content">    <span class="keyword">virtual</span> ~<span class="function">ASTNode</span>() = <span class="keyword">default</span>;</span>
+                    </div>
+                    <div class="code-line">
+                        <span class="line-number">4</span>
+                        <span class="line-content">    <span class="keyword">virtual</span> <span class="keyword">void</span> <span class="function">print</span>(<span class="keyword">int</span> indent = 0) <span class="keyword">const</span> = 0;</span>
+                    </div>
+                    <div class="code-line">
+                        <span class="line-number">5</span>
+                        <span class="line-content">    <span class="keyword">virtual</span> <span class="keyword">void</span> <span class="function">traverseAndAnalyze</span>(SymbolTable& symbolTable, <span class="keyword">const</span> std::string& scope) <span class="keyword">const</span> {};</span>
+                    </div>
+                    <div class="code-line">
+                        <span class="line-number">6</span>
+                        <span class="line-content">    <span class="keyword">virtual</span> <span class="keyword">void</span> <span class="function">generateCode</span>(CodeGenerator& codeGenerator, SymbolTable& symbolTable, <span class="keyword">const</span> std::string& scope) <span class="keyword">const</span> {};</span>
+                    </div>
+                    <div class="code-line">
+                        <span class="line-number">7</span>
+                        <span class="line-content"><span class="keyword">protected</span>:</span>
+                    </div>
+                    <div class="code-line">
+                        <span class="line-number">8</span>
+                        <span class="line-content">    <span class="keyword">void</span> <span class="function">printIndent</span>(<span class="keyword">int</span> indent) <span class="keyword">const</span> {</span>
+                    </div>
+                    <div class="code-line">
+                        <span class="line-number">9</span>
+                        <span class="line-content">        <span class="keyword">for</span> (<span class="keyword">int</span> i = 0; i &lt; indent; ++i) std::cout &lt;&lt; <span class="string">"  "</span>;</span>
+                    </div>
+                    <div class="code-line">
+                        <span class="line-number">10</span>
+                        <span class="line-content">    }</span>
+                    </div>
+                    <div class="code-line">
+                        <span class="line-number">11</span>
+                        <span class="line-content">};</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="btn project-btn">
+            <a href="https://github.com/Next2k3/compiler">Kod źródłowy</a>
+        </div>
+    </section>
+    <footer>
+        <p>&copy; 2025 Paweł Krzyszczak portfolio</p>
+    </footer>
+</body>
+</html>

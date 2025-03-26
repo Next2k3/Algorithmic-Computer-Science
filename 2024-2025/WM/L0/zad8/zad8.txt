@@ -1,0 +1,2 @@
+Integral :: (Double -> Double) -> Double -> Double -> Double 
+f a b = x 

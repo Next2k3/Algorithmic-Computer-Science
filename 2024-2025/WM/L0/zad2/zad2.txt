@@ -1,0 +1,11 @@
+>2^3^2
+512
+>(2^3)^2
+64
+>2^(2^3)
+256
+>:i ^
+(^) :: (Num a, Integral b) => a -> b -> a
+infixr 8 ^
+oznacza to, że ^ jest operatorem prawostronnie łącznym i ma priorytet 8
+czyli a ^ b ^ c jest interpretowne jako a ^ (b ^ c)
