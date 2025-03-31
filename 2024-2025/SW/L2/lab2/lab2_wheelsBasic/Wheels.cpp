@@ -103,13 +103,13 @@ void Wheels::stop()
 void Wheels::goforward(const uint8_t cm){
   this->setSpeed(100);
   this->forward();
-  delay(1000);
+  delay(60*cm);
   this->stop();
 }
 
 void Wheels::goBack(const uint8_t cm){
   this->setSpeed(100);
   this->back();
-  delay(45*cm);
+  delay(55*cm);
   this->stop();
 }

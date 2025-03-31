@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gra Go - Paweł Krzyszczak</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <span>Paweł Krzyszczak</span>
+        </div>
+
+        <input type="checkbox" id="menu-toggle" class="menu-checkbox">
+        <label for="menu-toggle" class="menu-icon">☰</label>
+
+        <ul class="nav-menu">
+            <li class="nav-list">
+                <a href="index.html" class="nav-link">O mnie</a>
+            </li>
+            <li class="nav-list">
+                <a href="projekty.html" class="nav-link">Projekty</a>
+            </li>
+            <li class="nav-list">
+                <a href="zainteresowania.html" class="nav-link">Zainteresowania</a>
+            </li>
+            <li class="nav-list">
+                <a href="kontakt.html" class="nav-link">Kontakt</a>
+            </li>
+        </ul>
+        <div class="nav_button">
+            <a class="btn hire-me-btn" href="mailto:pkrzyszczak2k3@gmail.com?subject=Zatrudnię cię ">Hire me</a>
+        </div>
+    </header>
+    
+    <section class="project-section">
+        <h1 class="project-go">Gra Go</h1>
+        
+        <p class="go-description">
+            Implementacja klasycznej gry planszowej Go z interfejsem graficznym. Aplikacja umożliwia rozgrywkę dwóch graczy na planszy o różnych rozmiarach.
+            Projekt został opracowany w ramach przedmiotu „Programowanie obiektowe", prowadzonego na Politechnice Wrocławskiej w roku akademickim 2023/2024.
+            Implementacja wykorzystuje język Java oraz bibliotekę JavaFX do tworzenia interfejsu graficznego.
+        </p>
+        <div class="code-wrapper">
+            <div class="code-container">
+                <div class="code-header">
+                    <div class="buttons">
+                        <div class="button close"></div>
+                        <div class="button minimize"></div>
+                        <div class="button maximize"></div>
+                    </div>
+                </div>
+                <div class="code-content">
+                    <div class="code-line">
+                        <span class="line-number">1</span>
+                        <span class="line-content"><span class="keyword">private</span> <span class="keyword">void</span> <span class="function">updateBreathsForGroup</span>(StoneGroup stoneGroup){</span>
+                    </div>
+                    <div class="code-line">
+                        <span class="line-number">2</span>
+                        <span class="line-content">    stoneGroup.<span class="function">setBreaths</span>(0);</span>
+                    </div>
+                    <div class="code-line">
+                        <span class="line-number">3</span>
+                        <span class="line-content">    <span class="keyword">for</span>(Stone stone : stoneGroup.<span class="function">getStones</span>()) {</span>
+                    </div>
+                    <div class="code-line">
+                        <span class="line-number">4</span>
+                        <span class="line-content">        <span class="function">updateBreaths</span>(stoneGroup, stone.<span class="function">getRow</span>(), stone.<span class="function">getCol</span>());</span>
+                    </div>
+                    <div class="code-line">
+                        <span class="line-number">5</span>
+                        <span class="line-content">    }</span>
+                    </div>
+                    <div class="code-line">
+                        <span class="line-number">6</span>
+                        <span class="line-content">    <span class="keyword">if</span>(stoneGroup.<span class="function">getBreaths</span>()==0){</span>
+                    </div>
+                    <div class="code-line">
+                        <span class="line-number">7</span>
+                        <span class="line-content">        <span class="keyword">for</span>(Stone stone : stoneGroup.<span class="function">getStones</span>()){</span>
+                    </div>
+                    <div class="code-line">
+                        <span class="line-number">8</span>
+                        <span class="line-content">            <span class="keyword">if</span>(stone.<span class="function">getStoneGroup</span>().<span class="function">getStones</span>().size()==1) {</span>
+                    </div>
+                    <div class="code-line">
+                        <span class="line-number">9</span>
+                        <span class="line-content">                <span class="keyword">if</span> (stone.<span class="function">getStoneColor</span>() == StoneColor.WHITE) {</span>
+                    </div>
+                    <div class="code-line">
+                        <span class="line-number">10</span>
+                        <span class="line-content">                    blockedStonesWhite = stoneGroup.<span class="function">getStones</span>();</span>
+                    </div>
+                    <div class="code-line">
+                        <span class="line-number">11</span>
+                        <span class="line-content">                } <span class="keyword">else</span> {</span>
+                    </div>
+                    <div class="code-line">
+                        <span class="line-number">12</span>
+                        <span class="line-content">                    blockedStonesBlack = stoneGroup.<span class="function">getStones</span>();</span>
+                    </div>
+                    <div class="code-line">
+                        <span class="line-number">13</span>
+                        <span class="line-content">                }</span>
+                    </div>
+                    <div class="code-line">
+                        <span class="line-number">14</span>
+                        <span class="line-content">            }</span>
+                    </div>
+                    <div class="code-line">
+                        <span class="line-number">15</span>
+                        <span class="line-content">            <span class="function">removeStone</span>(stone.<span class="function">getRow</span>(), stone.<span class="function">getCol</span>());</span>
+                    </div>
+                    <div class="code-line">
+                        <span class="line-number">16</span>
+                        <span class="line-content">        }</span>
+                    </div>
+                    <div class="code-line">
+                        <span class="line-number">17</span>
+                        <span class="line-content">    }</span>
+                    </div>
+                    <div class="code-line">
+                        <span class="line-number">18</span>
+                        <span class="line-content">}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="btn project-btn">
+            <a href="https://github.com/Next2k3/Go_game">Kod źródłowy</a>
+        </div>
+    </section>
+    <footer>
+        <p>&copy; 2025 Paweł Krzyszczak portfolio</p>
+    </footer>
+</body>
+</html>
