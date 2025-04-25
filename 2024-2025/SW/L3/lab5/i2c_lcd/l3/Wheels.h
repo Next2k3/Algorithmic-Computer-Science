@@ -56,10 +56,11 @@ class Wheels {
         void setSpeed(uint8_t);
         void setSpeedRight(uint8_t);
         void setSpeedLeft(uint8_t);
-
     private: 
         int pinsRight[3];
         int pinsLeft[3];
+        uint8_t speedLeft;
+        uint8_t speedRight;
 };
 
 

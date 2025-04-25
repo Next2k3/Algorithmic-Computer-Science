@@ -9,9 +9,34 @@ LiquidCrystal_I2C lcd(LCDAddress, 16, 2);
 Wheels w;
 volatile char cmd;
 
+uint8_t arrowRight[8] =
+{
+    0b01000,
+    0b01100,
+    0b00110,
+    0b11111,
+    0b11111,
+    0b00110,
+    0b01100,
+    0b01000
+};
+
+uint8_t arrowLeft[8] =
+{
+    0b00010,
+    0b00110,
+    0b01100,
+    0b11111,
+    0b11111,
+    0b01100,
+    0b00110,
+    0b00010
+};
+
+
 void setup() {
   // put your setup code here, to run once:
-  w.attach(4,5,3,9,8,10);
+  w.attach(4,5,3,8,9,10);
   
   Serial.begin(9600);
   Serial.println("Forward: WAD");
@@ -20,6 +45,8 @@ void setup() {
 
   lcd.init();
   lcd.backlight();
+  lcd.createChar(0, arrowRight);
+  lcd.createChar(1, arrowLeft);
 }
 
 void loop() {

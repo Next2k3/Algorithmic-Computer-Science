@@ -1,5 +1,6 @@
 @use "sass:map";
 
+
 // Variables
 $colors: (
   'first': #5356FF,
@@ -104,7 +105,6 @@ body {
   overflow-y: auto;
 }
 
-// Header styles
 header {
   position: relative;
   font-family: $font-family;
@@ -165,7 +165,6 @@ header {
   }
 }
 
-// Button styles
 .btn {
   @extend %button-base;
 }
@@ -199,7 +198,6 @@ header {
   }
 }
 
-// Hero section
 .hero {
   position: relative;
   display: flex;
@@ -331,7 +329,6 @@ header {
   }
 }
 
-// Menu checkbox
 .menu-checkbox {
   display: none;
 }
@@ -350,7 +347,6 @@ header {
   }
 }
 
-// Responsive menu
 @media (max-width: 1300px) {
   .nav-menu {
     display: none;
@@ -381,7 +377,6 @@ header {
   }
 }
 
-// Footer
 footer {
   position: fixed;
   bottom: 0;
@@ -391,7 +386,7 @@ footer {
   margin-top: 150px;
 }
 
-// Projects section
+
 .projekty {
   margin-top: 150px;
   font-size: 50px;
@@ -456,7 +451,6 @@ footer {
   @include animation(fade-right, 2s, 0ms);
 }
 
-// Project titles
 %project-title {
   font-size: 35px;
   margin: 25px;
@@ -476,7 +470,6 @@ footer {
   @extend %project-title;
 }
 
-// Project descriptions
 %project-desc {
   font-family: $font-family;
   font-size: 15px;
@@ -526,7 +519,6 @@ footer {
   }
 }
 
-// Code container styles
 .code-wrapper {
   display: flex;
   justify-content: center;
@@ -609,7 +601,6 @@ footer {
   color: #abb2bf;
 }
 
-// Syntax highlighting
 .keyword {
   color: #c678dd;
 }
@@ -631,7 +622,6 @@ footer {
   font-style: italic;
 }
 
-// Interests section
 .interests-section {
   text-align: center;
   font-family: $font-family;
@@ -654,7 +644,6 @@ footer {
   }
 }
 
-// Interest animation delays
 .graf {
   @include animation(fade-left, 2s, 250ms);
 }
@@ -675,7 +664,7 @@ footer {
   @include animation(fade-left, 2s, 1250ms);
 }
 
-// Interest items
+
 .interest-item {
   font-family: $font-family;
   font-size: 15px;
@@ -706,7 +695,7 @@ footer {
   margin: 15px;
 }
 
-// Contact section
+
 .contact-container {
   font-family: $font-family;
   @include flex-center;
@@ -745,7 +734,7 @@ footer {
   @include animation(fade-right, 2s, 0ms);
 }
 
-// Contact animation delays
+
 .phone {
   @include animation(fade-left, 2s, 250ms);
 }
@@ -775,7 +764,6 @@ footer {
   transform: translateX(-50%);
 }
 
-// Animations
 @keyframes fade-right {
   from {
     transform: translateX(-50px);
