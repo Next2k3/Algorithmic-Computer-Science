@@ -1,0 +1,12 @@
+Dla foldl (-) e xs:
+
+Funkcja wykonuje odejmowanie od lewej do prawej strony
+Dla listy [a,b,c], obliczenie będzie wyglądać tak: ((e-a)-b)-c
+Rozwijając: ((e-a)-b)-c = e-a-b-c = e-(a+b+c) = e - sum xs
+
+Dla foldr (-) e xs:
+
+Funkcja wykonuje odejmowanie od prawej do lewej strony
+Dla listy [a,b,c], obliczenie będzie wyglądać tak: a-(b-(c-e))
+Rozwijając: a-(b-(c-e)) = a-(b-c+e) = a-b+c-e
+To nie jest równe e - sum xs, które wynosi e - (a+b+c)

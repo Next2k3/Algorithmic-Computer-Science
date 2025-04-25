@@ -1,0 +1,223 @@
+pawe@P2-l:~/Pulpit/mk1/PW/L1$ #Paweł Krzyszczak
+pawe@P2-l:~/Pulpit/mk1/PW/L1$ 
+pawe@P2-l:~/Pulpit/mk1/PW/L1$ cd zad1
+pawe@P2-l:~/Pulpit/mk1/PW/L1/zad1$ go run travelers.go > out1
+pawe@P2-l:~/Pulpit/mk1/PW/L1/zad1$ go run travelers.go > out2
+pawe@P2-l:~/Pulpit/mk1/PW/L1/zad1$ go run travelers.go > out3
+^[[Apawe@P2-l:~/Pulpit/mk1/PW/L1/zad1$ shasum out1                              
+188e51a3838537c78edd0081579af07559c8449a  out1
+pawe@P2-l:~/Pulpit/mk1/PW/L1/zad1$ svn import out1 https://repo.cs.pwr.edu.pl/272379-dir/mk1/PW/L1/zad1/out1 # import SVN
+
+Nie podano opisu zmian.
+Przerwij (a), kontynuuj (c), edytuj (e):
+c
+Dodawanie       out1
+Committing transaction...
+Zatwierdzona wersja 135.
+pawe@P2-l:~/Pulpit/mk1/PW/L1/zad1$ shasum out2                                  
+787cff9e085e20de9364b70ef31e3b6ea709ac33  out2
+pawe@P2-l:~/Pulpit/mk1/PW/L1/zad1$ svn import out2 https://repo.cs.pwr.edu.pl/272379-dir/mk1/PW/L1/zad1/out2 # import SVN                                       
+
+Nie podano opisu zmian.
+Przerwij (a), kontynuuj (c), edytuj (e):
+c
+Dodawanie       out2
+Committing transaction...
+Zatwierdzona wersja 136.
+pawe@P2-l:~/Pulpit/mk1/PW/L1/zad1$ shasum out3                                  
+4f109721a174da42a648ad59813eace6d0828ce9  out3
+pawe@P2-l:~/Pulpit/mk1/PW/L1/zad1$ svn import out3 https://repo.cs.pwr.edu.pl/272379-dir/mk1/PW/L1/zad1/out3 # import SVN                                       
+
+Nie podano opisu zmian.
+Przerwij (a), kontynuuj (c), edytuj (e):
+c
+Dodawanie       out3
+Committing transaction...
+Zatwierdzona wersja 137.
+pawe@P2-l:~/Pulpit/mk1/PW/L1/zad1$ cd ../zad2
+pawe@P2-l:~/Pulpit/mk1/PW/L1/zad2$ ls -l
+razem 140
+-rw-rw-r-- 1 pawe pawe   422 kwi  6 22:39 random_seeds.adb
+-rw-rw-r-- 1 pawe pawe   278 mar  9 14:37 random_seeds.ads
+-rw-rw-r-- 1 pawe pawe  2808 kwi  7 12:20 random_seeds.ali
+-rw-rw-r-- 1 pawe pawe  2640 kwi  7 12:20 random_seeds.o
+-rwxrwxr-x 1 pawe pawe 71480 kwi  7 12:23 travelers
+-rw-rw-r-- 1 pawe pawe  6597 kwi  7 12:23 travelers.adb
+-rw-rw-r-- 1 pawe pawe 11589 kwi  7 12:23 travelers.ali
+-rw-rw-r-- 1 pawe pawe 30328 kwi  7 12:23 travelers.o
+pawe@P2-l:~/Pulpit/mk1/PW/L1/zad2$ gnatmake travelers.adb
+gnatmake: "travelers" up to date.
+pawe@P2-l:~/Pulpit/mk1/PW/L1/zad2$ gnatmake travelers.adb
+x86_64-linux-gnu-gcc-13 -c travelers.adb
+x86_64-linux-gnu-gnatbind-13 -x travelers.ali
+x86_64-linux-gnu-gnatlink-13 travelers.ali
+pawe@P2-l:~/Pulpit/mk1/PW/L1/zad2$ ./travelers > out1                           
+pawe@P2-l:~/Pulpit/mk1/PW/L1/zad2$ gnatmake travelers.adb
+x86_64-linux-gnu-gcc-13 -c travelers.adb
+x86_64-linux-gnu-gnatbind-13 -x travelers.ali
+x86_64-linux-gnu-gnatlink-13 travelers.ali
+pawe@P2-l:~/Pulpit/mk1/PW/L1/zad2$ ./travelers > out2                       
+pawe@P2-l:~/Pulpit/mk1/PW/L1/zad2$ gnatmake travelers.adb
+x86_64-linux-gnu-gcc-13 -c travelers.adb
+x86_64-linux-gnu-gnatbind-13 -x travelers.ali
+x86_64-linux-gnu-gnatlink-13 travelers.ali
+pawe@P2-l:~/Pulpit/mk1/PW/L1/zad2$ ./travelers > out3                       
+pawe@P2-l:~/Pulpit/mk1/PW/L1/zad2$ shasum out1                                  
+864e153cb9d4793ebdede391bc030e7a2f39cda2  out1
+pawe@P2-l:~/Pulpit/mk1/PW/L1/zad2$ svn import out1 https://repo.cs.pwr.edu.pl/272379-dir/mk1/PW/L1/zad2/out1 # import SVN                                       
+
+Nie podano opisu zmian.
+Przerwij (a), kontynuuj (c), edytuj (e):
+c
+Dodawanie       out1
+Committing transaction...
+Zatwierdzona wersja 138.
+pawe@P2-l:~/Pulpit/mk1/PW/L1/zad2$ shasum out2                                  
+460871eb0259c9428ffdac89b66696760c9173eb  out2
+pawe@P2-l:~/Pulpit/mk1/PW/L1/zad2$ svn import out2 https://repo.cs.pwr.edu.pl/272379-dir/mk1/PW/L1/zad2/out2 # import SVN                                       
+
+Nie podano opisu zmian.
+Przerwij (a), kontynuuj (c), edytuj (e):
+c
+Dodawanie       out2
+Committing transaction...
+Zatwierdzona wersja 139.
+pawe@P2-l:~/Pulpit/mk1/PW/L1/zad2$ shasum out3                                  
+e693e57505d35600e28ae31ff4c8999e966f27a3  out3
+pawe@P2-l:~/Pulpit/mk1/PW/L1/zad2$ svn import out3 https://repo.cs.pwr.edu.pl/272379-dir/mk1/PW/L1/zad2/out3 # import SVN                                       
+
+Nie podano opisu zmian.
+Przerwij (a), kontynuuj (c), edytuj (e):
+c
+Dodawanie       out3
+Committing transaction...
+Zatwierdzona wersja 140.
+pawe@P2-l:~/Pulpit/mk1/PW/L1/zad2$ cd ../zad3
+pawe@P2-l:~/Pulpit/mk1/PW/L1/zad3$ ls -l
+razem 16
+-rw-rw-r-- 1 pawe pawe   23 kwi  4 18:13 go.mod
+drwxrwxr-x 2 pawe pawe 4096 kwi  3 21:35 randomseeds
+-rw-rw-r-- 1 pawe pawe 5206 kwi  7 12:25 travelers.go
+pawe@P2-l:~/Pulpit/mk1/PW/L1/zad3$ go run travelers.go > out1                   
+pawe@P2-l:~/Pulpit/mk1/PW/L1/zad3$ go run travelers.go > out2
+pawe@P2-l:~/Pulpit/mk1/PW/L1/zad3$ go run travelers.go > out3
+pawe@P2-l:~/Pulpit/mk1/PW/L1/zad3$ shasum out1                                  
+21034b6baeb08e273f4321ff49724132a4bc65fd  out1
+pawe@P2-l:~/Pulpit/mk1/PW/L1/zad3$ svn import out1 https://repo.cs.pwr.edu.pl/272379-dir/mk1/PW/L1/zad3/out1 # import SVN                                       
+
+Nie podano opisu zmian.
+Przerwij (a), kontynuuj (c), edytuj (e):
+c
+Dodawanie       out1
+Committing transaction...
+Zatwierdzona wersja 141.
+pawe@P2-l:~/Pulpit/mk1/PW/L1/zad3$ shasum out2                                  
+4a580c15925be46949bd4ed58330ee3d9ad72309  out2
+pawe@P2-l:~/Pulpit/mk1/PW/L1/zad3$ svn import out2 https://repo.cs.pwr.edu.pl/272379-dir/mk1/PW/L1/zad3/out2 # import SVN                                       
+
+Nie podano opisu zmian.
+Przerwij (a), kontynuuj (c), edytuj (e):
+c
+Dodawanie       out2
+Committing transaction...
+Zatwierdzona wersja 142.
+pawe@P2-l:~/Pulpit/mk1/PW/L1/zad3$ shasum out3                                  
+a7e10b205694ee8deee0d19217f1b75796c7c002  out3
+pawe@P2-l:~/Pulpit/mk1/PW/L1/zad3$ svn import out3 https://repo.cs.pwr.edu.pl/272379-dir/mk1/PW/L1/zad3/out3 # import SVN                                       
+
+Nie podano opisu zmian.
+Przerwij (a), kontynuuj (c), edytuj (e):
+c
+Dodawanie       out3
+Committing transaction...
+Zatwierdzona wersja 143.
+pawe@P2-l:~/Pulpit/mk1/PW/L1/zad3$ cd ../zad4
+pawe@P2-l:~/Pulpit/mk1/PW/L1/zad4$ ls -l
+razem 140
+-rw-rw-r-- 1 pawe pawe   493 mar  9 14:37 random_seeds.adb
+-rw-rw-r-- 1 pawe pawe   278 mar  9 14:37 random_seeds.ads
+-rw-rw-r-- 1 pawe pawe  2808 kwi  7 12:26 random_seeds.ali
+-rw-rw-r-- 1 pawe pawe  2640 kwi  7 12:26 random_seeds.o
+-rwxrwxr-x 1 pawe pawe 71376 kwi  7 12:26 travelers
+-rw-rw-r-- 1 pawe pawe  6486 kwi  7 12:28 travelers.adb
+-rw-rw-r-- 1 pawe pawe 11408 kwi  7 12:26 travelers.ali
+-rw-rw-r-- 1 pawe pawe 29896 kwi  7 12:26 travelers.o
+pawe@P2-l:~/Pulpit/mk1/PW/L1/zad4$ gnatmake travelers.adb 
+x86_64-linux-gnu-gcc-13 -c travelers.adb
+travelers.adb:182:54: warning: suspicious "mod" value, was ** intended? [-gnatw.m]
+x86_64-linux-gnu-gnatbind-13 -x travelers.ali
+x86_64-linux-gnu-gnatlink-13 travelers.ali
+pawe@P2-l:~/Pulpit/mk1/PW/L1/zad4$ ./travelers > out1     
+pawe@P2-l:~/Pulpit/mk1/PW/L1/zad4$ ./travelers > out2
+pawe@P2-l:~/Pulpit/mk1/PW/L1/zad4$ ./travelers > out3
+pawe@P2-l:~/Pulpit/mk1/PW/L1/zad4$ shasum out1                                  
+5c87a4482165876502a864e7fbe755425775644c  out1
+pawe@P2-l:~/Pulpit/mk1/PW/L1/zad4$ svn import out1 https://repo.cs.pwr.edu.pl/272379-dir/mk1/PW/L1/zad4/out1 # import SVN                                       
+
+Nie podano opisu zmian.
+Przerwij (a), kontynuuj (c), edytuj (e):
+c
+Dodawanie       out1
+Committing transaction...
+Zatwierdzona wersja 144.
+pawe@P2-l:~/Pulpit/mk1/PW/L1/zad4$ shasum out2                                  
+eff5e01ad5d8d750ab06753455186e880e6117ef  out2
+pawe@P2-l:~/Pulpit/mk1/PW/L1/zad4$ svn import out2 https://repo.cs.pwr.edu.pl/272379-dir/mk1/PW/L1/zad4/out2 # import SVN                                       
+
+Nie podano opisu zmian.
+Przerwij (a), kontynuuj (c), edytuj (e):
+c
+Dodawanie       out2
+Committing transaction...
+Zatwierdzona wersja 145.
+pawe@P2-l:~/Pulpit/mk1/PW/L1/zad4$ shasum out3                                  
+931d4f321d15aa20ac6b292e81bb27623545f806  out3
+pawe@P2-l:~/Pulpit/mk1/PW/L1/zad4$ svn import out3 https://repo.cs.pwr.edu.pl/272379-dir/mk1/PW/L1/zad4/out3 # import SVN                                       
+
+Nie podano opisu zmian.
+Przerwij (a), kontynuuj (c), edytuj (e):
+c
+Dodawanie       out3
+Committing transaction...
+Zatwierdzona wersja 146.
+pawe@P2-l:~/Pulpit/mk1/PW/L1/zad4$ cd ../zad5
+pawe@P2-l:~/Pulpit/mk1/PW/L1/zad5$ ls -l
+razem 16
+-rw-rw-r-- 1 pawe pawe   23 kwi  4 19:05 go.mod
+drwxrwxr-x 2 pawe pawe 4096 kwi  3 21:35 randomseeds
+-rw-rw-r-- 1 pawe pawe 5824 kwi  6 22:39 travelers.go
+pawe@P2-l:~/Pulpit/mk1/PW/L1/zad5$ go run travelers.go > out1              
+pawe@P2-l:~/Pulpit/mk1/PW/L1/zad5$ go run travelers.go > out2
+pawe@P2-l:~/Pulpit/mk1/PW/L1/zad5$ go run travelers.go > out3
+pawe@P2-l:~/Pulpit/mk1/PW/L1/zad5$ shasum out1                                  
+7d00ca5e170a556132ab3253edbe22f35a7b8323  out1
+pawe@P2-l:~/Pulpit/mk1/PW/L1/zad5$ svn import out1 https://repo.cs.pwr.edu.pl/272379-dir/mk1/PW/L1/zad5/out1 # import SVN                                       
+
+Nie podano opisu zmian.
+Przerwij (a), kontynuuj (c), edytuj (e):
+c
+Dodawanie       out1
+Committing transaction...
+Zatwierdzona wersja 147.
+pawe@P2-l:~/Pulpit/mk1/PW/L1/zad5$ shasum out2                                  
+190586c4bbeb74881423b8bae5344a89b2625a86  out2
+pawe@P2-l:~/Pulpit/mk1/PW/L1/zad5$ svn import out2 https://repo.cs.pwr.edu.pl/272379-dir/mk1/PW/L1/zad5/out2 # import SVN                                       
+
+Nie podano opisu zmian.
+Przerwij (a), kontynuuj (c), edytuj (e):
+c
+Dodawanie       out2
+Committing transaction...
+Zatwierdzona wersja 148.
+pawe@P2-l:~/Pulpit/mk1/PW/L1/zad5$ shasum out3                                  
+b2a4e13b70a5e15a402877f4580e67be6704a212  out3
+pawe@P2-l:~/Pulpit/mk1/PW/L1/zad5$ svn import out3 https://repo.cs.pwr.edu.pl/272379-dir/mk1/PW/L1/zad5/out3 # import SVN                                       
+
+Nie podano opisu zmian.
+Przerwij (a), kontynuuj (c), edytuj (e):
+c
+Dodawanie       out3
+Committing transaction...
+Zatwierdzona wersja 149.
+pawe@P2-l:~/Pulpit/mk1/PW/L1/zad5$ tmux capture-pane -p -S'-' -E'-' -J > sprawozdanie
+

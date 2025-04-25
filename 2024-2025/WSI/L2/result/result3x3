@@ -1,0 +1,34 @@
+3x3 Manhattan 14 45 0.001
+3x3 Manhattan 26 4858 0.066
+3x3 Manhattan 20 439 0.008
+3x3 Manhattan 22 1068 0.017
+3x3 Manhattan 14 25 0.001
+3x3 Manhattan 16 112 0.002
+3x3 Manhattan 26 1861 0.027
+3x3 Manhattan 24 1491 0.025
+3x3 Manhattan 24 781 0.011
+3x3 Manhattan 18 369 0.006
+
+3x3 Misplaced 20 3266 0.045
+3x3 Misplaced 22 6631 0.084
+3x3 Misplaced 18 1209 0.019
+3x3 Misplaced 16 594 0.010
+3x3 Misplaced 22 6729 0.085
+3x3 Misplaced 20 2908 0.043
+3x3 Misplaced 24 16368 0.153
+3x3 Misplaced 22 6495 0.083
+3x3 Misplaced 26 29251 0.259
+3x3 Misplaced 28 63117 0.533
+
+3x3 WeightedManhattan 26 729 0.013
+3x3 WeightedManhattan 28 557 0.010
+3x3 WeightedManhattan 24 353 0.006
+3x3 WeightedManhattan 26 151 0.003
+3x3 WeightedManhattan 24 86 0.002
+3x3 WeightedManhattan 20 67 0.001
+3x3 WeightedManhattan 22 104 0.002
+3x3 WeightedManhattan 24 279 0.006
+3x3 WeightedManhattan 20 38 0.001
+3x3 WeightedManhattan 20 418 0.008
+
+
