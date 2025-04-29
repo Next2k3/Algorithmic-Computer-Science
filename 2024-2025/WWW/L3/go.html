@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gra Go - Paweł Krzyszczak</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-okaidia.min.css" rel="stylesheet" />
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <span>Paweł Krzyszczak</span>
+        </div>
+
+        <input type="checkbox" id="menu-toggle" class="menu-checkbox">
+        <label for="menu-toggle" class="menu-icon">☰</label>
+
+        <ul class="nav-menu">
+            <li class="nav-list">
+                <a href="index.html" class="nav-link">O mnie</a>
+            </li>
+            <li class="nav-list">
+                <a href="projekty.html" class="nav-link">Projekty</a>
+            </li>
+            <li class="nav-list">
+                <a href="zainteresowania.html" class="nav-link">Zainteresowania</a>
+            </li>
+            <li class="nav-list">
+                <a href="zdjecia.html" class="nav-link">Zdjecia</a>
+            </li>
+            <li class="nav-list">
+                <a href="wisielec.html" class="nav-link">Wisielec</a>
+            </li>
+            <li class="nav-list">
+                <a href="kontakt.html" class="nav-link">Kontakt</a>
+            </li>
+        </ul>
+        <div class="nav_button">
+            <a class="btn hire-me-btn" href="mailto:pkrzyszczak2k3@gmail.com?subject=Zatrudnię cię ">Hire me</a>
+        </div>
+
+        <div for="menu-toggle" class="ham-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <noscript>
+            <style>
+                .ham-menu {
+                    display: none !important;
+                }
+                .menu-icon {
+                    display: none !important;
+                }
+                @media (max-width: 1300px) {
+                    .menu-icon {
+                        display: flex !important;
+                    }
+                }
+            </style>
+        </noscript>
+    </header>
+    
+    <section class="project-section">
+        <h1 class="project-go">Gra Go</h1>
+        
+        <p class="go-description">
+            Implementacja klasycznej gry planszowej Go z interfejsem graficznym. Aplikacja umożliwia rozgrywkę dwóch graczy na planszy o różnych rozmiarach.
+            Projekt został opracowany w ramach przedmiotu „Programowanie obiektowe", prowadzonego na Politechnice Wrocławskiej w roku akademickim 2023/2024.
+            Implementacja wykorzystuje język Java oraz bibliotekę JavaFX do tworzenia interfejsu graficznego.
+        </p>
+        <div class="code-wrapper">
+            <div class="code-container">
+                <div class="code-header">
+                    <div class="buttons">
+                        <div class="button close"></div>
+                        <div class="button minimize"></div>
+                        <div class="button maximize"></div>
+                    </div>
+                </div>
+                <div class="code-content">
+                    <pre><code class="language-java">
+private void updateBreathsForGroup(StoneGroup stoneGroup){
+    stoneGroup.setBreaths(0);
+    for(Stone stone : stoneGroup.getStones()) {
+        updateBreaths(stoneGroup, stone.getRow(), stone.getCol());
+    }
+    if(stoneGroup.getBreaths() == 0){
+        for(Stone stone : stoneGroup.getStones()){
+            if(stone.getStoneGroup().getStones().size() == 1) {
+                if (stone.getStoneColor() == StoneColor.WHITE) {
+                    blockedStonesWhite = stoneGroup.getStones();
+                } else {
+                    blockedStonesBlack = stoneGroup.getStones();
+                }
+            }
+        removeStone(stone.getRow(), stone.getCol());
+        }
+    }
+}
+                    </code></pre>
+                </div>
+            </div>
+        </div>
+        <div class="btn project-btn">
+            <a href="https://github.com/Next2k3/Go_game">Kod źródłowy</a>
+        </div>
+    </section>
+    <footer>
+        <p>&copy; 2025 Paweł Krzyszczak portfolio</p>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-java.js"></script>
+</body>
+</html>

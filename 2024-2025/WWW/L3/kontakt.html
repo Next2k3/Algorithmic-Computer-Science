@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontakt - Paweł Krzszczak</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <span>Paweł Krzyszczak</span>
+        </div>
+
+        <input type="checkbox" id="menu-toggle" class="menu-checkbox">
+        <label for="menu-toggle" class="menu-icon">☰</label>
+
+        <ul class="nav-menu">
+            <li class="nav-list">
+                <a href="index.html" class="nav-link">O mnie</a>
+            </li>
+            <li class="nav-list">
+                <a href="projekty.html" class="nav-link">Projekty</a>
+            </li>
+            <li class="nav-list">
+                <a href="zainteresowania.html" class="nav-link">Zainteresowania</a>
+            </li>
+            <li class="nav-list">
+                <a href="zdjecia.html" class="nav-link">Zdjecia</a>
+            </li>
+            <li class="nav-list">
+                <a href="wisielec.html" class="nav-link">Wisielec</a>
+            </li>
+            <li class="nav-list">
+                <a href="kontakt.html" class="nav-link">Kontakt</a>
+            </li>
+        </ul>
+        <div class="nav_button">
+            <a class="btn hire-me-btn" href="mailto:pkrzyszczak2k3@gmail.com?subject=Zatrudnię cię ">Hire me</a>
+        </div>
+
+        <div for="menu-toggle" class="ham-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <noscript>
+            <style>
+                .ham-menu {
+                    display: none !important;
+                }
+                .menu-icon {
+                    display: none !important;
+                }
+                @media (max-width: 1300px) {
+                    .menu-icon {
+                        display: flex !important;
+                    }
+                }
+            </style>
+        </noscript>
+    </header>
+    
+    <section class="contact-container">
+        <div class="contact-list-container">
+            <div class="contact-header">
+                <h1>Kontakt</h1>
+            </div>
+            <ul class="contact-list">
+                <li class="phone">
+                    <i class="fas fa-phone"></i>
+                    <img src="img/phone.png" alt="phone">
+                    <a href="tel:+48506634043" class="nav-link contact-link">+48 506 634 043</a>
+                </li>
+                <li class="mail">
+                    <i class="fas fa-envelope"></i>
+                    <img src="img/mail_2.png" alt="mail">
+                    <a href="mailto:pkrzyszczak2k3@gmail.com" class="nav-link contact-link">pkrzyszczak2k3@gmail.com</a>
+                </li>
+                <li class="map">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <img src="img/map.png" alt="map">
+                    <a href="https://maps.google.com/?q=Wrocław,Polska" target="_blank" class="nav-link contact-link">Wrocław, Polska</a>
+                </li>
+                <li>
+            </ul>
+        </div>
+    </section>
+    
+    <footer>
+        <p>&copy; 2025 Paweł Krzyszczak portfolio</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

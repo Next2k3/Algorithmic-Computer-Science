@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kompilator - Paweł Krzyszczak</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-okaidia.min.css" rel="stylesheet" />
+</head>
+<body>
+    <header> 
+        <div class="logo">
+            <span>Paweł Krzyszczak</span>
+        </div>
+
+        <input type="checkbox" id="menu-toggle" class="menu-checkbox">
+        <label for="menu-toggle" class="menu-icon">☰</label>
+
+        <ul class="nav-menu">
+            <li class="nav-list">
+                <a href="index.html" class="nav-link">O mnie</a>
+            </li>
+            <li class="nav-list">
+                <a href="projekty.html" class="nav-link">Projekty</a>
+            </li>
+            <li class="nav-list">
+                <a href="zainteresowania.html" class="nav-link">Zainteresowania</a>
+            </li>
+            <li class="nav-list">
+                <a href="zdjecia.html" class="nav-link">Zdjecia</a>
+            </li>
+            <li class="nav-list">
+                <a href="wisielec.html" class="nav-link">Wisielec</a>
+            </li>
+            <li class="nav-list">
+                <a href="kontakt.html" class="nav-link">Kontakt</a>
+            </li>
+        </ul>
+        <div class="nav_button">
+            <a class="btn hire-me-btn" href="mailto:pkrzyszczak2k3@gmail.com?subject=Zatrudnię cię ">Hire me</a>
+        </div>
+
+        <div for="menu-toggle" class="ham-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <noscript>
+            <style>
+                .ham-menu {
+                    display: none !important;
+                }
+                .menu-icon {
+                    display: none !important;
+                }
+                @media (max-width: 1300px) {
+                    .menu-icon {
+                        display: flex !important;
+                    }
+                }
+            </style>
+        </noscript>
+    </header>
+    <section class="project-section">
+        <h1 class="project-compiler">Kompilator</h1>
+        
+        <p class="compiler-description">
+            Kompilator ten tłumaczy kod źródłowy napisany w prostym języku imperatywnym na instrukcje asemblera, które są następnie wykonywane przez maszynę wirtualną.
+        Został on opracowany w ramach przedmiotu „Języki formalne i techniki translacji", prowadzonego przez doktora Macieja Gębalę na Politechnice Wrocławskiej w roku akademickim 2024/2025.
+        Implementacja odbywa się w języku C++, z wykorzystaniem Flex do analizy leksykalnej i Bison do parsowania.
+        </p>
+        
+        <div class="code-wrapper">
+            <div class="code-container">
+                <div class="code-header">
+                    <div class="buttons">
+                        <div class="button close"></div>
+                        <div class="button minimize"></div>
+                        <div class="button maximize"></div>
+                    </div>
+                </div>
+                <div class="code-content">
+                    <pre><code class="language-java">
+class ASTNode {
+public:
+    virtual ~ASTNode() = default;
+    virtual void print(int indent = 0) const = 0;
+    virtual void traverseAndAnalyze(SymbolTable&amp; symbolTable, const std::string&amp; scope) const {};
+    virtual void generateCode(CodeGenerator&amp; codeGenerator, SymbolTable&amp; symbolTable, const std::string&amp; scope) const {};
+protected:
+    void printIndent(int indent) const {
+        for (int i = 0; i &lt; indent; ++i) std::cout &lt;&lt; "  ";
+    }
+};
+                    </code></pre>
+                </div>
+            </div>
+        </div>
+        <div class="btn project-btn">
+            <a href="https://github.com/Next2k3/compiler">Kod źródłowy</a>
+        </div>
+    </section>
+    <footer>
+        <p>&copy; 2025 Paweł Krzyszczak portfolio</p>
+    </footer>
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-java.js"></script>
+</body>
+</html>

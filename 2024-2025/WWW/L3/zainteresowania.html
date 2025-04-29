@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zainteresowania - Paweł Krzyszczak</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <span>Paweł Krzyszczak</span>
+        </div>
+
+        <input type="checkbox" id="menu-toggle" class="menu-checkbox">
+        <label for="menu-toggle" class="menu-icon">☰</label>
+
+        <ul class="nav-menu">
+            <li class="nav-list">
+                <a href="index.html" class="nav-link">O mnie</a>
+            </li>
+            <li class="nav-list">
+                <a href="projekty.html" class="nav-link">Projekty</a>
+            </li>
+            <li class="nav-list">
+                <a href="zainteresowania.html" class="nav-link">Zainteresowania</a>
+            </li>
+            <li class="nav-list">
+                <a href="zdjecia.html" class="nav-link">Zdjecia</a>
+            </li>
+            <li class="nav-list">
+                <a href="wisielec.html" class="nav-link">Wisielec</a>
+            </li>
+            <li class="nav-list">
+                <a href="kontakt.html" class="nav-link">Kontakt</a>
+            </li>
+        </ul>
+        <div class="nav_button">
+            <a class="btn hire-me-btn" href="mailto:pkrzyszczak2k3@gmail.com?subject=Zatrudnię cię ">Hire me</a>
+        </div>
+
+        <div for="menu-toggle" class="ham-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <noscript>
+            <style>
+                .ham-menu {
+                    display: none !important;
+                }
+                .menu-icon {
+                    display: none !important;
+                }
+                @media (max-width: 1300px) {
+                    .menu-icon {
+                        display: flex !important;
+                    }
+                }
+            </style>
+        </noscript>
+    </header>
+    
+    <section class="interests-section">
+        <h2 class="interests-title">Moje zainteresowania</h2>
+        
+        <div class="interest-item graf">
+            <img src="img/graf.png" alt="graf">
+            <p class="interest-item-title">Teoria grafów</p>
+            <p>
+                Fascynuje mnie teoria grafów i jej praktyczne zastosowania w informatyce. Szczególnie interesują mnie algorytmy wyszukiwania najkrótszych ścieżek, takie jak Dijkstra czy A*, oraz algorytmy kolorowania grafów i ich zastosowania w optymalizacji zasobów. 
+            </p>
+        </div>
+        
+        <div class="interest-item wspol">
+            <img src="img/wspolbiezne.png" alt="wspolbiezne">
+            <p class="interest-item-title">Programowanie współbieżne</p>
+            <p>
+                Programowanie współbieżne to kolejny obszar, któremu poświęcam dużo uwagi. Zajmuję się tworzeniem systemów wykorzystujących wiele wątków do równoległego przetwarzania danych, co pozwala znacząco przyspieszyć obliczenia. Szczególnie interesuje mnie synchronizacja procesów, unikanie zakleszczeń (deadlocków) oraz race conditions. W swoich projektach wykorzystuję mechanizmy synchronizacyjne takie jak mutexy, semafory oraz bariery. 
+            </p>
+        </div>
+
+        <div class="interest-item szachy">
+            <img src="img/szachy.png" alt="szachy">
+            <p class="interest-item-title">Szachy</p>
+            <p>
+                W wolnym czasie bardzo lubię grać w szachy. To gra, która rozwija zdolności logicznego myślenia, strategii i koncentracji. Często uczestniczę w rozgrywkach online. Szachy dają mi możliwość nie tylko rywalizacji, ale także wnikliwego analizowania różnych rozwiązań i podejmowania przemyślanych decyzji.
+            </p>
+        </div>
+
+        <div class="interest-item silownia">
+            <img src="img/silownia.png" alt="silownia">
+            <p class="interest-item-title">Siłownia</p>
+            <p>
+                egularnie chodzę na siłownię, aby zadbać o kondycję fizyczną i poprawić swoje samopoczucie. Treningi są dla mnie doskonałą okazją do odreagowania stresu oraz poprawy wytrzymałości i siły. Lubię wyzwać samego siebie i osiągać coraz lepsze wyniki, zarówno w ćwiczeniach siłowych, jak i w treningach kondycyjnych.
+            </p>
+        </div>
+
+        <div class="interest-item motoryzacja">
+            <img src="img/bmw.png" alt="motoryzacja">
+            <p class="interest-item-title">Motoryzacja</p>
+            <p>
+                Motoryzacja to kolejna moja pasja. Zafascynowany jestem zarówno nowinkami technologicznymi w przemyśle motoryzacyjnym, jak i historią samochodów. Interesują mnie różnorodne aspekty motoryzacji – od tuningu, przez wyścigi, po inżynierię samochodową. Często spędzam czas, śledząc najnowsze wydarzenia w świecie motorsportu, a także poznając różne modele samochodów, które mają wyjątkowe osiągi i charakterystyki.
+            </p>
+        </div>
+
+    </section>
+    
+    
+    <footer>
+        <p>&copy; 2025 Paweł Krzyszczak portfolio</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zdjęcia - Paweł Krzyszczak</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <span>Paweł Krzyszczak</span>
+        </div>
+
+        <input type="checkbox" id="menu-toggle" class="menu-checkbox">
+        <label for="menu-toggle" class="menu-icon">☰</label>
+
+        <ul class="nav-menu">
+            <li class="nav-list">
+                <a href="index.html" class="nav-link">O mnie</a>
+            </li>
+            <li class="nav-list">
+                <a href="projekty.html" class="nav-link">Projekty</a>
+            </li>
+            <li class="nav-list">
+                <a href="zainteresowania.html" class="nav-link">Zainteresowania</a>
+            </li>
+            <li class="nav-list">
+                <a href="zdjecia.html" class="nav-link">Zdjecia</a>
+            </li>
+            <li class="nav-list">
+                <a href="wisielec.html" class="nav-link">Wisielec</a>
+            </li>
+            <li class="nav-list">
+                <a href="kontakt.html" class="nav-link">Kontakt</a>
+            </li>
+        </ul>
+        <div class="nav_button">
+            <a class="btn hire-me-btn" href="mailto:pkrzyszczak2k3@gmail.com?subject=Zatrudnię cię ">Hire me</a>
+        </div>
+
+        <div for="menu-toggle" class="ham-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <noscript>
+            <style>
+                .ham-menu {
+                    display: none !important;
+                }
+                .menu-icon {
+                    display: none !important;
+                }
+                @media (max-width: 1300px) {
+                    .menu-icon {
+                        display: flex !important;
+                    }
+                }
+            </style>
+        </noscript>
+    </header>
+    
+    <section class="gallery">
+        <h2 class="gallery-title">Galeria Zdjęć</h2>
+        <div class="gallery-container" id="galleryContainer">
+            
+        </div>
+    </section>
+    
+
+    
+    <footer>
+        <p>&copy; 2025 Paweł Krzyszczak portfolio</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

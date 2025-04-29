@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projekty - Paweł Krzyszczak</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <span>Paweł Krzyszczak</span>
+        </div>
+
+        <input type="checkbox" id="menu-toggle" class="menu-checkbox">
+        <label for="menu-toggle" class="menu-icon">☰</label>
+
+        <ul class="nav-menu">
+            <li class="nav-list">
+                <a href="index.html" class="nav-link">O mnie</a>
+            </li>
+            <li class="nav-list">
+                <a href="projekty.html" class="nav-link">Projekty</a>
+            </li>
+            <li class="nav-list">
+                <a href="zainteresowania.html" class="nav-link">Zainteresowania</a>
+            </li>
+            <li class="nav-list">
+                <a href="zdjecia.html" class="nav-link">Zdjecia</a>
+            </li>
+            <li class="nav-list">
+                <a href="wisielec.html" class="nav-link">Wisielec</a>
+            </li>
+            <li class="nav-list">
+                <a href="kontakt.html" class="nav-link">Kontakt</a>
+            </li>
+        </ul>
+        <div class="nav_button">
+            <a class="btn hire-me-btn" href="mailto:pkrzyszczak2k3@gmail.com?subject=Zatrudnię cię ">Hire me</a>
+        </div>
+
+        <div for="menu-toggle" class="ham-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <noscript>
+            <style>
+                .ham-menu {
+                    display: none !important;
+                }
+                .menu-icon {
+                    display: none !important;
+                }
+                @media (max-width: 1300px) {
+                    .menu-icon {
+                        display: flex !important;
+                    }
+                }
+            </style>
+        </noscript>
+    </header>
+
+    <main class="projekty">
+        <p class="projects-title">Moje projekty</p>
+        <ul class="project-list">
+            <li class="project-item compiler">
+                <img src="img/compiler.png" alt="Ikona kompilatora" loading="lazy"> 
+                <p class="project-title">Kompilator</p>
+                <p class="project-description">Kompilator tłumaczący kod źródłowy w prostym języku imperatywnym na instrukcje asemblera, wykonywane przez maszynę wirtualną.</p>
+                <div class="btn project-btn">
+                    <a href="kompilator.html">Zobacz więcej</a>
+                </div>
+            </li>
+            <li class="project-item go">
+                <img src="img/go.png" alt="Ikona gry Go" loading="lazy">
+                <p class="project-title"> Gra Go</p>
+                <p class="project-description">Aplikacja w trybie klient-serwer umożliwiająca grę w Go. Serwer zarządza stanem gry i logiką, opartą na klasycznych zasadach.</p>
+                <div class="btn project-btn">
+                    <a href="go.html">Zobacz więcej</a>
+                </div>
+            </li>
+            <li class="project-item rts">
+                <img src="img/RTS.png" alt="Ikona RTS" loading="lazy">
+                <p class="project-title">RTS</p>
+                <p class="project-description">Prosta gra RTS na silniku Godot, działająca w trybie klient-serwer z obsługą gry online.</p>
+                <div class="btn project-btn">
+                    <a href="rts.html">Zobacz więcej</a>
+                </div>     
+            </li>
+        </ul>
+    </main>
+        
+    <footer>
+        <p>&copy; 2025 Paweł Krzyszczak portfolio</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
