@@ -1,0 +1,29 @@
+Maciej Gębala
+2025-04-13
+
+Pliki:
+
+Makefile
+board.h		// zasady i obsługa gry
+game_server.c	// serwer gry 
+game_client.c	// klient dla gry
+game_random_bot.c	// losowy bot dla gry
+
+Kompilator: gcc version 13.3.0
+Biblioteka: gsl 2.7 (game_random_bot - generator liczb losowych)
+
+Wywołanie serwera:
+
+./game_server <numer ip> <numer portu>
+
+Wywołanie klienta dla człowieka:
+
+./game_client <numer ip> <numer portu> <gracz> <nick>
+
+Wywołanie losowego bot-a:
+
+./game_random_bot <numer ip> <numer portu> <gracz> <nick>
+
+gracz: 1 dla X lub 2 dla O.
+nick: identyfikator (nazwa) gracza (do 9 znaków)
+
