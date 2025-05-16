@@ -4,33 +4,30 @@ import (
 	"fmt"
 	"math/rand"
 	"time"
-	//"unicode"
 )
 
 const (
-	NrOfTravelers    	= 20    
-	NrOfWildTravelers 	= 10    
-	MinSteps          	= 10    
-	MaxSteps          	= 100   
-	MinDelay      		= 10 * time.Millisecond
-	MaxDelay      		= 50 * time.Millisecond
-	Timeout       		= 200 * time.Millisecond
-	BoardWidth        	= 10    
-	BoardHeight       	= 10    
+	NrOfTravelers     = 20
+	NrOfWildTravelers = 10
+	MinSteps          = 10
+	MaxSteps          = 100
+	MinDelay          = 10 * time.Millisecond
+	MaxDelay          = 50 * time.Millisecond
+	Timeout           = 200 * time.Millisecond
+	BoardWidth        = 10
+	BoardHeight       = 10
 )
 
 var (
-	StartTime = time.Now() 
-	printer   = Printer{}  
+	StartTime = time.Now()
+	printer   = Printer{}
 	Board     = [BoardWidth][BoardHeight]Node{}
 )
 
-// Struktura przechowująca pozycję na planszy
 type Position struct {
-	X, Y int 
+	X, Y int
 }
 
-// Funkcje do poruszania się po planszy
 func Move_Down(pos *Position) {
 	pos.Y = (pos.Y + 1) % BoardHeight
 }
@@ -47,7 +44,6 @@ func Move_Left(pos *Position) {
 	pos.X = (pos.X + BoardWidth - 1) % BoardWidth
 }
 
-// Funkcja do wykonania ruchu w jednej z czterech stron
 func Move_Direction(pos *Position, direction int) {
 	switch direction {
 	case 0:
@@ -61,18 +57,17 @@ func Move_Direction(pos *Position, direction int) {
 	}
 }
 
-// Struktura przechowująca informacje o śladzie ruchu
 type Trace struct {
-	TimeStamp time.Duration 
-	Id        int           
-	Position  Position      
-	Symbol    rune          
+	TimeStamp time.Duration
+	Id        int
+	Position  Position
+	Symbol    rune
 }
 
 func Print_Traces(traces []Trace) {
 	for _, trace := range traces {
 		fmt.Printf("%f %d %d %d %c\n",
-			float64(trace.TimeStamp)/float64(time.Second), 
+			float64(trace.TimeStamp)/float64(time.Second),
 			trace.Id,
 			trace.Position.X,
 			trace.Position.Y,
@@ -91,7 +86,7 @@ func (p *Printer) Start() {
 	p.Done = make(chan bool)
 
 	go func() {
-		for i := 0; i < NrOfTravelers + NrOfWildTravelers; i++ {
+		for i := 0; i < NrOfTravelers+NrOfWildTravelers; i++ {
 			traces := <-p.TraceChannel
 			Print_Traces(traces)
 		}
@@ -100,7 +95,6 @@ func (p *Printer) Start() {
 	}()
 }
 
-// Interfejs dla wszystkich podróżników
 type GeneralTraveler interface {
 	Init(id int, symbol rune)
 	Start()
@@ -110,60 +104,54 @@ type GeneralTraveler interface {
 type Response int
 
 const (
-	Success Response = iota  // Udany ruch
-	Fail                     // Nieudany ruch
-	Deadlock                 // Deadlock 
+	Success Response = iota
+	Fail
+	Deadlock
 )
 
-// Struktura dla ogólnych podróżników
 type Traveler struct {
-	Id       	int       
-	Symbol   	rune      
-	Position 	Position  
-	traces    	[]Trace  
-	timeStamp 	time.Duration 
-	response  	Response 
+	Id        int
+	Symbol    rune
+	Position  Position
+	traces    []Trace
+	timeStamp time.Duration
+	response  Response
 }
 
-// Struktura dla legalnych podróżników
 type Legal struct {
 	Traveler
-	steps 		int 
+	steps int
 }
 
 // Struktura dla zapytań o przemieszczenie podróżników
 type RelocateRequest struct {
-	Position 	Position
-	Status   	Response
-	Ack 		chan struct{} // Potwierdzenie zakończenia operacji
+	Position Position
+	Status   Response
+	Ack      chan struct{} // Potwierdzenie zakończenia operacji
 }
 
-// Struktura dla dzikich lokatorów
 type Wild struct {
 	Traveler
-	RelocateChannel chan RelocateRequest // Kanał do komunikacji o relokacji
+	RelocateChannel chan RelocateRequest
 
-	timeAppear    	time.Duration 
-	timeDisappear 	time.Duration 
+	timeAppear    time.Duration
+	timeDisappear time.Duration
 }
 
-// Struktura dla zapytania o wejście na pole
 type EnterRequest struct {
-	Traveler        GeneralTraveler 
-	ResponseChannel chan Response   
+	Traveler        GeneralTraveler
+	ResponseChannel chan Response
 }
 
-// Struktura reprezentująca węzeł planszy
 type Node struct {
-	EnterChannel chan EnterRequest 
-	LeaveChannel chan bool        
+	EnterChannel chan EnterRequest
+	LeaveChannel chan bool
 
-	position Position       
-	traveler GeneralTraveler 
-	waiting  []EnterRequest  
+	position Position
+	traveler GeneralTraveler
+	waiting  []EnterRequest
 }
 
-// Metoda inicjalizująca komórkę planszy
 func (n *Node) Init(position Position) {
 	n.EnterChannel = make(chan EnterRequest)
 	n.LeaveChannel = make(chan bool)
@@ -174,7 +162,6 @@ func (n *Node) Init(position Position) {
 	n.Start()
 }
 
-// Metoda uruchamiająca węzeł
 func (n *Node) Start() {
 	go func() {
 		for {
@@ -200,7 +187,6 @@ func (n *Node) Start() {
 							candidatePosition = n.position
 							Move_Direction(&candidatePosition, dir)
 
-							// Wysyłanie zapytania do sąsiednich węzłów
 							request := EnterRequest{n.traveler, make(chan Response)}
 							Board[candidatePosition.X][candidatePosition.Y].EnterChannel <- request
 							nodeResponse = <-request.ResponseChannel
@@ -245,7 +231,6 @@ func (t *Traveler) Store_Trace() {
 	})
 }
 
-// Inicjalizacja legalnego podróżnika
 func (t *Legal) Init(id int, symbol rune) {
 	t.Id = id
 	t.Symbol = symbol
@@ -268,18 +253,15 @@ func (t *Legal) Init(id int, symbol rune) {
 	t.Store_Trace()
 }
 
-// Metoda uruchamiająca podróżnika
 func (t *Legal) Start() {
 	go func() {
 		for i := 0; i < t.steps; i++ {
-			// Jeśli podróżnik jest w deadlocku, przerywamy ruch
 			if t.response == Deadlock {
 				break
 			}
 
 			time.Sleep(MinDelay + time.Duration(rand.Intn(int(MaxDelay-MinDelay))))
 
-			// Kanały do komunikacji
 			successChannel := make(chan bool, 1)
 			deadlockChannel := make(chan bool, 1)
 
@@ -292,7 +274,6 @@ func (t *Legal) Start() {
 					newPosition = t.Position
 					Move_Direction(&newPosition, rand.Intn(4))
 
-					// Wysyłanie zapytania do odpowiedniego węzła
 					request := EnterRequest{t, make(chan Response, 1)}
 					Board[newPosition.X][newPosition.Y].EnterChannel <- request
 
@@ -330,7 +311,6 @@ func (t *Legal) Start() {
 				t.Symbol = rune(int(t.Symbol) + 32)
 			}
 
-			// Zapisujemy ślad dla podróżnika
 			t.timeStamp = time.Since(StartTime)
 			t.Store_Trace()
 		}
@@ -339,7 +319,6 @@ func (t *Legal) Start() {
 	}()
 }
 
-// Inicjalizacja dzikiego lokatora
 func (t *Wild) Init(id int, symbol rune) {
 	t.RelocateChannel = make(chan RelocateRequest)
 	t.Id = id
@@ -348,7 +327,6 @@ func (t *Wild) Init(id int, symbol rune) {
 	t.timeDisappear = t.timeAppear + time.Duration(rand.Int63n(int64(MaxDelay*MaxSteps-t.timeAppear)))
 }
 
-// Uruchomienie dzikiego lokatora
 func (t *Wild) Start() {
 	go func() {
 		time.Sleep(t.timeAppear)
@@ -376,7 +354,6 @@ func (t *Wild) Start() {
 
 			select {
 			case Request := <-t.RelocateChannel:
-				// Relokacja lokatora
 				t.response = Request.Status
 				t.Position = Request.Position
 				t.timeStamp = time.Since(StartTime)
@@ -396,7 +373,6 @@ func (t *Wild) Start() {
 		}
 		t.timeStamp = time.Since(StartTime)
 		t.Store_Trace()
-		
 
 		printer.TraceChannel <- t.traces
 	}()
@@ -420,7 +396,6 @@ func main() {
 		}
 	}
 
-	// Inicjalizacja podróżników
 	id := 0
 	symbol := 'A'
 	for i := 0; i < NrOfTravelers; i++ {
@@ -430,7 +405,6 @@ func main() {
 		symbol++
 	}
 
-	// Inicjalizacja dzikich lokatorów
 	symbol = '0'
 	for i := 0; i < NrOfWildTravelers; i++ {
 		travelers[id] = &Wild{}
@@ -439,14 +413,12 @@ func main() {
 		symbol++
 	}
 
-	// Uruchomienie podróżników
 	id = 0
 	for i := 0; i < NrOfTravelers; i++ {
 		travelers[id].Start()
 		id++
 	}
 
-	// Uruchomienie dzikich lokatorów
 	for i := 0; i < NrOfWildTravelers; i++ {
 		travelers[id].Start()
 		id++

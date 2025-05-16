@@ -9,12 +9,12 @@ import (
 const (
 	NrOfTravelers     = 20
 	NrOfWildTravelers = 10
-	NrOfTraps         = 5 // Liczba pułapek
+	NrOfTraps         = 5
 	MinSteps          = 10
 	MaxSteps          = 100
 	MinDelay          = 10 * time.Millisecond
 	MaxDelay          = 50 * time.Millisecond
-	TrapDelay         = 50 * time.Millisecond // Opóźnienie dla pułapek
+	TrapDelay         = 50 * time.Millisecond
 	Timeout           = 200 * time.Millisecond
 	BoardWidth        = 10
 	BoardHeight       = 10
@@ -26,12 +26,10 @@ var (
 	Board     = [BoardWidth][BoardHeight]Node{}
 )
 
-// Struktura przechowująca pozycję na planszy
 type Position struct {
 	X, Y int
 }
 
-// Funkcje do poruszania się po planszy
 func Move_Down(pos *Position) {
 	pos.Y = (pos.Y + 1) % BoardHeight
 }
@@ -48,7 +46,6 @@ func Move_Left(pos *Position) {
 	pos.X = (pos.X + BoardWidth - 1) % BoardWidth
 }
 
-// Funkcja do wykonania ruchu w jednej z czterech stron
 func Move_Direction(pos *Position, direction int) {
 	switch direction {
 	case 0:
@@ -62,7 +59,6 @@ func Move_Direction(pos *Position, direction int) {
 	}
 }
 
-// Struktura przechowująca informacje o śladzie ruchu
 type Trace struct {
 	TimeStamp time.Duration
 	Id        int
@@ -88,12 +84,10 @@ type Printer struct {
 }
 
 func (p *Printer) Start() {
-	// Zwiększamy bufor kanału, aby uwzględnić pułapki
 	p.TraceChannel = make(chan []Trace, NrOfTravelers+NrOfWildTravelers+NrOfTraps)
 	p.Done = make(chan bool)
 
 	go func() {
-		// Przetwarzamy ślady od wszystkich podróżników i pułapek
 		for i := 0; i < NrOfTravelers+NrOfWildTravelers+NrOfTraps; i++ {
 			traces := <-p.TraceChannel
 			Print_Traces(traces)
@@ -103,7 +97,6 @@ func (p *Printer) Start() {
 	}()
 }
 
-// Interfejs dla wszystkich podróżników
 type GeneralTraveler interface {
 	Init(id int, symbol rune)
 	Start()
@@ -119,7 +112,6 @@ const (
 	TrapCaught                 // Złapany w pułapkę
 )
 
-// Struktura dla ogólnych podróżników
 type Traveler struct {
 	Id        int
 	Symbol    rune
@@ -129,52 +121,45 @@ type Traveler struct {
 	response  Response
 }
 
-// Struktura dla legalnych podróżników
 type Legal struct {
 	Traveler
 	steps int
 }
 
-// Struktura dla zapytań o przemieszczenie podróżników
 type RelocateRequest struct {
 	Position Position
 	Status   Response
-	Ack      chan struct{} // Potwierdzenie zakończenia operacji
+	Ack      chan struct{}
 }
 
-// Struktura dla dzikich lokatorów
 type Wild struct {
 	Traveler
-	RelocateChannel chan RelocateRequest // Kanał do komunikacji o relokacji
+	RelocateChannel chan RelocateRequest
 
 	timeAppear    time.Duration
 	timeDisappear time.Duration
 }
 
-// Struktura reprezentująca pułapkę
 type Trap struct {
 	Traveler
-	CaughtChannel chan GeneralTraveler // Kanał do komunikacji o złapaniu
+	CaughtChannel chan GeneralTraveler
 }
 
-// Struktura dla zapytania o wejście na pole
 type EnterRequest struct {
 	Traveler        GeneralTraveler
 	ResponseChannel chan Response
 }
 
-// Struktura reprezentująca węzeł planszy
 type Node struct {
 	EnterChannel chan EnterRequest
 	LeaveChannel chan bool
 
 	position Position
 	traveler GeneralTraveler
-	isTrap   bool // Czy pole jest pułapką
+	isTrap   bool
 	waiting  []EnterRequest
 }
 
-// Metoda inicjalizująca komórkę planszy
 func (n *Node) Init(position Position) {
 	n.EnterChannel = make(chan EnterRequest)
 	n.LeaveChannel = make(chan bool)
@@ -186,7 +171,6 @@ func (n *Node) Init(position Position) {
 	n.Start()
 }
 
-// Metoda uruchamiająca węzeł
 func (n *Node) Start() {
 	go func() {
 		for {
@@ -262,7 +246,6 @@ func (n *Node) Start() {
 	}()
 }
 
-// Ustawienie pola jako pułapki
 func (n *Node) SetTrap(trap *Trap) {
 	n.isTrap = true
 	n.traveler = trap
@@ -277,14 +260,12 @@ func (t *Traveler) Store_Trace() {
 	})
 }
 
-// Inicjalizacja legalnego podróżnika
 func (t *Legal) Init(id int, symbol rune) {
 	t.Id = id
 	t.Symbol = symbol
 	t.steps = MinSteps + rand.Intn(MaxSteps-MinSteps+1)
 
 	t.response = Fail
-	// Próba umiejscowienia podróżnika na planszy
 	for t.response == Fail && t.response != TrapCaught {
 		t.Position = Position{
 			X: rand.Intn(BoardWidth),
@@ -300,18 +281,15 @@ func (t *Legal) Init(id int, symbol rune) {
 	t.Store_Trace()
 }
 
-// Metoda uruchamiająca podróżnika
 func (t *Legal) Start() {
 	go func() {
 		for i := 0; i < t.steps; i++ {
-			// Jeśli podróżnik jest w deadlocku lub złapany w pułapkę, przerywamy ruch
 			if t.response == Deadlock || t.response == TrapCaught {
 				break
 			}
 
 			time.Sleep(MinDelay + time.Duration(rand.Intn(int(MaxDelay-MinDelay))))
 
-			// Kanały do komunikacji
 			successChannel := make(chan bool, 1)
 			deadlockChannel := make(chan bool, 1)
 
@@ -351,7 +329,6 @@ func (t *Legal) Start() {
 				deadlockChannel <- true
 			}
 
-			// Obsługuje odpowiedź
 			switch t.response {
 			case Success:
 				// Jeśli udało się przejść, zwalniamy pole
@@ -387,17 +364,13 @@ func (t *Legal) Start() {
 				t.Symbol = rune(int(t.Symbol) + 32)
 			}
 
-			// Zapisujemy ślad dla podróżnika
 			t.timeStamp = time.Since(StartTime)
 			t.Store_Trace()
 		}
 
-		// Jeśli podróżnik zakończył normalnie swoją trasę
 		if t.response != TrapCaught {
-			// Zwalniamy pole
 			Board[t.Position.X][t.Position.Y].LeaveChannel <- true
 
-			// Zapisujemy ostatni ślad poza planszą
 			t.Position = Position{BoardWidth, BoardHeight}
 			t.timeStamp = time.Since(StartTime)
 			t.Store_Trace()
@@ -407,7 +380,6 @@ func (t *Legal) Start() {
 	}()
 }
 
-// Inicjalizacja dzikiego lokatora
 func (t *Wild) Init(id int, symbol rune) {
 	t.RelocateChannel = make(chan RelocateRequest)
 	t.Id = id
@@ -416,12 +388,10 @@ func (t *Wild) Init(id int, symbol rune) {
 	t.timeDisappear = t.timeAppear + time.Duration(rand.Int63n(int64(MaxDelay*MaxSteps-t.timeAppear)))
 }
 
-// Uruchomienie dzikiego lokatora
 func (t *Wild) Start() {
 	go func() {
 		time.Sleep(t.timeAppear)
 
-		// Próba umiejscowienia dzikiego lokatora na planszy
 		t.response = Fail
 		for t.response == Fail {
 			t.Position = Position{
@@ -433,7 +403,6 @@ func (t *Wild) Start() {
 			Board[t.Position.X][t.Position.Y].EnterChannel <- request
 			t.response = <-request.ResponseChannel
 
-			// Dziki lokator nie pojawia się na pułapkach
 			if t.response == TrapCaught {
 				t.response = Fail
 			}
@@ -455,18 +424,14 @@ func (t *Wild) Start() {
 
 				// Jeśli wpadł w pułapkę
 				if t.response == TrapCaught {
-					// Zmiana symbolu na '*'
 					t.Symbol = '*'
 					t.timeStamp = time.Since(StartTime)
 					t.Store_Trace()
 
-					// Uśpienie na chwilę
 					time.Sleep(TrapDelay)
 
-					// Zwolnienie pola pułapki
 					Board[t.Position.X][t.Position.Y].LeaveChannel <- true
 
-					// Ostatni ślad poza planszą
 					t.Position = Position{BoardWidth, BoardHeight}
 					t.timeStamp = time.Since(StartTime)
 					t.Store_Trace()
@@ -499,26 +464,22 @@ func (t *Wild) Start() {
 	}()
 }
 
-// Inicjalizacja pułapki
 func (t *Trap) Init(id int, symbol rune) {
 	t.Id = id
 	t.Symbol = symbol
 	t.CaughtChannel = make(chan GeneralTraveler)
 
-	// Losowa pozycja dla pułapki
 	for {
 		t.Position = Position{
 			X: rand.Intn(BoardWidth),
 			Y: rand.Intn(BoardHeight),
 		}
 
-		// Sprawdzamy czy pole jest wolne
 		request := EnterRequest{t, make(chan Response)}
 		Board[t.Position.X][t.Position.Y].EnterChannel <- request
 		t.response = <-request.ResponseChannel
 
 		if t.response == Success {
-			// Ustawiamy pole jako pułapkę
 			Board[t.Position.X][t.Position.Y].SetTrap(t)
 			break
 		}
@@ -528,13 +489,10 @@ func (t *Trap) Init(id int, symbol rune) {
 	t.Store_Trace()
 }
 
-// Uruchomienie pułapki
 func (t *Trap) Start() {
 	go func() {
-		// Czekamy aż wszyscy podróżnicy zakończą działanie
 		time.Sleep(time.Duration(MinSteps+MaxSteps) * MaxDelay * 2)
 
-		// Wysyłamy ślady pułapki
 		printer.TraceChannel <- t.traces
 	}()
 }
@@ -558,12 +516,10 @@ func main() {
 		}
 	}
 
-	// Inicjalizacja pułapek
 	for i := 0; i < NrOfTraps; i++ {
 		traps[i].Init(NrOfTravelers+NrOfWildTravelers+i, '#')
 	}
 
-	// Inicjalizacja podróżników
 	id := 0
 	symbol := 'A'
 	for i := 0; i < NrOfTravelers; i++ {
@@ -573,7 +529,6 @@ func main() {
 		symbol++
 	}
 
-	// Inicjalizacja dzikich lokatorów
 	symbol = '0'
 	for i := 0; i < NrOfWildTravelers; i++ {
 		travelers[id] = &Wild{}
@@ -582,19 +537,16 @@ func main() {
 		symbol++
 	}
 
-	// Uruchomienie pułapek
 	for i := 0; i < NrOfTraps; i++ {
 		traps[i].Start()
 	}
 
-	// Uruchomienie podróżników
 	id = 0
 	for i := 0; i < NrOfTravelers; i++ {
 		travelers[id].Start()
 		id++
 	}
 
-	// Uruchomienie dzikich lokatorów
 	for i := 0; i < NrOfWildTravelers; i++ {
 		travelers[id].Start()
 		id++

@@ -17,7 +17,7 @@
 #define LOSE_SCORE -1000
 #define THREE_IN_ROW_SCORE 25
 #define TWO_IN_ROW_SCORE 5
-#define BLOCKING_SCORE 2
+#define BLOCKING_SCORE 50
 
 int minimax(int depth, int player, int alpha, int beta);
 int evaluateBoard(int player);
@@ -127,77 +127,16 @@ int getBestMove(int player, int depth) {
 
                 board[i][j] = player;
                 
-                // Jeśli ten ruch tworzy nieprzerwany ciąg trzech symboli bez tworzenia linii czterech,
-                // to prowadzi do natychmiastowej przegranej - unikaj go
-                bool creates_three = false;
-                for (int row = 0; row < 5; row++) {
-                    for (int col = 0; col <= 2; col++) {
-                        if (checkThreeLine(row, col, row, col+1, row, col+2, player)) {
-                            creates_three = true;
-                        }
-                    }
-                }
-                for (int col = 0; col < 5; col++) {
-                    for (int row = 0; row <= 2; row++) {
-                        if (checkThreeLine(row, col, row+1, col, row+2, col, player)) {
-                            creates_three = true;
-                        }
-                    }
-                }
-                for (int row = 0; row <= 2; row++) {
-                    for (int col = 0; col <= 2; col++) {
-                        if (checkThreeLine(row, col, row+1, col+1, row+2, col+2, player)) {
-                            creates_three = true;
-                        }
-                    }
-                }
-                for (int row = 0; row <= 2; row++) {
-                    for (int col = 2; col < 5; col++) {
-                        if (checkThreeLine(row, col, row+1, col-1, row+2, col-2, player)) {
-                            creates_three = true;
-                        }
-                    }
-                }
-                
-                // Sprawdź czy ten ruch tworzy wygraną (cztery w rzędzie)
-                bool creates_win = false;
-
-                for (int row = 0; row < 5; row++) {
-                    for (int col = 0; col <= 1; col++) {
-                        if (checkLine(row, col, row, col+1, row, col+2, row, col+3, player)) {
-                            creates_win = true;
-                        }
-                    }
-                }
-
-                for (int col = 0; col < 5; col++) {
-                    for (int row = 0; row <= 1; row++) {
-                        if (checkLine(row, col, row+1, col, row+2, col, row+3, col, player)) {
-                            creates_win = true;
-                        }
-                    }
-                }
-
-                for (int row = 0; row <= 1; row++) {
-                    for (int col = 0; col <= 1; col++) {
-                        if (checkLine(row, col, row+1, col+1, row+2, col+2, row+3, col+3, player)) {
-                            creates_win = true;
-                        }
-                    }
-                }
-
-                for (int row = 3; row < 5; row++) {
-                    for (int col = 0; col <= 1; col++) {
-                        if (checkLine(row, col, row-1, col+1, row-2, col+2, row-3, col+3, player)) {
-                            creates_win = true;
-                        }
-                    }
-                }
-                
-                if (creates_three && !creates_win) {
-                    // Pomiń ten ruch, ponieważ prowadziłby do natychmiastowej przegranej
+                if(loseCheck(player)) {
+                    // Jeśli ten ruch prowadzi do przegranej, pomiń go
                     board[i][j] = 0;
                     continue;
+                }
+                
+                if(winCheck(player)) {
+                    // Jeśli ten ruch prowadzi do wygranej, zwróć go
+                    board[i][j] = 0;
+                    return (i + 1) * 10 + (j + 1);
                 }
                 
                 int score = minimax(depth - 1, opponent, INT_MIN, INT_MAX);
@@ -266,78 +205,13 @@ int countInLine(int x1, int y1, int x2, int y2, int x3, int y3, int x4, int y4, 
 
 bool isGameOver(int *winner) {
     *winner = 0;
-    
-    // Sprawdź czy jest zwycięzca (cztery w rzędzie)
-    for (int player = 1; player <= 2; player++) {
-
-        for (int row = 0; row < 5; row++) {
-            for (int col = 0; col <= 1; col++) {
-                if (checkLine(row, col, row, col+1, row, col+2, row, col+3, player)) {
-                    *winner = player;
-                    return true;
-                }
-            }
-        }
-        
-        for (int col = 0; col < 5; col++) {
-            for (int row = 0; row <= 1; row++) {
-                if (checkLine(row, col, row+1, col, row+2, col, row+3, col, player)) {
-                    *winner = player;
-                    return true;
-                }
-            }
-        }
-        
-        for (int row = 0; row <= 1; row++) {
-            for (int col = 0; col <= 1; col++) {
-                if (checkLine(row, col, row+1, col+1, row+2, col+2, row+3, col+3, player)) {
-                    *winner = player;
-                    return true;
-                }
-            }
-        }
-        
-        for (int row = 3; row < 5; row++) {
-            for (int col = 0; col <= 1; col++) {
-                if (checkLine(row, col, row-1, col+1, row-2, col+2, row-3, col+3, player)) {
-                    *winner = player;
-                    return true;
-                }
-            }
-        }
-        
-        for (int row = 0; row < 5; row++) {
-            for (int col = 0; col <= 2; col++) {
-                if (checkThreeLine(row, col, row, col+1, row, col+2, player)) {
-                    *winner = 3 - player; 
-                    return true;
-                }
-            }
-        }
-        for (int col = 0; col < 5; col++) {
-            for (int row = 0; row <= 2; row++) {
-                if (checkThreeLine(row, col, row+1, col, row+2, col, player)) {
-                    *winner = 3 - player;
-                    return true;
-                }
-            }
-        }
-        for (int row = 0; row <= 2; row++) {
-            for (int col = 0; col <= 2; col++) {
-                if (checkThreeLine(row, col, row+1, col+1, row+2, col+2, player)) {
-                    *winner = 3 - player; 
-                    return true;
-                }
-            }
-        }
-        for (int row = 0; row <= 2; row++) {
-            for (int col = 2; col < 5; col++) {
-                if (checkThreeLine(row, col, row+1, col-1, row+2, col-2, player)) {
-                    *winner = 3 - player; 
-                    return true;
-                }
-            }
-        }
+    if (winCheck(1) || loseCheck(2)){
+        *winner = 1;
+        return true;
+    }
+    if (winCheck(2) || loseCheck(1)){
+        *winner = 2;
+        return true;
     }
     
     // Sprawdź czy plansza jest pełna (remis)
@@ -380,7 +254,7 @@ int evaluateBoard(int player) {
         } else if (winner == opponent) {
             return LOSE_SCORE;
         } else {
-            return 0; // Remis
+            return 0;
         }
     }
     

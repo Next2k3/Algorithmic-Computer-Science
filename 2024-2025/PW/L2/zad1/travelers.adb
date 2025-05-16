@@ -7,7 +7,6 @@ with Ada.Characters.Handling; use Ada.Characters.Handling;
 
 procedure Travelers is
 
-  -- Constant Parameters
   Nr_Of_Travelers : constant Integer := 15;
   Nr_Of_Wild_Travelers : constant Integer := 10;
   Min_Steps : constant Integer := 10;
@@ -17,11 +16,9 @@ procedure Travelers is
   Board_Width : constant Integer := 10;
   Board_Height : constant Integer := 10;
 
-  -- Global
   Start_Time : Time := Clock;
   Seeds : Seed_Array_Type(1 .. Nr_Of_Travelers + Nr_Of_Wild_Travelers) := Make_Seeds(Nr_Of_Travelers + Nr_Of_Wild_Travelers);
 
-  -- Positions
   type Position_Type is record
     X : Integer range 0 .. Board_Width;
     Y : Integer range 0 .. Board_Height;
@@ -58,7 +55,6 @@ procedure Travelers is
     end case;
   end Move_Direction;
 
-  -- Traces
   type Trace_Type is record
     Time_Stamp : Duration;
     Id         : Integer;
@@ -73,7 +69,6 @@ procedure Travelers is
     Trace_Array : Trace_Array_Type;
   end record;
 
-  -- Printer
   procedure Print_Trace(Trace : Trace_Type) is
   begin
     Put_Line(Duration'Image(Trace.Time_Stamp) & " " &
@@ -102,7 +97,7 @@ procedure Travelers is
     end loop;
   end Printer;
 
-  -- Travelers
+  -- Podróżnicy
   type Traveler_Variant is (Legal, Wild, None);
 
   type Traveler_Type is record
@@ -111,7 +106,7 @@ procedure Travelers is
     Position : Position_Type;
   end record;
 
-  -- Task types
+  -- Typy zadań
   task type Traveler_Task_Type is
     entry Init(Id : Integer; Seed : Integer; Symbol : Character);
     entry Start;
@@ -145,12 +140,11 @@ procedure Travelers is
     Position : Position_Type;
   end Node;
 
-  -- Global objects
   Board : array (0 .. Board_Width - 1, 0 .. Board_Height - 1) of Node;
   Travel_Tasks : array (0 .. Nr_Of_Travelers + Nr_Of_Wild_Travelers - 1) of access General_Traveler_Task_Type;
   Null_Task : access General_Traveler_Task_Type := new General_Traveler_Task_Type(Variant => None);
   
-  -- Task bodies
+  -- Ciała zadań
   protected body Node is
     entry Init(New_Position : Position_Type) when not Inited is
     begin
@@ -159,53 +153,51 @@ procedure Travelers is
       Inited := True;
     end Init;
 
-    -- locks for legal travelers
-    -- returns bool for wild travelers
+    -- blokuje dla legalnych podróżników
+    -- zwraca wartość bool dla dzikich podróżników
     entry Enter(New_Traveler : access General_Traveler_Task_Type; Success : out Boolean) when Inited and Traveler.Variant /= Legal is
     begin
-      -- if noone here, assign traveler
+      -- jeśli nikogo tu nie ma, przypisz podróżnika
       if Traveler.Variant = None then
         Traveler := New_Traveler;
         Success := True;
 
-      -- if wild here, try to move him
+      -- jeśli jest tu dziki, spróbuj go przenieść
       elsif Traveler.Variant = Wild and New_Traveler.Variant = Legal then
         declare
           New_Position : Position_Type;
         begin
-          for N in 0 .. 3 loop -- all directions
+          for N in 0 .. 3 loop -- wszystkie kierunki
             New_Position := Position;
             Move_Direction(New_Position, N);
             select
-              -- try to enter
+              -- próba wejścia
               Board(New_Position.X, New_Position.Y).Enter(Traveler, Success);
-              if Success then -- if not success keep trying
+              if Success then -- jeśli niepowodzenie, kontynuuj próby
                 exit;
               end if;
-            else -- blocks if legal there - cant move
+            else -- blokuje jeśli legalny tam jest - nie można się ruszyć
               Success := False;
             end select;
           end loop;
 
-          if Success then -- signal wild and assign new traveler here
+          if Success then -- sygnalizuj dzikiemu i przypisz nowego podróżnika tutaj
             Traveler.Wild_Traveler_Task.Relocate(New_Position);
             Traveler := New_Traveler;
           end if;
         end;
 
-      -- any other cases - refuse enter
+      -- każdy inny przypadek - odmowa wejścia
       else
         Success := False;
       end if;
     end Enter;
 
-    -- can only move a legal traveler TODO
     entry Move(New_Position : Position_Type; Success : out Boolean) when Inited and Traveler.Variant = Legal is
     begin
-      -- locks if enter is locked so traveler can handle deadlock
       Board(New_Position.X, New_Position.Y).Enter(Traveler, Success);
 
-      if Success then -- clear here
+      if Success then 
         Traveler := Null_Task;
       end if;
     end Move;
@@ -251,10 +243,10 @@ procedure Travelers is
       Traveler.Id := Id;
       Traveler.Symbol := Symbol;
 
-      -- try to move in
+      -- próba wejścia
       Success := False;
       while not Success loop
-        Traveler.Position := ( -- random position
+        Traveler.Position := ( -- losowa pozycja
           X => Integer(Float'Floor(Float(Board_Width) * Random(G))),
           Y => Integer(Float'Floor(Float(Board_Height) * Random(G)))
         );
@@ -276,7 +268,7 @@ procedure Travelers is
     for Step in 0 .. Nr_of_Steps loop
       delay Min_Delay + (Max_Delay - Min_Delay) * Duration(Random(G));
 
-      -- try to move
+      -- próba ruchu
       Success := False;
       Deadlock := False;
       while not Success loop
@@ -285,7 +277,7 @@ procedure Travelers is
         select
           Board(New_Position.X, New_Position.Y).Enter(Travel_Tasks(Traveler.Id), Success);
         or
-          delay 6 * Max_Delay; -- deadlock
+          delay 6 * Max_Delay; -- zakleszczenie
           Deadlock := True;
           exit;
         end select;
@@ -344,7 +336,7 @@ procedure Travelers is
 
     Success := False;
     while not Success loop
-      Traveler.Position := ( -- random initial position
+      Traveler.Position := ( -- losowa pozycja początkowa
         X => Integer(Float'Floor(Float(Board_Width) * Random(G))),
         Y => Integer(Float'Floor(Float(Board_Height) * Random(G)))
       );
@@ -359,14 +351,14 @@ procedure Travelers is
 
     loop
       select
-        -- forceful relocation
+        -- wymuszona relokacja
         accept Relocate(New_Position : Position_Type) do
           Traveler.Position := New_Position;
           Time_Stamp := To_Duration(Clock - Start_Time);
           Store_Trace;
         end Relocate;
       or
-        delay 0.1; -- keep checking time
+        delay 0.1; -- ciągłe sprawdzanie czasu
         if To_Duration(Clock - Start_Time) >= Time_Disappear then
           Board(Traveler.Position.X, Traveler.Position.Y).Leave;
           Traveler.Position := (X => Board_Width, Y => Board_Height);
@@ -380,7 +372,6 @@ procedure Travelers is
     Printer.Report(Traces);
   end Wild_Traveler_Task_Type;
 
-  -- Local
   Symbol : Character;
   Id : Integer;
 begin
