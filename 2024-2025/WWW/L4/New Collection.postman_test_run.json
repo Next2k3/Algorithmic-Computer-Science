@@ -1,0 +1,965 @@
+{
+	"id": "ce28b50e-d6dd-4153-84f3-0344fa206ca2",
+	"name": "New Collection",
+	"timestamp": "2025-05-22T13:09:42.294Z",
+	"collection_id": "45205049-076c7a2e-4077-4a64-a0f0-e6b3acdb2372",
+	"folder_id": 0,
+	"environment_id": "45205049-f00e4d79-7ddb-4c6b-bade-3a308019a9d4",
+	"totalPass": 53,
+	"delay": 0,
+	"persist": true,
+	"status": "finished",
+	"startedAt": "2025-05-22T13:09:41.199Z",
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "9b7bf9aa-9089-4eaa-879b-6e6ab83433dc",
+			"name": "Test API Health",
+			"url": "http://localhost:3000/api/test",
+			"time": 17,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"API is working": true,
+				"Response contains message": true,
+				"Response contains timestamp": true
+			},
+			"testPassFailCounts": {
+				"API is working": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response contains message": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response contains timestamp": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				17
+			],
+			"allTests": [
+				{
+					"API is working": true,
+					"Response contains message": true,
+					"Response contains timestamp": true
+				}
+			]
+		},
+		{
+			"id": "393da561-b144-4367-b2bd-8bf4c1be28a0",
+			"name": "Test 404 Error",
+			"url": "http://localhost:3000/api/nonexistent",
+			"time": 3,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"Returns 404 for non-existent endpoint": true,
+				"Error message is correct": true
+			},
+			"testPassFailCounts": {
+				"Returns 404 for non-existent endpoint": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Error message is correct": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				3
+			],
+			"allTests": [
+				{
+					"Returns 404 for non-existent endpoint": true,
+					"Error message is correct": true
+				}
+			]
+		},
+		{
+			"id": "955702ed-4ca4-493b-bbb0-18f371a35334",
+			"name": "Register user",
+			"url": "http://localhost:3000/api/auth/register",
+			"time": 89,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"User registration successful": true,
+				"Response contains token": true,
+				"Response contains user data": true
+			},
+			"testPassFailCounts": {
+				"User registration successful": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response contains token": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response contains user data": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				89
+			],
+			"allTests": [
+				{
+					"User registration successful": true,
+					"Response contains token": true,
+					"Response contains user data": true
+				}
+			]
+		},
+		{
+			"id": "fcf7fe32-33f0-441e-8dfb-aebbe78385b5",
+			"name": "Register Admin",
+			"url": "http://localhost:3000/api/auth/register",
+			"time": 69,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Admin registration successful": true,
+				"User has admin role": true
+			},
+			"testPassFailCounts": {
+				"Admin registration successful": {
+					"pass": 1,
+					"fail": 0
+				},
+				"User has admin role": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				69
+			],
+			"allTests": [
+				{
+					"Admin registration successful": true,
+					"User has admin role": true
+				}
+			]
+		},
+		{
+			"id": "98970b90-17ee-4774-905b-75a80f02a40f",
+			"name": "Login User",
+			"url": "http://localhost:3000/api/auth/login",
+			"time": 75,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Login successful": true,
+				"Login returns valid token": true
+			},
+			"testPassFailCounts": {
+				"Login successful": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Login returns valid token": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				75
+			],
+			"allTests": [
+				{
+					"Login successful": true,
+					"Login returns valid token": true
+				}
+			]
+		},
+		{
+			"id": "4b55ede3-7cd6-49fc-8ce7-81283cfd9c23",
+			"name": "Login with Wrong Password",
+			"url": "http://localhost:3000/api/auth/login",
+			"time": 70,
+			"responseCode": {
+				"code": 401,
+				"name": "Unauthorized"
+			},
+			"tests": {
+				"Login fails with wrong password": true,
+				"Returns invalid credentials error": true
+			},
+			"testPassFailCounts": {
+				"Login fails with wrong password": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Returns invalid credentials error": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				70
+			],
+			"allTests": [
+				{
+					"Login fails with wrong password": true,
+					"Returns invalid credentials error": true
+				}
+			]
+		},
+		{
+			"id": "e3911ef4-0875-42f4-967f-1307eacdf2c2",
+			"name": "Register Duplicate Email",
+			"url": "http://localhost:3000/api/auth/register",
+			"time": 65,
+			"responseCode": {
+				"code": 409,
+				"name": "Conflict"
+			},
+			"tests": {
+				"Duplicate email registration fails": true,
+				"Returns duplicate email error": true
+			},
+			"testPassFailCounts": {
+				"Duplicate email registration fails": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Returns duplicate email error": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				65
+			],
+			"allTests": [
+				{
+					"Duplicate email registration fails": true,
+					"Returns duplicate email error": true
+				}
+			]
+		},
+		{
+			"id": "4cbd1ae6-dcd5-4fe5-9b13-33bdcbbff888",
+			"name": "Get All Users",
+			"url": "http://localhost:3000/api/users",
+			"time": 9,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Admin can get all users": true,
+				"Response is array": true,
+				"Users don't contain passwords": true
+			},
+			"testPassFailCounts": {
+				"Admin can get all users": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response is array": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Users don't contain passwords": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				9
+			],
+			"allTests": [
+				{
+					"Admin can get all users": true,
+					"Response is array": true,
+					"Users don't contain passwords": true
+				}
+			]
+		},
+		{
+			"id": "bcfd49dc-9b41-48c5-9529-7667119580d3",
+			"name": "Get All Users (Regular User)",
+			"url": "http://localhost:3000/api/users",
+			"time": 3,
+			"responseCode": {
+				"code": 403,
+				"name": "Forbidden"
+			},
+			"tests": {
+				"Regular user cannot get all users": true,
+				"Returns admin required error": true
+			},
+			"testPassFailCounts": {
+				"Regular user cannot get all users": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Returns admin required error": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				3
+			],
+			"allTests": [
+				{
+					"Regular user cannot get all users": true,
+					"Returns admin required error": true
+				}
+			]
+		},
+		{
+			"id": "9c251e25-4ba7-4fdf-841d-b0fa086ddfb5",
+			"name": "Get User Profile",
+			"url": "http://localhost:3000/api/users/682f22158e5912acde62246f",
+			"time": 8,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"User can get own profile": true,
+				"Profile contains user data": true
+			},
+			"testPassFailCounts": {
+				"User can get own profile": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Profile contains user data": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				8
+			],
+			"allTests": [
+				{
+					"User can get own profile": true,
+					"Profile contains user data": true
+				}
+			]
+		},
+		{
+			"id": "7f19d711-436d-4455-a4f5-bfbaac7255bb",
+			"name": "Update User Profile",
+			"url": "http://localhost:3000/api/users/682f22158e5912acde62246f",
+			"time": 13,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"User profile updated successfully": true,
+				"Profile data is updated": true
+			},
+			"testPassFailCounts": {
+				"User profile updated successfully": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Profile data is updated": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				13
+			],
+			"allTests": [
+				{
+					"User profile updated successfully": true,
+					"Profile data is updated": true
+				}
+			]
+		},
+		{
+			"id": "cf6516bb-cb9f-4249-9993-f6bdacd9659e",
+			"name": "Create Project",
+			"url": "http://localhost:3000/api/projects",
+			"time": 16,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Project created successfully": true,
+				"Project has correct data": true,
+				"Project has owner populated": true
+			},
+			"testPassFailCounts": {
+				"Project created successfully": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Project has correct data": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Project has owner populated": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				16
+			],
+			"allTests": [
+				{
+					"Project created successfully": true,
+					"Project has correct data": true,
+					"Project has owner populated": true
+				}
+			]
+		},
+		{
+			"id": "7513cbb0-5c14-4cf5-a662-8cd2fee32f9e",
+			"name": "Get All Projects",
+			"url": "http://localhost:3000/api/projects",
+			"time": 11,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Can get projects list": true,
+				"Response has pagination info": true
+			},
+			"testPassFailCounts": {
+				"Can get projects list": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response has pagination info": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				11
+			],
+			"allTests": [
+				{
+					"Can get projects list": true,
+					"Response has pagination info": true
+				}
+			]
+		},
+		{
+			"id": "c7d94175-7d0b-4755-a6e9-47c4d23d8952",
+			"name": "Get Projects with Pagination",
+			"url": "http://localhost:3000/api/projects?page=1&limit=5&sortBy=createdAt&sortOrder=desc",
+			"time": 11,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Pagination works correctly": true
+			},
+			"testPassFailCounts": {
+				"Pagination works correctly": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				11
+			],
+			"allTests": [
+				{
+					"Pagination works correctly": true
+				}
+			]
+		},
+		{
+			"id": "590f93e1-383d-4d2a-ae9d-5e884d7ee574",
+			"name": "Filter Projects by Category",
+			"url": "http://localhost:3000/api/projects?category=web&status=active",
+			"time": 8,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Filtering works correctly": true
+			},
+			"testPassFailCounts": {
+				"Filtering works correctly": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				8
+			],
+			"allTests": [
+				{
+					"Filtering works correctly": true
+				}
+			]
+		},
+		{
+			"id": "2e41b994-9f50-4071-9545-06783837b4f7",
+			"name": "Get Single Project",
+			"url": "http://localhost:3000/api/projects/682f22168e5912acde62247a",
+			"time": 8,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Can get single project": true,
+				"Project data is complete": true
+			},
+			"testPassFailCounts": {
+				"Can get single project": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Project data is complete": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				8
+			],
+			"allTests": [
+				{
+					"Can get single project": true,
+					"Project data is complete": true
+				}
+			]
+		},
+		{
+			"id": "535963c3-b94b-465f-b32b-5355cb71cddb",
+			"name": "Update Project",
+			"url": "http://localhost:3000/api/projects/682f22168e5912acde62247a",
+			"time": 9,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Project updated successfully": true,
+				"Project data is updated": true
+			},
+			"testPassFailCounts": {
+				"Project updated successfully": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Project data is updated": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				9
+			],
+			"allTests": [
+				{
+					"Project updated successfully": true,
+					"Project data is updated": true
+				}
+			]
+		},
+		{
+			"id": "4088b968-6491-483e-8fac-67a67a5da845",
+			"name": "Create Project Without Required Fields",
+			"url": "http://localhost:3000/api/projects",
+			"time": 3,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Project creation fails without required fields": true,
+				"Returns validation error": true
+			},
+			"testPassFailCounts": {
+				"Project creation fails without required fields": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Returns validation error": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				3
+			],
+			"allTests": [
+				{
+					"Project creation fails without required fields": true,
+					"Returns validation error": true
+				}
+			]
+		},
+		{
+			"id": "2a2ac8af-4551-457a-b458-c70201fce84f",
+			"name": "Add Comment to Project",
+			"url": "http://localhost:3000/api/projects/682f22168e5912acde62247a/comments",
+			"time": 7,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Comment created successfully": true,
+				"Comment has correct data": true
+			},
+			"testPassFailCounts": {
+				"Comment created successfully": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Comment has correct data": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				7
+			],
+			"allTests": [
+				{
+					"Comment created successfully": true,
+					"Comment has correct data": true
+				}
+			]
+		},
+		{
+			"id": "b15a02a4-5e6f-4946-8501-1a5a9f259557",
+			"name": "Get Project Comments",
+			"url": "http://localhost:3000/api/projects/682f22168e5912acde62247a/comments",
+			"time": 7,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Can get project comments": true,
+				"Comments response has pagination": true
+			},
+			"testPassFailCounts": {
+				"Can get project comments": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Comments response has pagination": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				7
+			],
+			"allTests": [
+				{
+					"Can get project comments": true,
+					"Comments response has pagination": true
+				}
+			]
+		},
+		{
+			"id": "2a55eaad-ed33-4ce6-9cd7-d04abe94b5c2",
+			"name": "Update Comment",
+			"url": "http://localhost:3000/api/projects/682f22168e5912acde62247a/comments/682f22168e5912acde62248c",
+			"time": 8,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Comment updated successfully": true,
+				"Comment text is updated": true
+			},
+			"testPassFailCounts": {
+				"Comment updated successfully": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Comment text is updated": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				8
+			],
+			"allTests": [
+				{
+					"Comment updated successfully": true,
+					"Comment text is updated": true
+				}
+			]
+		},
+		{
+			"id": "033cda4d-bc51-476b-83b1-3b8b166a510c",
+			"name": "Add Comment to Non-existent Project",
+			"url": "http://localhost:3000/api/projects/000000000000000000000000/comments",
+			"time": 6,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"Cannot add comment to non-existent project": true,
+				"Returns project not found error": true
+			},
+			"testPassFailCounts": {
+				"Cannot add comment to non-existent project": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Returns project not found error": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				6
+			],
+			"allTests": [
+				{
+					"Cannot add comment to non-existent project": true,
+					"Returns project not found error": true
+				}
+			]
+		},
+		{
+			"id": "e0fff3da-2074-46e3-bd3b-a49935808b32",
+			"name": "Access Protected Route Without Token",
+			"url": "http://localhost:3000/api/users",
+			"time": 2,
+			"responseCode": {
+				"code": 401,
+				"name": "Unauthorized"
+			},
+			"tests": {
+				"Returns 401 without token": true,
+				"Returns access token required error": true
+			},
+			"testPassFailCounts": {
+				"Returns 401 without token": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Returns access token required error": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				2
+			],
+			"allTests": [
+				{
+					"Returns 401 without token": true,
+					"Returns access token required error": true
+				}
+			]
+		},
+		{
+			"id": "4844dca7-c19e-4acb-850a-5d81ab11fad2",
+			"name": "Access with Invalid Token",
+			"url": "http://localhost:3000/api/users",
+			"time": 2,
+			"responseCode": {
+				"code": 403,
+				"name": "Forbidden"
+			},
+			"tests": {
+				"Debug info": true,
+				"Returns 403 with invalid token": true,
+				"Returns correct error message": true
+			},
+			"testPassFailCounts": {
+				"Debug info": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Returns 403 with invalid token": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Returns correct error message": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				2
+			],
+			"allTests": [
+				{
+					"Debug info": true,
+					"Returns 403 with invalid token": true,
+					"Returns correct error message": true
+				}
+			]
+		},
+		{
+			"id": "711efd3f-d667-4dba-8183-02648bd71bba",
+			"name": "Invalid ObjectId Format",
+			"url": "http://localhost:3000/api/users/invalid-id-format",
+			"time": 2,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Returns 400 for invalid ID format": true,
+				"Returns invalid ID format error": true
+			},
+			"testPassFailCounts": {
+				"Returns 400 for invalid ID format": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Returns invalid ID format error": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				2
+			],
+			"allTests": [
+				{
+					"Returns 400 for invalid ID format": true,
+					"Returns invalid ID format error": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 521,
+	"collection": {
+		"requests": [
+			{
+				"id": "9b7bf9aa-9089-4eaa-879b-6e6ab83433dc",
+				"method": "GET"
+			},
+			{
+				"id": "393da561-b144-4367-b2bd-8bf4c1be28a0",
+				"method": "GET"
+			},
+			{
+				"id": "955702ed-4ca4-493b-bbb0-18f371a35334",
+				"method": "POST"
+			},
+			{
+				"id": "fcf7fe32-33f0-441e-8dfb-aebbe78385b5",
+				"method": "POST"
+			},
+			{
+				"id": "98970b90-17ee-4774-905b-75a80f02a40f",
+				"method": "POST"
+			},
+			{
+				"id": "4b55ede3-7cd6-49fc-8ce7-81283cfd9c23",
+				"method": "POST"
+			},
+			{
+				"id": "e3911ef4-0875-42f4-967f-1307eacdf2c2",
+				"method": "POST"
+			},
+			{
+				"id": "4cbd1ae6-dcd5-4fe5-9b13-33bdcbbff888",
+				"method": "GET"
+			},
+			{
+				"id": "bcfd49dc-9b41-48c5-9529-7667119580d3",
+				"method": "GET"
+			},
+			{
+				"id": "9c251e25-4ba7-4fdf-841d-b0fa086ddfb5",
+				"method": "GET"
+			},
+			{
+				"id": "7f19d711-436d-4455-a4f5-bfbaac7255bb",
+				"method": "PUT"
+			},
+			{
+				"id": "cf6516bb-cb9f-4249-9993-f6bdacd9659e",
+				"method": "POST"
+			},
+			{
+				"id": "7513cbb0-5c14-4cf5-a662-8cd2fee32f9e",
+				"method": "GET"
+			},
+			{
+				"id": "c7d94175-7d0b-4755-a6e9-47c4d23d8952",
+				"method": "GET"
+			},
+			{
+				"id": "590f93e1-383d-4d2a-ae9d-5e884d7ee574",
+				"method": "GET"
+			},
+			{
+				"id": "2e41b994-9f50-4071-9545-06783837b4f7",
+				"method": "GET"
+			},
+			{
+				"id": "535963c3-b94b-465f-b32b-5355cb71cddb",
+				"method": "PUT"
+			},
+			{
+				"id": "4088b968-6491-483e-8fac-67a67a5da845",
+				"method": "POST"
+			},
+			{
+				"id": "2a2ac8af-4551-457a-b458-c70201fce84f",
+				"method": "POST"
+			},
+			{
+				"id": "b15a02a4-5e6f-4946-8501-1a5a9f259557",
+				"method": "GET"
+			},
+			{
+				"id": "2a55eaad-ed33-4ce6-9cd7-d04abe94b5c2",
+				"method": "PUT"
+			},
+			{
+				"id": "033cda4d-bc51-476b-83b1-3b8b166a510c",
+				"method": "POST"
+			},
+			{
+				"id": "e0fff3da-2074-46e3-bd3b-a49935808b32",
+				"method": "GET"
+			},
+			{
+				"id": "4844dca7-c19e-4acb-850a-5d81ab11fad2",
+				"method": "GET"
+			},
+			{
+				"id": "711efd3f-d667-4dba-8183-02648bd71bba",
+				"method": "GET"
+			}
+		]
+	}
+}
